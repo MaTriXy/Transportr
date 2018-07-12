@@ -1,1 +1,1 @@
-include ':sublibs:public-transport-enabler:enabler'
+include ':app'

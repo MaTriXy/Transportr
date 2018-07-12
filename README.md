@@ -4,7 +4,7 @@ Transportr
 The public transport companion that respects your privacy and your freedom.
 Transportr is a non-profit app developed by people around the world to make using public transport as easy as possible wherever you are. 
 
-[![Transportr Logo](/res/drawable-xhdpi/ic_launcher.png)](http://transportr.grobox.de)
+[![Transportr Logo](/app/src/main/res/mipmap-xhdpi/ic_launcher.png)](http://transportr.grobox.de)
 [![Build Status](https://travis-ci.org/grote/Transportr.svg?branch=master)](https://travis-ci.org/grote/Transportr)
 
 Please **[visit the website](http://transportr.grobox.de)** for more information!
@@ -13,28 +13,24 @@ If you find any issues with this app, please report them at [the issue tracker](
 
 The upstream repository is at: https://github.com/grote/Transportr
 
-[![Follow @TransportrApp](art/twitter.png)](https://twitter.com/TransportrApp)
-[![Flattr me](art/flattr.png)](https://flattr.com/thing/1921242)
+[![Follow @TransportrApp](artwork/twitter.png)](https://twitter.com/TransportrApp)
 
 Get Transportr
 --------------
 
-[![Available on F-Droid](/art/f-droid.png)](https://f-droid.org/repository/browse/?fdid=de.grobox.liberario)
-[![Available on Google Play](/art/google-play.png)](https://play.google.com/store/apps/details?id=de.grobox.liberario)
+[![Available on F-Droid](/artwork/f-droid.png)](https://f-droid.org/repository/browse/?fdid=de.grobox.liberario)
+[![Available on Google Play](/artwork/google-play.png)](https://play.google.com/store/apps/details?id=de.grobox.liberario)
 
 Pre-releases and beta versions for advanced users are available via [a special F-Droid repository](http://grobox.de/fdroid/).
 
 Screenshots
 -----------
-[<img src="art/screenshots/drawer.png" width="200">](art/screenshots/drawer.png)
-[<img src="art/screenshots/directions.png" width="200">](art/screenshots/directions.png)
-[<img src="art/screenshots/trips.png" width="200">](art/screenshots/trips.png)
-[<img src="art/screenshots/trip_details.png" width="200">](art/screenshots/trip_details.png)
-[<img src="art/screenshots/favorite_trips.png" width="200">](art/screenshots/favorite_trips.png)
-[<img src="art/screenshots/departures.png" width="200">](art/screenshots/departures.png)
-[<img src="art/screenshots/nearby_stations.png" width="200">](art/screenshots/nearby_stations.png)
-[<img src="art/screenshots/nearby_stations_map.png" width="200">](art/screenshots/nearby_stations_map.png)
-[<img src="art/screenshots/about.png" width="200">](art/screenshots/about.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_FirstStart.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/1_FirstStart.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_SavedSearches.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/2_SavedSearches.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_Trips.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/3_Trips.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4_TripDetails.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/4_TripDetails.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5_Station.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/5_Station.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6_Departures.png" width="290">](fastlane/metadata/android/en-US/images/phoneScreenshots/6_Departures.png)
 
 
 Building From Source
@@ -42,20 +38,14 @@ Building From Source
 
 If you want to start working on Transportr and if you haven't done already, you should [familiarize yourself with Android development](https://developer.android.com/training/basics/firstapp/index.html) and [set up a development environment](https://developer.android.com/sdk/index.html).
 
-The next step is to clone the source code repository. Please make sure to also clone the git submodules that contain external libraries.
+The next step is to clone the source code repository.
 
-    $ git submodule init
-    $ git submodule update
-
-Then, you also need to run the following command to build the public transport enabler library.
-
-    $ ./pre-build.sh
+    $ git clone https://github.com/grote/Transportr.git
 
 If you don't want to use an IDE like Android Studio, you can build Transportr on the command line as follows.
 
+    $ cd Transportr
     $ gradle assembleRelease
-
-The resulting unsigned apk file will be found at `build/outputs/apk/transportr-release-unsigned.apk`.
 
 License
 -------
