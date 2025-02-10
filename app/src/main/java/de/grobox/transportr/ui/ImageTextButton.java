@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -22,7 +22,7 @@ package de.grobox.transportr.ui;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import de.grobox.transportr.R;

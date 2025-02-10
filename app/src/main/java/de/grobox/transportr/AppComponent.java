@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -23,13 +23,11 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import de.grobox.transportr.data.DbModule;
-import de.grobox.transportr.departures.DeparturesActivity;
 import de.grobox.transportr.favorites.locations.HomePickerDialogFragment;
 import de.grobox.transportr.favorites.locations.WorkPickerDialogFragment;
 import de.grobox.transportr.locations.LocationFragment;
 import de.grobox.transportr.map.MapActivity;
 import de.grobox.transportr.map.MapFragment;
-import de.grobox.transportr.networks.PickTransportNetworkActivity;
 import de.grobox.transportr.settings.SettingsFragment;
 import de.grobox.transportr.trips.detail.TripDetailActivity;
 import de.grobox.transportr.trips.detail.TripDetailFragment;
@@ -44,8 +42,6 @@ public interface AppComponent {
 
 	void inject(TransportrActivity activity);
 	void inject(MapActivity activity);
-	void inject(PickTransportNetworkActivity activity);
-	void inject(DeparturesActivity activity);
 	void inject(DirectionsActivity activity);
 	void inject(TripDetailActivity activity);
 

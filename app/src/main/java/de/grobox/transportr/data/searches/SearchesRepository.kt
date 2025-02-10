@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,10 +19,10 @@
 
 package de.grobox.transportr.data.searches
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.Transformations
-import android.support.annotation.WorkerThread
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
+import androidx.annotation.WorkerThread
 import de.grobox.transportr.AbstractManager
 import de.grobox.transportr.data.locations.FavoriteLocation
 import de.grobox.transportr.data.locations.LocationDao

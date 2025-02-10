@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-	<string name="website" translatable="false">https://transportr.grobox.de/</string>
+	<string name="website" translatable="false">https://transportr.app/</string>
 	<string name="website_source_app" translatable="false">"?utm_source=app"</string>
 	<string name="website_source_shared" translatable="false">"?utm_source=shared_trip"</string>
 	<string name="bug_tracker" translatable="false">https://github.com/grote/Transportr/issues?q=is%3Aissue</string>
 
 	<string name="google_play_title" tools:keep="@string/google_play_title">Transportr - Open Source Public Transit</string>
 	<string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Free Public Transport Assistant without Ads or Tracking</string>
-	<string name="google_play_full_desc" tools:keep="@string/google_play_full_desc"><![CDATA[
+	<string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
 Transportr is a non-profit app developed by people around the world in their free time.
 They want to make the use of public transport as easy as possible for everybody.
 
@@ -54,7 +54,6 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="action_fav_trip">Mark Trip as Favourite</string>
 	<string name="action_unfav_trip">Unmark Trip as Favourite</string>
 	<string name="action_switch_locations">Swap From and To</string>
-	<string name="action_time_type">Time is</string>
 	<string name="trip_dep">Departure</string>
 	<string name="trip_arr">Arrival</string>
 	<string name="action_refresh">Refresh</string>
@@ -66,17 +65,27 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="action_show_on_external_map">Show on External Map</string>
 	<string name="action_copy">Copy</string>
 
+	<string name="directions">Directions</string>
+	<string name="directions_search">Search Directions</string>
 	<string name="drawer_departures">Departures</string>
 
 	<string name="tab_about">About</string>
 	<string name="tab_libraries">Libraries</string>
 
-	<string name="about_copyright">© 2013 &#8211; 2018 Torsten Grote\nFree Software License: GPLv3+</string>
+	<string name="about_copyright">© 2013 &#8211; 2023 Torsten Grote\nFree Software License: GPLv3+</string>
 	<string name="about_description">Transportr is a public transport companion developed by people around the world to make using public transport as easy as possible wherever you are.</string>
 	<string name="about_warning_title">Warning</string>
 	<string name="about_warning_text">There is no guarantee for the correctness of the (externally provided) data. Please use this app only at your own risk.</string>
 	<string name="about_contributions">This app is Free Software, so you can freely use, study, share and improve it. Contributions are encouraged and appreciated. If you would like to contribute, please visit the homepage for more information.</string>
 	<string name="about_visit_website">Visit Website</string>
+
+	<string name="jawg_styles_url" translatable="false">https://api.jawg.io/styles/</string>
+	<string name="jawg_access_token" translatable="false">KxO8lF4U3kiO63m0c7lzqDCDrMUVg1OA2JVzRXxxmYSyjugr1xpe4W4Db5rFNvbQ</string>
+	<string name="jawg_style_light" translatable="false">jawg-sunny</string>
+	<string name="jawg_style_dark" translatable="false">jawg-dark</string>
+
+	<string name="map_attribution" translatable="false">&lt;a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps">© &lt;b>Jawg&lt;/b>Maps&lt;/a>, &lt;a href="https://www.openstreetmap.org/copyright" title="OpenStreetMap is open data licensed under ODbL">© OSM contributors&lt;/a>&lt;br/>&lt;b>&lt;a href="https://www.openstreetmap.org/fixthemap">%1$s&lt;/a>&lt;/b></string>
+	<string name="map_attribution_improve">Improve this map</string>
 
 	<string name="open_navigation_drawer">Open Navigation Drawer</string>
 	<string name="from">From</string>
@@ -97,6 +106,7 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="find_nearby_stations">Find Nearby Stations</string>
 	<string name="find_departures">Find Departures</string>
 	<string name="share_trip_via">Share Trip Via&#8230;</string>
+	<string name="show_location_in">Show Location In&#8230;</string>
 	<string name="more">More</string>
 
 	<!-- Shows a short(!) representation of how long you need to walk, e.g. "for 5 min" -->
@@ -110,6 +120,7 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="tomorrow">Tomorrow</string>
 	<string name="in_x_minutes">in %dmin</string>
 	<string name="x_minutes_ago">%dmin ago</string>
+	<string name="total_time">Total time: %s</string>
 	<string name="time_picker_previous_day">Previous Day</string>
 	<string name="time_picker_next_day">Next Day</string>
 
@@ -121,6 +132,8 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="pref_theme_title">Theme</string>
 	<string name="pref_theme_light">Light</string>
 	<string name="pref_theme_dark">Dark</string>
+	<string name="pref_theme_auto_battery">Set by Battery Saver</string>
+	<string name="pref_theme_auto_system">System default</string>
 	<string name="pref_language_title">Language</string>
 	<string name="pref_directions_routing">Directions and Trip Routing</string>
 	<string name="pref_optimize">Optimize for</string>
@@ -131,7 +144,7 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="pref_walk_speed_slow">Slow</string>
 	<string name="pref_walk_speed_normal">Normal</string>
 	<string name="pref_walk_speed_fast">Fast</string>
-	<string name="pref_show_when_locked_title">Show trip and search results even when screen is locked</string>
+	<string name="pref_show_when_locked_title">Show trip even when screen is locked</string>
 	<string name="pref_show_when_locked_summary">Show over lock screen</string>
 
 	<string name="error">Error</string>
@@ -141,6 +154,8 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="error_geo_intent">Could not open external location</string>
 	<string name="error_find_nearby_stations">Could not find nearby stations</string>
 	<string name="error_departures">Could not find any departures</string>
+	<string name="error_no_calendar">No calendar installed :(</string>
+	<string name="error_no_map">No external map installed :(</string>
 
 	<string name="trip_error_ambiguous">Could not find the location. Please try searching with different locations.</string>
 	<string name="trip_error_too_close">The \'from\' and the \'to\' location are too close together.</string>
@@ -151,8 +166,9 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="trip_error_no_trips">No connections could be found :(</string>
 	<string name="trip_error_invalid_date">The search date is currently not supported by the data provider. Please try another date.</string>
 	<string name="trip_error_service_down">The data provider is currently down :(\nPlease try again later.</string>
-	<string name="trip_error_pte">If you want to report this error, please report it to public-transport-enabler directly and attach a screenshot.</string>
+	<string name="trip_error_pte">If you want to report this error, please report it to %1$s directly.</string>
 	<string name="trip_issue">There might be a problem with this connection.</string>
+	<string name="trip_not_travelable">Impossible or cancelled</string>
 	<string name="try_again">Try Again</string>
 
 	<!-- This string shows the number of meters one has to walk. Please keep the translation short. -->
@@ -164,7 +180,7 @@ and always knows where you are to not miss where to get off the bus.
 	</plurals>
 
 	<!-- This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name. -->
-	<string name="platform">(Platform %s)</string>
+	<string name="platform">Platform %s</string>
 
 	<string name="system_default">System Default</string>
 	<string name="trip_share_date">Date: %s</string>
@@ -191,8 +207,6 @@ and always knows where you are to not miss where to get off the bus.
 
 	<string name="onboarding_location_title">Pull up</string>
 	<string name="onboarding_location_message">More features are hiding below</string>
-	<string name="onboarding_directions_title">More Search Options</string>
-	<string name="onboarding_directions_message">Click this icon to reveal advanced search settings.</string>
 
 	<string name="select_products">Select Means of Transport</string>
 	<string name="product_high_speed_train">High-Speed Train</string>
@@ -206,9 +220,9 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="product_on_demand">On Demand</string>
 
 	<!-- ckChangeLog -->
-	<string name="changelog_full_title">Changelog</string>
-	<string name="changelog_title">What\'s New</string>
-	<string name="changelog_show_full">More…</string>
+	<string name="changelog_full_title" tools:ignore="UnusedResources">Changelog</string>
+	<string name="changelog_title" tools:ignore="UnusedResources">What\'s New</string>
+	<string name="changelog_show_full" tools:ignore="UnusedResources">More…</string>
 	
 	<string name="np_continent_europe">Europe</string>
 	<string name="np_continent_africa">Africa</string>
@@ -224,6 +238,11 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_desc_australia_networks" translatable="false">PTV, Transport NSW, TRANSLink, Transperth, Adelaide Metro, Metro Tasmania</string>
 	<string name="np_name_sydney" translatable="false">Transport NSW</string>
 	<string name="np_desc_sydney">Australia, New South Wales, Sydney</string>
+
+	<string name="np_region_pt">Portugal</string>
+	<string name="np_name_pt">Portugal</string>
+	<string name="np_desc_pt">Lisbon</string>
+	<string name="np_desc_pt_networks">Bus, Train, Funicular, Ferry, Metro</string>
 
 	<string name="np_region_austria">Austria</string>
 	<string name="np_desc_ivb">Innsbruck</string>
@@ -242,7 +261,6 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_desc_sncb">Public transport in Belgium</string>
 	<string name="np_desc_sncb_networks" translatable="false">SNCB-NMBS, De Lijn, TEC, MIVB-STIB</string>
 
-	<string name="np_region_br">Brazil</string>
 	<string name="np_name_br">Brazil</string>
 	<string name="np_desc_br">São Paulo, Rio de Janeiro, Belo Horizonte and Porto Alegre</string>
 	<string name="np_desc_br_networks" translatable="false">SPTRANS, BH Trans, EPTC</string>
@@ -252,8 +270,8 @@ and always knows where you are to not miss where to get off the bus.
 
 	<string name="np_region_canada">Canada</string>
 	<string name="np_name_ontario">Ontario</string>
-	<string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Waterloo Region</string>
-	<string name="np_desc_ontario_networks" translatable="false">GO Transit, OC Transpo, Toronto Transit Commission - TTC, MiWay, Grand River Transit - GRT</string>
+	<string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Hamilton, Waterloo Region</string>
+	<string name="np_desc_ontario_networks" translatable="false">GO Transit, OC Transpo, Toronto Transit Commission - TTC, MiWay, Hamilton Street Railway - HSR, Grand River Transit - GRT</string>
 	<string name="np_name_quebec">Quebec</string>
 	<string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Quebec, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montreal, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
 	<string name="np_desc_quebec_networks" translatable="false">AMT, STM, STL</string>
@@ -269,7 +287,8 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_desc_rt_networks">Railteam alliance</string>
 
 	<string name="np_region_finland">Finland</string>
-	<string name="np_desc_hsl">Helsinki</string>
+	<string name="np_desc_fi">Helsinki, Turku, Tampere, Jyväskylä, Oulu</string>
+	<string name="np_desc_fi_networks" translatable="false">HSL, Föli, TKL, Linkki, Oulun joukkoliikenne</string>
 
 	<string name="np_region_france">France</string>
 	<string name="np_name_francenortheast">France North East</string>
@@ -295,7 +314,10 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_desc_tlwm" tools:keep="@string/np_desc_tlwm">Birmingham</string>
 
 	<string name="np_region_germany">Germany</string>
+	<string name="np_name_avv" translatable="false">AVV</string>
 	<string name="np_desc_avv">Augsburg</string>
+	<string name="np_name_avvaachen" translatable="false">AVV</string>
+	<string name="np_desc_avvaachen">Aachen</string>
 	<string name="np_name_bayern" translatable="false">BEG</string>
 	<string name="np_desc_bayern">Bavaria, Würzburg, Regensburg</string>
 	<string name="np_name_bsvag" translatable="false">BSVG</string>
@@ -317,14 +339,14 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_name_nvv" translatable="false">NVV/RMV</string>
 	<string name="np_desc_nvv">Hesse, Frankfurt am Main, Kassel</string>
 	<string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-	<string name="np_name_vagfr" translatable="false">VAG</string>
-	<string name="np_desc_vagfr">Alsace, Bas-Rhin, Strasbourg, Freiburg im Breisgau</string>
+	<string name="np_name_sh">NAH.SH</string>
+	<string name="np_desc_sh">Schleswig-Holstein, Kiel, Flensburg, Lübeck</string>
 	<string name="np_desc_vbb">Brandenburg, Berlin</string>
 	<string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Lower Saxony, Bremen, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
 	<string name="np_desc_vgn">Nuremberg, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
 	<string name="np_desc_vgn_networks" translatable="false">VAG, DB, ESTW, infra fürth, Stadtwerke Bayreuth, Stadtwerke Schwabach, STWB, GPV, GkV</string>
+	<string name="np_name_vgs">saarVV</string>
 	<string name="np_desc_vgs">Saarland, Saarbrücken</string>
-	<string name="np_desc_vms">Mittelsachsen, Chemnitz</string>
 	<string name="np_desc_vmv">Mecklenburg-Vorpommern, Schwerin</string>
 	<string name="np_desc_vrn">Baden-Württemberg, Rhineland-Palatinate, Mannheim, Mainz, Trier</string>
 	<string name="np_desc_vrr">North Rhine-Westphalia, Cologne, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -350,7 +372,7 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_desc_vmobil">Liechtenstein, Vorarlberg, Bregenz</string>
 
 	<string name="np_region_luxembourg">Luxembourg</string>
-	<string name="np_name_lu" translatable="false">Verkéiersverbond</string>
+	<string name="np_name_lu" translatable="false">Mobilitéitszentral</string>
 	<string name="np_desc_lu">Luxembourg</string>
 	<string name="np_desc_lu_networks" translatable="false">AVL, SNCFL, FLEAA, RGTR, TICE</string>
 
@@ -359,20 +381,23 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_name_negentwee" translatable="false">9292.nl</string>
 	<string name="np_desc_negentwee">All public transport in the Netherlands</string>
 
-	<string name="np_region_norway">Norway</string>
-	<string name="np_desc_nri">Norway, Oslo, Bergen</string>
-
 	<string name="np_name_nz">New Zealand</string>
 	<string name="np_desc_nz">New-Zealand, Wellington, Auckland</string>
 	<string name="np_desc_nz_networks" translatable="false">Go Wellington, Tranz Metro, Auckland Transport</string>
 
 	<string name="np_region_poland">Poland</string>
-	<string name="np_name_pl" translatable="false">PKP</string>
-	<string name="np_desc_pl">Poland, railways in Poland</string>
 
 	<string name="np_name_spain">Spain</string>
 	<string name="np_desc_spain">Madrid, Barcelona, Basque Country, Valencia, Alicante, Mallorca, Menorca, Tenerife, La Palma, Navarra</string>
 	<string name="np_desc_spain_networks" translatable="false">CRTM, TMB, FGC, Moveuskadi, Metrovalencia, EMT Valencia, TRAM, CTM, EMT Palma, CIME, Tranvía, TITSA, TILP, Transporte Interurbano de Navarra</string>
+
+	<string name="np_name_hungary">Hungary</string>
+	<string name="np_desc_hungary">Budapest, Miskolc</string>
+	<string name="np_desc_hungary_networks" translatable="false">BKK, MKV</string>
+
+	<string name="np_name_czechia">Czechia</string>
+	<string name="np_desc_czechia">Prague and others</string>
+	<string name="np_desc_czechia_networks" translatable="false">Dopravní podnik hl. m. Prahy, Jaroslav Štěpánek, ČSAD POLKOST, ABOUT ME s.r.o., ARRIVA CITY s.r.o, ARRIVA STŘEDNÍ ČECHY s.r.o., STENBUS s.r.o., Okresní autobusová doprava Kolín, Martin UHER, spol. s r.o., ČSAD MHD Kladno a.s., ČSAD Střední Čechy, Valenta BUS s.r.o., POHL Kladno s.r.o., AUTODOPRAVA LAMER s.r.o., Kateřina Kulhánková, ČSAD Benešov s.r.o., Vlastimil Slezák, ČSAD Česká Lípa a.s., ČSAD Slaný s.r.o., Pražské Benátky s.r.o., Pražská paroplavební společnost</string>
 
 	<string name="np_region_sweden">Sweden</string>
 	<string name="np_desc_se">Sweden, Stockholm</string>
@@ -392,6 +417,9 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="np_name_rtachicago" translatable="false">RTA</string>
 	<string name="np_desc_rtachicago">Chicago</string>
 	<string name="np_desc_rtachicago_networks" translatable="false">CTA, Metra, Pace</string>
+	<string name="np_desc_bart">San Francisco</string>
+	<string name="np_name_cmta">Capital Metro</string>
+	<string name="np_desc_cmta">Austin</string>
 	<string name="np_name_usny">New York and New-Jersey States</string>
 	<string name="np_desc_usny" translatable="false">MTA, CDTA, Port Authority, Staten Island Ferry, NFTA, Rockland County, Rochester-Genesee Regional Transportation Authority</string>
 	<string name="np_name_california">California</string>
@@ -405,8 +433,7 @@ and always knows where you are to not miss where to get off the bus.
 
 	<string name="np_name_ghana">Ghana</string>
 	<string name="np_desc_ghana">Accra</string>
-	
-	<string name="np_region_central_america">Central America</string>
+
     <string name="np_name_nicaragua">Nicaragua</string>
     <string name="np_desc_nicaragua">Urban, rural and countrywide Buses provided by MapaNica.net and OpenStreetMap collaborators</string>
 
@@ -432,5 +459,11 @@ and always knows where you are to not miss where to get off the bus.
 	<string name="hungarian">Hungarian</string>
 	<string name="japanese">Japanese</string>
 	<string name="russian">Russian</string>
+	<string name="greek">Greek</string>
+	<string name="farsi">Persian</string>
+	<string name="taiwanese">Chinese (Taiwan)</string>
+	<string name="swedish">Swedish</string>
+	<string name="ukrainian">Ukrainian</string>
+	<string name="danish">Danish</string>
 
 </resources>

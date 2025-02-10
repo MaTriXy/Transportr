@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,13 +20,12 @@
 package de.grobox.transportr.networks
 
 import android.os.Build
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
-
+import androidx.recyclerview.widget.RecyclerView
 import de.grobox.transportr.R
 import de.grobox.transportr.networks.TransportNetwork.Status.ALPHA
 import de.grobox.transportr.networks.TransportNetwork.Status.STABLE
@@ -78,12 +77,8 @@ internal class CountryViewHolder(v: View) : ExpandableRegionViewHolder<Country>(
 
     override fun bind(region: Country, expanded: Boolean) {
         super.bind(region, expanded)
-        if (Build.VERSION.SDK_INT >= 21) {
-            flag.text = region.flag
-            flag.visibility = VISIBLE
-        } else {
-            flag.visibility = GONE
-        }
+        flag.text = region.flag
+        flag.visibility = VISIBLE
     }
 }
 

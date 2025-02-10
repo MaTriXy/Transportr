@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -26,12 +26,10 @@ import de.grobox.transportr.locations.WrapLocation
 
 abstract class WorkPickerDialogFragment : SpecialLocationFragment() {
 
+    override val hint = R.string.work_hint
+
     override fun inject(component: AppComponent) {
         component.inject(this)
-    }
-
-    override fun getHint(): Int {
-        return R.string.work_hint
     }
 
     override fun onSpecialLocationSet(location: WrapLocation) {

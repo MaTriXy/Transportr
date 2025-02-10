@@ -1,13 +1,53 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - オープンソース公共交通機関</string>
+  <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">無料の公共交通機関アシスタント、広告や追跡はありません</string>
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
+Transportr は、世界中の人々が自由な時間に開発した非営利のアプリです。
+すべての人ができるだけ簡単に公共交通機関を利用したいと考えています。
+
+このアプリは、さまざまな地方公共交通機関のデータを使用していて、
+統一されたインターフェイスを提供します。
+データの正当性を検証することはできないので
+表示された情報を<i>保証するものではありません</i>。
+自己責任で使用してください。
+
+<b>🛣️ 経路検索</b>。 どこに行きたいのかを Transportr に伝えるだけです!
+ベストな接続を見つけて、バスを乗り換える場所をアドバイスしてくれるでしょう。
+さらに到着予定時刻をお知らせします。
+
+<b>⏱️ ライブ出発情報</b>。 任意の駅の今後の出発情報を表示します。
+<i>サポートされた</i> 地域では、リアルタイムの遅延も表示されます。
+
+<b>🗽 ソフトウェアの自由</b>。 Transportr のソースコードは 100% オープンです。
+あなたは自由に使用、研究、共有、改善することができます。
+このアプリは <i>あなた</i> が作ったものと同様にすばらしいです。
+まだサポートされていない場合は、自分で街を追加することもできます。
+
+<b>🛰️ 自分の位置を検索。</b> Transportr は現在の位置を追跡するために GPS 衛星ナビゲーションを使用しています
+ - 場所がわからなくなることはありません。
+近くの駅を見つけて、新しい旅行を開始し、
+移動にどれくらいの距離があるかを確認することができます。
+
+<b>🌟 お気に入りの場所を覚える。</b> より早くたどり着くため、
+Transportr は頻繁に使用される場所や旅行を保存します。
+そうすれば、何度も繰り返し入力する必要はありません。
+
+<b>🚫 広告なし、トラッキングなし</b>。 このアプリは、
+広告や迷惑な通知を表示しません。
+また、Google アナリティクスなどのトラッキングツールを使用してスパイすることもありません。
+
+<b>🗺️ 美しい地図</b>。 バスを降りる場所を間違えないように、
+地図上に駅や旅行全体を表示して、いつでも分かります。
+]]></string>
   <string name="drawer_settings">設定</string>
   <string name="drawer_changelog">変更履歴</string>
   <string name="drawer_about">アプリについて</string>
   <string name="drawer_contributors">貢献者</string>
+  <string name="drawer_report_issue">問題を報告</string>
   <string name="action_fav_trip">旅行をお気に入りにする</string>
   <string name="action_unfav_trip">旅行をお気に入りから解除</string>
   <string name="action_switch_locations">出発地と目的地を入れ替え</string>
-  <string name="action_time_type">時間は</string>
   <string name="trip_dep">発</string>
   <string name="trip_arr">着</string>
   <string name="action_refresh">更新</string>
@@ -18,10 +58,17 @@
   <string name="action_trip_delete">旅行を削除</string>
   <string name="action_show_on_external_map">外部の地図上に表示</string>
   <string name="action_copy">コピー</string>
+  <string name="directions">道順</string>
+  <string name="directions_search">道順を検索</string>
   <string name="drawer_departures">出発</string>
   <string name="tab_about">アプリについて</string>
   <string name="tab_libraries">ライブラリー</string>
+  <string name="about_description">Transportr は、公共交通機関を世界中の人々ができるだけ簡単に使用できるように開発された、公共交通機関のコンパニオンです。</string>
+  <string name="about_warning_title">警告</string>
+  <string name="about_warning_text">(外部から提供された) データの正確性は保証されません。 このアプリは自己責任で使用してください。</string>
+  <string name="about_contributions">このアプリはフリーソフトウェアのため、自由に使用、学習、共有、改善することができます。 寄付は奨励され、感謝します。 貢献したい場合は、詳細についてホームページをご覧ください。</string>
   <string name="about_visit_website">Webサイトを訪問</string>
+  <string name="map_attribution_improve">この地図を改善する</string>
   <string name="open_navigation_drawer">ナビゲーションドロワーを開く</string>
   <string name="from">出発</string>
   <string name="to">目的地</string>
@@ -52,6 +99,7 @@
   <string name="tomorrow">明日</string>
   <string name="in_x_minutes">%d分で</string>
   <string name="x_minutes_ago">%d分前</string>
+  <string name="total_time">合計時間: %s</string>
   <string name="time_picker_previous_day">前日</string>
   <string name="time_picker_next_day">翌日</string>
   <string name="ok">OK</string>
@@ -61,6 +109,8 @@
   <string name="pref_theme_title">テーマ</string>
   <string name="pref_theme_light">ライト</string>
   <string name="pref_theme_dark">ダーク</string>
+  <string name="pref_theme_auto_battery">バッテリーセーバーで設定</string>
+  <string name="pref_theme_auto_system">システム デフォルト</string>
   <string name="pref_language_title">言語</string>
   <string name="pref_directions_routing">道順と旅行のルート</string>
   <string name="pref_optimize">最適化</string>
@@ -71,7 +121,7 @@
   <string name="pref_walk_speed_slow">遅い</string>
   <string name="pref_walk_speed_normal">通常</string>
   <string name="pref_walk_speed_fast">速い</string>
-  <string name="pref_show_when_locked_title">画面がロックされていても経路や検索結果を表示</string>
+  <string name="pref_show_when_locked_title">画面がロックされていても経路を表示</string>
   <string name="pref_show_when_locked_summary">ロック画面上に表示</string>
   <string name="error">エラー</string>
   <string name="error_no_internet">インターネット接続が必要です。 インターネットにアクセスできることを確認してください。</string>
@@ -80,6 +130,7 @@
   <string name="error_geo_intent">外部の場所を開くことができません</string>
   <string name="error_find_nearby_stations">近くの駅を見つけることができません</string>
   <string name="error_departures">出発が見つかりません</string>
+  <string name="error_no_calendar">カレンダーがインストールされていません :(</string>
   <string name="trip_error_ambiguous">場所を見つけることができませんでした。 別の場所で検索してみてください。</string>
   <string name="trip_error_too_close">\'出発地\' と \'目的地\' の位置が近すぎます。</string>
   <string name="trip_error_unknown_from">\'出発地\' が見つかりません。 別の場所を試してください。</string>
@@ -89,8 +140,9 @@
   <string name="trip_error_no_trips">接続が見つかりません :(</string>
   <string name="trip_error_invalid_date">検索日は現在、データプロバイダーによってサポートされていません。 別の日付を試してください。</string>
   <string name="trip_error_service_down">データプロバイダーは現在ダウンしています :(\n後でもう一度やり直してください。</string>
-  <string name="trip_error_pte">このエラーを報告する場合は、スクリーンショットを添付して、直接public-transport-enablerに報告してください。</string>
+  <string name="trip_error_pte">このエラーを報告する場合は、直接 %1$s に報告してください。</string>
   <string name="trip_issue">この接続に問題がある可能性があります。</string>
+  <string name="trip_not_travelable">不可能またはキャンセルされました</string>
   <string name="try_again">もう一度やり直す</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
@@ -98,9 +150,9 @@
     <item quantity="other">%d 駅</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(プラットフォーム %s)</string>
+  <string name="platform">プラットフォーム %s</string>
   <string name="system_default">システム デフォルト</string>
-  <string name="trip_share_date">日付け: %s</string>
+  <string name="trip_share_date">日付: %s</string>
   <string name="times_include_delays">(注意: 時間には報告された遅延が含まれます)</string>
   <string name="created_by">作成者 %s</string>
   <string name="home">自宅</string>
@@ -119,6 +171,9 @@
   <string name="location_gps">現在の位置を使用する</string>
   <string name="warning_no_gps_fix">まだ位置を見つけることができません。</string>
   <string name="permission_denied_gps">場所のアクセスが許可されていないため、この機能は動作しません。 アプリの設定でアクセス許可を付与してください。</string>
+  <string name="warning_gps_off">位置情報がオフです。設定でオンにしてください。</string>
+  <string name="onboarding_location_title">上にスクロールしてください</string>
+  <string name="onboarding_location_message">より多くの機能が下に隠れています</string>
   <string name="select_products">交通手段の選択</string>
   <string name="product_high_speed_train">高速列車</string>
   <string name="product_regional_train">地方の列車</string>
@@ -130,14 +185,23 @@
   <string name="product_cablecar">ケーブルカー</string>
   <string name="product_on_demand">オンデマンド</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">変更履歴</string>
-  <string name="changelog_title">新着情報</string>
-  <string name="changelog_show_full">さらに…</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">変更履歴</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">新着情報</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">さらに…</string>
   <string name="np_continent_europe">ヨーロッパ</string>
   <string name="np_continent_africa">アフリカ</string>
+  <string name="np_continent_north_america">北アメリカ</string>
+  <string name="np_continent_central_america">中央アメリカ</string>
+  <string name="np_continent_south_america">南アメリカ</string>
+  <string name="np_continent_asia">アジア</string>
+  <string name="np_continent_oceania">オセアニア</string>
   <string name="np_region_australia">オーストラリア</string>
   <string name="np_desc_australia">メルボルン, シドニー, ブリスベン, パース, アデレード, ホバート, ローンセストン, バーニー</string>
   <string name="np_desc_sydney">オーストラリア、ニューサウスウェールズ州、シドニー</string>
+  <string name="np_region_pt">ポルトガル</string>
+  <string name="np_name_pt">ポルトガル</string>
+  <string name="np_desc_pt">リスポン</string>
+  <string name="np_desc_pt_networks">バス、電車、ケーブルカー、フェリー、地下鉄</string>
   <string name="np_region_austria">オーストリア</string>
   <string name="np_desc_ivb">インスブルック</string>
   <string name="np_desc_linz">アッパーオーストリア、リンツ</string>
@@ -148,22 +212,25 @@
   <string name="np_desc_wien">ウィーン</string>
   <string name="np_region_belgium">ベルギー</string>
   <string name="np_desc_sncb">ベルギーの公共交通機関</string>
-  <string name="np_region_br">ブラジル</string>
   <string name="np_name_br">ブラジル</string>
   <string name="np_desc_br">サンパウロ、リオデジャネイロ、ベロオリゾンテ、ポルトアレグレ</string>
   <string name="np_name_br_floripa">フロリアノーポリス</string>
   <string name="np_desc_br_floripa">多くのバス路線、ビジネス外</string>
   <string name="np_region_canada">カナダ</string>
   <string name="np_name_ontario">オンタリオ</string>
+  <string name="np_desc_ontario">オンタリオ、オタワ、トロント、ミシソーガ、ハミルトン、ウォータールー地域</string>
   <string name="np_name_quebec">ケベック</string>
   <string name="np_desc_quebec">ドゥ-モンターニュ、ラバル、ラソンプシオン、ウタウエ、南西部、ケベック、オー-サン-ローラン、ラノディエール地域、ラ・プレスクイル、ローレンティッド地域、モントリオール、レムーラン、リシュリューバレー、シャンブリーリシュリュー-カリニャン、ルシヨン、ソレル-ヴァレンヌザ、Le Richelain、シャーブルック、サントジュリー</string>
+  <string name="np_name_britishcolumbia">ブリティッシュコロンビア</string>
+  <string name="np_desc_britishcolumbia">BC の公共交通機関</string>
+  <string name="np_desc_britishcolumbia_networks">トランスリンク (メトロバンクーバー) と BC トランジット (BC の残り)</string>
   <string name="np_region_denmark">デンマーク</string>
   <string name="np_desc_dsb">デンマーク、コペンハーゲン</string>
   <string name="np_name_rt">ヨーロッパ</string>
   <string name="np_desc_rt">長距離列車のみ</string>
   <string name="np_desc_rt_networks">鉄道アライアンス</string>
   <string name="np_region_finland">フィンランド</string>
-  <string name="np_desc_hsl">ヘルシンキ</string>
+  <string name="np_desc_fi">ヘルシンキ、ツルク、タンペレ、ユヴァスキュラ、オウル</string>
   <string name="np_region_france">フランス</string>
   <string name="np_name_francenortheast">フランス北東部</string>
   <string name="np_desc_francenortheast">ストラスブール、メッツ、リール、ナンシー</string>
@@ -185,6 +252,7 @@
   <string name="np_desc_bsvag">ブラウンシュヴァイク、ヴォルフスブルク</string>
   <string name="np_desc_bvg">ベルリン</string>
   <string name="np_desc_db">ドイツの大部分</string>
+  <string name="np_desc_db2">ヨーロッパの長距離連絡</string>
   <string name="np_desc_ding">バーデン・ヴュルテンベルク、ウルム、ノイ・ウルム</string>
   <string name="np_desc_gvh">ニーダーザクセン、ハノーバー、ハンブルク、ブレーマーハーフェン</string>
   <string name="np_desc_hvv" tools:keep="@string/np_desc_hvv">ハンブルク</string>
@@ -196,12 +264,10 @@
   <string name="np_desc_nvbw">バーデン・ヴュルテンベルク、コンスタンツ、バーゼル、バーゼル・シュタット、ロイトリンゲン、ロットワイル、テュービンゲン、シグマリンゲン</string>
   <string name="np_desc_nvv">ヘッセン、フランクフルト・アム・マイン、カッセル</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">ロストック</string>
-  <string name="np_desc_vagfr">アルザス、バスライン、ストラスブール、フライブルク・イム・ブライスガウ</string>
   <string name="np_desc_vbb">ブランデンブルク、ベルリン</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">ニーダーザクセン、ブレーメン、ブレーマーハーフェン、オルデンブルク (オルデンブルク)、オスナブリュック</string>
   <string name="np_desc_vgn">ニュルンベルク、フュルト、エルランゲン、バイロイト、バンベルク、シュヴァバッハ</string>
   <string name="np_desc_vgs">ザールラント、ザールブリュッケン</string>
-  <string name="np_desc_vms">ミッテルザクセン、ケムニッツ</string>
   <string name="np_desc_vmv">メクレンブルク=フォアポンメルン州、シュヴェリーン</string>
   <string name="np_desc_vrn">バーデン・ヴュルテンベルク州、ラインランド・プファルツ州、マンハイム、マインツ、トリアー</string>
   <string name="np_desc_vrr">ノルトライン・ヴェストファーレン、ケルン、ボン、エッセン、ドルトムント、デュッセルドルフ、ミュンスター、パーダーボルン、ホクスター</string>
@@ -225,14 +291,15 @@
   <string name="np_region_netherlands">オランダ</string>
   <string name="np_desc_ns">オランダ、アムステルダム</string>
   <string name="np_desc_negentwee">オランダのすべての公共交通機関</string>
-  <string name="np_region_norway">ノルウェー</string>
-  <string name="np_desc_nri">ノルウェー、オスロ、ベルゲン</string>
   <string name="np_name_nz">ニュージーランド</string>
   <string name="np_desc_nz">ニュージーランド、ウェリントン、オークランド</string>
   <string name="np_region_poland">ポーランド</string>
-  <string name="np_desc_pl">ポーランド、ポーランドの鉄道</string>
   <string name="np_name_spain">スペイン</string>
   <string name="np_desc_spain">マドリード、バルセロナ、バスク地方、バレンシア、アリカンテ、マヨルカ、メノルカ、テネリフェ、ラ・パルマ、ナバラ</string>
+  <string name="np_name_hungary">ハンガリー</string>
+  <string name="np_desc_hungary">ブダペスト、ミシュコルツ</string>
+  <string name="np_name_czechia">チェコ</string>
+  <string name="np_desc_czechia">プラハなど</string>
   <string name="np_region_sweden">スウェーデン</string>
   <string name="np_desc_se">スウェーデン、ストックホルム</string>
   <string name="np_region_switzerland">スイス</string>
@@ -254,6 +321,8 @@
   <string name="np_name_costa_rica">コスタリカ</string>
   <string name="np_name_ghana">ガーナ</string>
   <string name="np_desc_ghana">アクラ</string>
+  <string name="np_name_nicaragua">ニカラグア</string>
+  <string name="np_desc_nicaragua">MapaNica.net と OpenStreetMap の協力者が提供する都市、田舎、そして全国のバス</string>
   <string name="maintainer">メンテナー</string>
   <string name="contributors">貢献者</string>
   <string name="translators">翻訳者</string>
@@ -261,8 +330,10 @@
   <string name="french">フランス語</string>
   <string name="german">ドイツ語</string>
   <string name="italian">イタリア語</string>
+  <string name="portuguese_br">ポルトガル語 (ブラジル)</string>
   <string name="spanish">スペイン語</string>
   <string name="turkish">トルコ語</string>
+  <string name="norwegian_bokmal">ノルウェー語 ボークモール</string>
   <string name="basque">バスク語</string>
   <string name="english">英語</string>
   <string name="catalan">カタロニア語</string>
@@ -271,4 +342,12 @@
   <string name="esperanto">エスペラント</string>
   <string name="czech">チェコ語</string>
   <string name="hungarian">ハンガリー語</string>
+  <string name="japanese">日本語</string>
+  <string name="russian">ロシア語</string>
+  <string name="greek">ギリシャ語</string>
+  <string name="farsi">ペルシア語</string>
+  <string name="taiwanese">中国語 (台湾)</string>
+  <string name="swedish">スウェーデン語</string>
+  <string name="ukrainian">ウクライナ語</string>
+  <string name="danish">デンマーク語</string>
 </resources>

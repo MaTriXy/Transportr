@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,10 +19,6 @@
 
 package de.grobox.transportr.trips.detail
 
-import android.support.annotation.ColorInt
-import android.support.v4.content.ContextCompat.getColor
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Html.fromHtml
 import android.view.View
 import android.view.View.GONE
@@ -30,13 +26,18 @@ import android.view.View.VISIBLE
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.common.base.Strings
 import com.google.common.base.Strings.isNullOrEmpty
 import de.grobox.transportr.R
+import de.grobox.transportr.trips.BaseViewHolder
 import de.grobox.transportr.trips.detail.LegViewHolder.LegType.*
 import de.grobox.transportr.ui.LineView
 import de.grobox.transportr.utils.DateUtils
-import de.grobox.transportr.utils.DateUtils.getDuration
+import de.grobox.transportr.utils.DateUtils.formatDuration
+import de.grobox.transportr.utils.TransportrUtils.getLineColor
 import de.grobox.transportr.utils.TransportrUtils.getLocationName
 import de.schildbach.pte.dto.Line
 import de.schildbach.pte.dto.Stop
@@ -45,7 +46,7 @@ import de.schildbach.pte.dto.Trip.*
 import kotlinx.android.synthetic.main.list_item_leg.view.*
 
 
-internal class LegViewHolder(v: View, listener: LegClickListener, private val showLineName: Boolean) : BaseViewHolder(v, listener) {
+internal class LegViewHolder(v: View, private val listener: LegClickListener, private val showLineName: Boolean) : BaseViewHolder(v) {
 
     internal enum class LegType {
         FIRST, MIDDLE, LAST, FIRST_LAST
@@ -57,6 +58,7 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
 
     private val fromCircle: ImageView = v.fromCircle
     private val fromLocation: TextView = v.fromLocation
+    private val fromPlatform: TextView = v.fromPlatform
     private val fromButton: ImageButton = v.fromButton
 
     private val lineBar: ImageView = v.lineBar
@@ -70,14 +72,17 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
 
     private val toCircle: ImageView = v.toCircle
     private val toLocation: TextView = v.toLocation
+    private val toPlatform: TextView = v.toPlatform
     private val toButton: ImageButton = v.toButton
 
     private val adapter = StopAdapter(listener)
-
     fun bind(leg: Leg, legType: LegType) {
         // Locations
         fromLocation.text = getLocationName(leg.departure)
         toLocation.text = getLocationName(leg.arrival)
+        // Hide platforms by default
+        fromPlatform.visibility = GONE
+        toPlatform.visibility = GONE
 
         fromLocation.setOnClickListener { listener.onLocationClick(leg.departure) }
         toLocation.setOnClickListener { listener.onLocationClick(leg.arrival) }
@@ -104,7 +109,7 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
         lineDestination.setOnClickListener { listener.onLegClick(leg) }
 
         // Leg duration
-        duration.text = getDuration(leg.departureTime, leg.arrivalTime)
+        duration.text = formatDuration(leg.departureTime, leg.arrivalTime)
 
         if (leg is Public) {
             bindPublic(leg)
@@ -118,11 +123,14 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
         setArrivalTimes(toTime, toDelay, leg.arrivalStop)
 
         // Departure and Arrival Platform
-        fromLocation.addPlatform(leg.departurePosition)
-        toLocation.addPlatform(leg.arrivalPosition)
+        fromPlatform.addPlatform(leg.departurePosition)
+        toPlatform.addPlatform(leg.arrivalPosition)
+
+        // Get Line color
+        val lineColor = getLineColor(lineBar.context, leg.line)
 
         // Line
-        lineView.setLine(leg.line)
+        lineView.setLine(leg.line, lineColor)
         if (showLineName && !isNullOrEmpty(leg.line.name)) {
             lineDestination.text = leg.line.name
         } else if (leg.destination != null) {
@@ -132,7 +140,6 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
         }
 
         // Line bar
-        val lineColor = getLineColor(leg.line)
         fromCircle.setColorFilter(lineColor)
         lineBar.setColorFilter(lineColor)
         toCircle.setColorFilter(lineColor)
@@ -184,8 +191,8 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
     }
 
     private fun bindIndividual(leg: Individual) {
-        fromTime.text = DateUtils.getTime(fromTime.context, leg.departureTime)
-        toTime.text = DateUtils.getTime(toTime.context, leg.arrivalTime)
+        fromTime.text = DateUtils.formatTime(fromTime.context, leg.departureTime)
+        toTime.text = DateUtils.formatTime(toTime.context, leg.arrivalTime)
 
         fromDelay.visibility = GONE
         toDelay.visibility = GONE
@@ -209,15 +216,6 @@ internal class LegViewHolder(v: View, listener: LegClickListener, private val sh
         stopsText.visibility = GONE
         stopsButton.visibility = GONE
         stopsList.visibility = GONE
-    }
-
-    @ColorInt
-    private fun getLineColor(line: Line): Int {
-        if (line.style == null) return DEFAULT_LINE_COLOR
-        if (line.style!!.backgroundColor != 0) return line.style!!.backgroundColor
-        if (line.style!!.backgroundColor2 != 0) return line.style!!.backgroundColor2
-        if (line.style!!.foregroundColor != 0) return line.style!!.foregroundColor
-        return if (line.style!!.borderColor != 0) line.style!!.borderColor else DEFAULT_LINE_COLOR
     }
 
 }

@@ -2,6 +2,40 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - trasporto pubblico open source</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Assistente per il trasporto pubblico gratis e senza pubblicità o tracciatori</string>
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
+Transportr è un\'app non-profit sviluppata da persone di tutto il mondo nel loro tempo libero.
+Il loro obiettivo è quello di rendere l\'uso del trasporto pubblico il più semplice possibile per tutti.
+
+Quest\'app usa i dati di varie aziende di trasporto pubblico locali
+e li fornisce in un\'interfaccia unificata.
+L\'app non può verificare la correttezza dei dati, perciò <i>non fornisce alcuna garanzia</i> per le informazioni mostrate.
+Usa l\'app a tuo rischio.
+
+<b>🛣️ Organizza il tuo viaggio</b>. Dì a Transportr dove vuoi andare!
+L\'app troverà il collegamento migliore per te, ti avverte quando cambiare mezzo e persino ti dice il tempo previsto di arrivo.
+
+<b>⏱️ Partenze in tempo reale</b>. Mostra le prossime partenze da qualsiasi stazione.
+Nelle aree <i>supportate</i> l\'app mostra anche il ritardo in tempo reale.
+
+<b>🗽 Libertà del software</b>. Il codice sorgente di Transportr è 100% aperto.
+Puoi liberamente utilizzarlo, studiarlo, condividerlo e migliorarlo.
+Quest\'app è buona perché sei <i>tu</i> a renderla così.
+Puoi anche aggiungere la tua città da solo se non ancora supportata.
+
+<b>🛰️ Trova la tua posizione.</b> Transportr usa la navigazione satellitare GPS
+per mantenere traccia della tua posizione così non potrai mai perderti.
+Puoi anche trovare le stazioni più vicine per fare un nuovo percorso
+e quindi vedere quanto lontano sei dall\'arrivo.
+
+<b>🌟 Ricorda i posti preferiti.</b> Per andare dove devi andare rapidamente,
+Transportr salva i posti e i viaggi utilizzati frequentemente.
+In questo modo non devi riscriverli ogni volta.
+
+<b>🚫 Nessuna pubblicità, nessun tracciamento</b>. Questa\'app non mostra pubblicità o noiose notifiche.
+Inoltre, non usa strumenti di tracciamento come Google Analytics per spiarti.
+
+<b>🗺️ Mappe bellissime</b>. Mostra le stazioni o l\'intero tragitto sulla mappa e mostra sempre dove sei per non perderti la fermata dove devi scendere.
+]]></string>
   <string name="drawer_settings">Impostazioni</string>
   <string name="drawer_changelog">Registro delle modifiche</string>
   <string name="drawer_about">Informazioni</string>
@@ -10,7 +44,6 @@
   <string name="action_fav_trip">Segna viaggio come preferito</string>
   <string name="action_unfav_trip">Rimuovi viaggio dai preferiti</string>
   <string name="action_switch_locations">Scambia Da e A</string>
-  <string name="action_time_type">Ora inserita è</string>
   <string name="trip_dep">Partenza</string>
   <string name="trip_arr">Arrivo</string>
   <string name="action_refresh">Ricarica</string>
@@ -21,15 +54,17 @@
   <string name="action_trip_delete">Elimina viaggio</string>
   <string name="action_show_on_external_map">Mostra su mappa esterna</string>
   <string name="action_copy">Copia</string>
+  <string name="directions">Direzioni</string>
+  <string name="directions_search">Cerca direzioni</string>
   <string name="drawer_departures">Partenze</string>
   <string name="tab_about">Informazioni</string>
   <string name="tab_libraries">Librerie</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten Grote\nFree Software License: GPLv3+</string>
   <string name="about_description">Transportr è un\'app di trasporto pubblico sviluppata da persone di tutto il mondo per rendere il trasporto pubblico il più semplice possibile ovunque tu sia.</string>
   <string name="about_warning_title">Attenzione</string>
   <string name="about_warning_text">Non c\'è alcuna garanzia per la correttezza dei dati (di terze parti). Usa quest\'app a tuo rischio.</string>
   <string name="about_contributions">Quest\'app è software libero, così sei libero di usarlo, studiarlo, condividerlo e migliorarlo. I contributi sono apprezzati e incoraggiati. Se volete contribuire, visita il sito per maggiori informazioni.</string>
   <string name="about_visit_website">Visita il sito</string>
+  <string name="map_attribution_improve">Migliora questa mappa</string>
   <string name="open_navigation_drawer">Apri menù laterale</string>
   <string name="from">Da</string>
   <string name="to">A</string>
@@ -44,11 +79,12 @@
   <string name="network">Rete</string>
   <string name="pick_network_activity">Scegli la zona</string>
   <string name="pick_network_first_run">Benvenuto su Transportr!\n\nSeleziona la rete di trasporto della tua zona per poter continuare. Puoi cambiare la selezione in qualunque momento.</string>
-  <string name="stations_searching_position">Ricerca posizione corrente in corso...</string>
+  <string name="stations_searching_position">Ricerca posizione corrente in corso…</string>
   <string name="drawer_nearby_stations">Stazioni vicine</string>
   <string name="find_nearby_stations">Cerca stazioni vicine</string>
   <string name="find_departures">Cerca partenze</string>
-  <string name="share_trip_via">Condividi viaggio tramite...</string>
+  <string name="share_trip_via">Condividi viaggio tramite…</string>
+  <string name="show_location_in">Mostra la posizione in...</string>
   <string name="more">Più</string>
   <!--Shows a short(!) representation of how long you need to walk, e.g. "for 5 min"-->
   <string name="for_x_min">per %d min</string>
@@ -60,6 +96,7 @@
   <string name="tomorrow">Domani</string>
   <string name="in_x_minutes">in %d min</string>
   <string name="x_minutes_ago">%d min fa</string>
+  <string name="total_time">Tempo totale: %s</string>
   <string name="time_picker_previous_day">Giorno precedente</string>
   <string name="time_picker_next_day">Giorno successivo</string>
   <string name="ok">Ok</string>
@@ -69,6 +106,8 @@
   <string name="pref_theme_title">Tema</string>
   <string name="pref_theme_light">Chiaro</string>
   <string name="pref_theme_dark">Scuro</string>
+  <string name="pref_theme_auto_battery">Impostato dal risparmio energetico</string>
+  <string name="pref_theme_auto_system">Predefinito di sistema</string>
   <string name="pref_language_title">Lingua</string>
   <string name="pref_directions_routing">Direzioni e percorso</string>
   <string name="pref_optimize">Ottimizza secondo</string>
@@ -79,7 +118,7 @@
   <string name="pref_walk_speed_slow">Lento</string>
   <string name="pref_walk_speed_normal">Normale</string>
   <string name="pref_walk_speed_fast">Veloce</string>
-  <string name="pref_show_when_locked_title">Mostra percorso e risultati della ricerca quando lo schermo è bloccato</string>
+  <string name="pref_show_when_locked_title">Mostra il percorso anche con lo schermo bloccato</string>
   <string name="pref_show_when_locked_summary">Mostra quando lo schermo è bloccato</string>
   <string name="error">Errore</string>
   <string name="error_no_internet">Una connessione ad internet è necessaria. Assicurati che la tua rete è funzionante.</string>
@@ -88,6 +127,8 @@
   <string name="error_geo_intent">Impossibile aprire la posizione</string>
   <string name="error_find_nearby_stations">Impossibile trovare le stazioni vicine</string>
   <string name="error_departures">Impossibile trovare alcuna partenza</string>
+  <string name="error_no_calendar">Nessun calendario installato :(</string>
+  <string name="error_no_map">Nessuna mappa esterna installata :(</string>
   <string name="trip_error_ambiguous">Impossibile trovare il posto. Prova con un posto differente.</string>
   <string name="trip_error_too_close">I posti \"da\" e \"a\" sono troppo vicini.</string>
   <string name="trip_error_unknown_from">Impossibile trovare il posto di partenza. Prova con uno differente.</string>
@@ -97,17 +138,19 @@
   <string name="trip_error_no_trips">Nessuna connessione disponibile :(</string>
   <string name="trip_error_invalid_date">Il provider dei dati non supporta attualmente la ricerca per data. Riprova con un\'altra data.</string>
   <string name="trip_error_service_down">Il provider dei dati è attualmente offline :(\nRiprova di nuovo più tardi.</string>
-  <string name="trip_error_pte">Se vuoi segnalare questo errore, fallo direttamente su public-transport-enabler e inserisci uno screenshot.</string>
+  <string name="trip_error_pte">Se vuoi segnalare questo errore, fallo direttamente a %1$s </string>
   <string name="trip_issue">Potrebbe esserci un problema con questa connessione.</string>
+  <string name="trip_not_travelable">Impossibile o cancellato</string>
   <string name="try_again">Prova ancora</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
   <plurals name="stops">
     <item quantity="one">%d fermata</item>
+    <item quantity="many">%d fermate</item>
     <item quantity="other">%d fermate</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(binario %s)</string>
+  <string name="platform">binario %s</string>
   <string name="system_default">Predefinito di sistema</string>
   <string name="trip_share_date">Data: %s</string>
   <string name="times_include_delays">(Attenzione: l\'orario può includere il ritardo del mezzo)</string>
@@ -131,8 +174,6 @@
   <string name="warning_gps_off">La geolocalizzazione è disattivata. Attivala nelle impostazioni.</string>
   <string name="onboarding_location_title">Trascina</string>
   <string name="onboarding_location_message">Altre funzioni sono nascoste sotto</string>
-  <string name="onboarding_directions_title">Ricerca avanzata</string>
-  <string name="onboarding_directions_message">Premi su questa icona per rivelare le impostazioni per la ricerca avanzata</string>
   <string name="select_products">Seleziona mezzi di trasporto</string>
   <string name="product_high_speed_train">Treno ad alta velocità</string>
   <string name="product_regional_train">Treno regionale</string>
@@ -144,9 +185,9 @@
   <string name="product_cablecar">Funivia</string>
   <string name="product_on_demand">Su richiesta</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Registro delle modifiche</string>
-  <string name="changelog_title">Novità</string>
-  <string name="changelog_show_full">Più...</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Registro delle modifiche</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Novità</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Più…</string>
   <string name="np_continent_europe">Europa</string>
   <string name="np_continent_africa">Africa</string>
   <string name="np_continent_north_america">America settentrionale</string>
@@ -157,6 +198,10 @@
   <string name="np_region_australia">Australia</string>
   <string name="np_desc_australia">Melbourne, Sydney, Brisbane, Perth, Adelaide, Hobart, Launceston, Burnie</string>
   <string name="np_desc_sydney">Australia, New South Wales, Sydney</string>
+  <string name="np_region_pt">Portogallo</string>
+  <string name="np_name_pt">Portogallo</string>
+  <string name="np_desc_pt">Lisbona</string>
+  <string name="np_desc_pt_networks">Autobus, treno, funicolare, traghetto, metro</string>
   <string name="np_region_austria">Austria</string>
   <string name="np_desc_ivb">Innsbruck</string>
   <string name="np_desc_linz">Alta Austria, Linz</string>
@@ -167,14 +212,13 @@
   <string name="np_desc_wien">Vienna</string>
   <string name="np_region_belgium">Belgio</string>
   <string name="np_desc_sncb">Trasporto pubblico in Belgio</string>
-  <string name="np_region_br">Brasile</string>
   <string name="np_name_br">Brasile</string>
   <string name="np_desc_br">San Paolo, Rio de Janeiro, Belo Horizonte e Porto Alegre</string>
   <string name="np_name_br_floripa">Florianópolis</string>
   <string name="np_desc_br_floripa">Molti viaggi in autobus, niente Executivos</string>
   <string name="np_region_canada">Canada</string>
   <string name="np_name_ontario">Ontario</string>
-  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, regione Waterloo</string>
+  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Hamilton, regione di Waterloo</string>
   <string name="np_name_quebec">Quebec</string>
   <string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Quebec, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montreal, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
   <string name="np_name_britishcolumbia">Columbia Britannica</string>
@@ -186,7 +230,7 @@
   <string name="np_desc_rt">Solo treni a lunga percorrenza</string>
   <string name="np_desc_rt_networks">Railteam</string>
   <string name="np_region_finland">Finlandia</string>
-  <string name="np_desc_hsl">Helsinki</string>
+  <string name="np_desc_fi">Helsinki, Turku, Tampere, Jyväskylä, Oulu</string>
   <string name="np_region_france">Francia</string>
   <string name="np_name_francenortheast">Francia nord-orientale</string>
   <string name="np_desc_francenortheast">Strasburgo, Metz, Lilla, Nancy</string>
@@ -204,6 +248,8 @@
   <string name="np_desc_tlwm" tools:keep="@string/np_desc_tlwm">Birmingham</string>
   <string name="np_region_germany">Germania</string>
   <string name="np_desc_avv">Asburgo</string>
+  <string name="np_name_avvaachen">AVV</string>
+  <string name="np_desc_avvaachen">Aachen</string>
   <string name="np_desc_bayern">Baviera, Würzburg, Regensburg</string>
   <string name="np_desc_bsvag">Braunschweig, Wolfsburg</string>
   <string name="np_desc_bvg">Berlino</string>
@@ -220,12 +266,13 @@
   <string name="np_desc_nvbw">Baden-Württemberg, Costanza, Basilea, Basilea Città, Reutlingen, Rottweil, Tubinga, Sigmaringa</string>
   <string name="np_desc_nvv">Assia, Francoforte sul Meno, Kassel</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Alsazia, Basso Reno, Strasburgo, Friburgo in Brisgovia</string>
+  <string name="np_name_sh">NAH.SH</string>
+  <string name="np_desc_sh">Schleswig-Holstein, Kiel, Flensburg, Lübeck</string>
   <string name="np_desc_vbb">Brandeburgo, Berlino</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Bassa Sassonia, Brema, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
   <string name="np_desc_vgn">Norimberga, Fürth, Erlangen, Bayreuth, Bamberga, Schwabach</string>
+  <string name="np_name_vgs">saarVV</string>
   <string name="np_desc_vgs">Saarland, Saarbrücken</string>
-  <string name="np_desc_vms">Sassonia Centrale, Chemnitz</string>
   <string name="np_desc_vmv">Meclemburgo-Pomerania anteriore, Schwerin</string>
   <string name="np_desc_vrn">Baden-Württemberg, Renania-Palatinato, Mannheim, Magonza, Treviri</string>
   <string name="np_desc_vrr">Renania Settentrionale-Vestfalia, Colonia, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -249,14 +296,15 @@
   <string name="np_region_netherlands">Olanda</string>
   <string name="np_desc_ns">Olanda, Amsterdam</string>
   <string name="np_desc_negentwee">Tutti i trasporti pubblici nei Paesi Bassi</string>
-  <string name="np_region_norway">Norvegia</string>
-  <string name="np_desc_nri">Norvegia, Oslo, Bergen</string>
   <string name="np_name_nz">Nuova Zelanda</string>
   <string name="np_desc_nz">Nuova Zelanda, Wellington, Auckland</string>
   <string name="np_region_poland">Polonia</string>
-  <string name="np_desc_pl">Polonia, ferrovie in Polonia</string>
   <string name="np_name_spain">Spagna</string>
   <string name="np_desc_spain">Madrid, Barcellona, Paesi Baschi, Valencia, Alicante, Maiorca, Menorca, Tenerife, La Palma, Navarra</string>
+  <string name="np_name_hungary">Ungheria</string>
+  <string name="np_desc_hungary">Budapest, Miskolc</string>
+  <string name="np_name_czechia">Repubblica Ceca</string>
+  <string name="np_desc_czechia">Praga e altro</string>
   <string name="np_region_sweden">Svezia</string>
   <string name="np_desc_se">Svezia, Stoccolma</string>
   <string name="np_region_switzerland">Svizzera</string>
@@ -270,6 +318,9 @@
   <string name="np_desc_dub">Emirati Arabi Uniti, Dubai</string>
   <string name="np_region_usa">Stati Uniti d\'America</string>
   <string name="np_desc_rtachicago">Chicago</string>
+  <string name="np_desc_bart">San Francisco</string>
+  <string name="np_name_cmta">Capital Metro</string>
+  <string name="np_desc_cmta">Austin</string>
   <string name="np_name_usny">Stati di New York e del New Jersey</string>
   <string name="np_name_california">California</string>
   <string name="np_desc_california">Trasporto pubblico in California (USA)</string>
@@ -278,7 +329,6 @@
   <string name="np_name_costa_rica">Costa Rica</string>
   <string name="np_name_ghana">Ghana</string>
   <string name="np_desc_ghana">Accra</string>
-  <string name="np_region_central_america">America centrale</string>
   <string name="np_name_nicaragua">Nicaragua</string>
   <string name="np_desc_nicaragua">Autobus urbani, rurali e nazionali ottenuti da MapaNica.net e collaboratori di OpenStreetMap</string>
   <string name="maintainer">Mantenitori</string>
@@ -301,4 +351,11 @@
   <string name="czech">Ceco</string>
   <string name="hungarian">Ungherese</string>
   <string name="japanese">Giapponese</string>
+  <string name="russian">Russo</string>
+  <string name="greek">Grecia</string>
+  <string name="farsi">Persiano</string>
+  <string name="taiwanese">Cinese (Taiwan)</string>
+  <string name="swedish">Svedese</string>
+  <string name="ukrainian">Ucraino</string>
+  <string name="danish">Danese</string>
 </resources>

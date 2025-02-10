@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,16 +20,21 @@
 package de.grobox.transportr.trips.search
 
 
-import android.arch.lifecycle.MutableLiveData
 import android.content.Context
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.WorkerThread
 import android.util.Log
+import android.util.Pair
+import androidx.annotation.WorkerThread
+import androidx.lifecycle.MutableLiveData
 import de.grobox.transportr.R
 import de.grobox.transportr.data.locations.FavoriteLocation.FavLocationType.*
 import de.grobox.transportr.data.locations.LocationRepository
 import de.grobox.transportr.data.searches.SearchesRepository
+import de.grobox.transportr.networks.TransportNetwork
+import de.grobox.transportr.networks.TransportNetworkManager
+import de.grobox.transportr.networks.TransportNetworkManager_Factory
 import de.grobox.transportr.settings.SettingsManager
 import de.grobox.transportr.trips.TripQuery
 import de.grobox.transportr.utils.SingleLiveEvent
@@ -39,11 +44,12 @@ import de.schildbach.pte.dto.QueryTripsContext
 import de.schildbach.pte.dto.QueryTripsResult
 import de.schildbach.pte.dto.QueryTripsResult.Status.*
 import de.schildbach.pte.dto.Trip
+import de.schildbach.pte.dto.TripOptions
 import java.io.InterruptedIOException
 import java.net.SocketTimeoutException
 import kotlin.concurrent.thread
 
-internal class TripsRepository(
+class TripsRepository(
         private val ctx: Context,
         private val networkProvider: NetworkProvider,
         private val settingsManager: SettingsManager,
@@ -59,6 +65,7 @@ internal class TripsRepository(
     val trips = MutableLiveData<Set<Trip>>()
     val queryMoreState = MutableLiveData<QueryMoreState>()
     val queryError = SingleLiveEvent<String>()
+    val queryPTEError = SingleLiveEvent<Pair<String, String>>()
     val queryMoreError = SingleLiveEvent<String>()
     val isFavTrip = MutableLiveData<Boolean>()
 
@@ -101,9 +108,10 @@ internal class TripsRepository(
     private fun queryTrips(query: TripQuery) {
         try {
             val queryTripsResult = networkProvider.queryTrips(
-                    query.from.location, if (query.via == null) null else query.via.location, query.to.location,
-                    query.date, query.departure, query.products, settingsManager.optimize, settingsManager.walkSpeed,
-                    null, null)
+                query.from.location, if (query.via == null) null else query.via.location, query.to.location,
+                query.date, query.departure,
+                TripOptions(query.products, settingsManager.optimize, settingsManager.walkSpeed, null, null)
+            )
             if (queryTripsResult.status == OK && queryTripsResult.trips.size > 0) {
                 // deliver result first, so UI can get updated
                 onQueryTripsResultReceived(queryTripsResult)
@@ -116,7 +124,7 @@ internal class TripsRepository(
                 // set fav status
                 isFavTrip.postValue(searchesRepository.isFavorite(uid))
             } else {
-                queryError.postValue(queryTripsResult.getError())
+                PTEError(queryTripsResult.status.name, queryTripsResult.getError(), query)
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -127,7 +135,9 @@ internal class TripsRepository(
             } else if (e is SocketTimeoutException) {
                 queryError.postValue(ctx.getString(R.string.error_connection_failure))
             } else {
-                queryError.postValue("$e\n${e.stackTrace[0]}\n${e.stackTrace[1]}\n${e.stackTrace[2]}")
+                val errorBuilder = StringBuilder("$e\n${e.stackTrace[0]}\n${e.stackTrace[1]}\n${e.stackTrace[2]}")
+                e.cause?.let { errorBuilder.append("\nCause: ${it.stackTrace[0]}\n${it.stackTrace[1]}\n${it.stackTrace[2]}") }
+                PTEError(e.toString(), errorBuilder.toString(), query)
             }
         }
     }
@@ -156,14 +166,14 @@ internal class TripsRepository(
     }
 
     private fun onQueryTripsResultReceived(queryTripsResult: QueryTripsResult) {
-        Handler(Looper.getMainLooper()).post({
+        Handler(Looper.getMainLooper()).post {
             queryTripsContext = queryTripsResult.context
             queryMoreState.value = getQueryMoreStateFromContext(queryTripsContext)
 
             val oldTrips = trips.value?.let { HashSet(it) } ?: HashSet()
             oldTrips.addAll(queryTripsResult.trips)
             trips.value = oldTrips
-        })
+        }
     }
 
     private fun getQueryMoreStateFromContext(context: QueryTripsContext?): QueryMoreState = context?.let {
@@ -191,6 +201,43 @@ internal class TripsRepository(
         SERVICE_DOWN -> ctx.getString(R.string.trip_error_service_down)
         OK -> throw IllegalArgumentException()
         null -> throw IllegalStateException()
+    }
+
+    private fun PTEError(errorShort: String, error: String, query: TripQuery) {
+        val title = StringBuilder()
+            .append(networkProvider.id().name)
+            .append(": ")
+            .append(errorShort)
+        val body = StringBuilder()
+            .appendLine("### Query")
+            .appendLine("- NetworkId: `${networkProvider.id().name}`")
+            .appendLine("- From: `${query.from.location}`")
+            .appendLine("- Via: `${if (query.via == null) "null" else query.via.location}`")
+            .appendLine("- To: `${query.to.location}`")
+            .appendLine("- Date: `${query.date}`")
+            .appendLine("- Departure: `${query.departure}`")
+            .appendLine("- Products: `${query.products}`")
+            .appendLine("- Optimize for: `${settingsManager.optimize}`")
+            .appendLine("- Walk Speed: `${settingsManager.walkSpeed}`")
+            .appendLine()
+            .appendLine("### Error")
+            .appendLine("```")
+            .appendLine(error)
+            .appendLine("```")
+            .appendLine()
+            .appendLine("### Additional information")
+            .appendLine("[Please modify this part]")
+
+        val uri = Uri.Builder()
+            .scheme("https")
+            .authority("github.com")
+            .appendPath("schildbach")
+            .appendPath("public-transport-enabler")
+            .appendPath("issues")
+            .appendPath("new")
+            .appendQueryParameter("title", title.toString())
+            .appendQueryParameter("body", body.toString())
+        queryPTEError.postValue(Pair(error, uri.build().toString()))
     }
 
     fun toggleFavState() {

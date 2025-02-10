@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,16 +20,12 @@
 package de.grobox.transportr;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-
-import de.grobox.transportr.AppComponent;
-import de.grobox.transportr.TransportrActivity;
-import de.grobox.transportr.TransportrApplication;
 
 
 @ParametersAreNonnullByDefault

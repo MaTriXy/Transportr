@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,9 +19,9 @@
 
 package de.grobox.transportr
 
-import android.support.annotation.CallSuper
-import android.support.test.InstrumentationRegistry
 import android.util.Log
+import androidx.annotation.CallSuper
+import androidx.test.core.app.ApplicationProvider
 import de.grobox.transportr.locations.WrapLocation
 import de.schildbach.pte.NetworkId
 import de.schildbach.pte.dto.LocationType.STATION
@@ -42,7 +42,7 @@ abstract class ScreengrabTest {
         val localeTestRule = LocaleTestRule()
     }
 
-    private val app = InstrumentationRegistry.getTargetContext().applicationContext as TestApplication
+    private val app = ApplicationProvider.getApplicationContext<TestApplication>()
     val component = app.component as TestComponent
 
     @Before
@@ -51,37 +51,21 @@ abstract class ScreengrabTest {
         Screengrab.setDefaultScreenshotStrategy(UiAutomatorScreenshotStrategy())
     }
 
-    val networkId: NetworkId = when(getTestLocale()) {
-        Locale.FRANCE -> NetworkId.PARIS
-        Locale.US -> NetworkId.TLEM
-        Locale.forLanguageTag("pt-BR") -> NetworkId.BR
+    val networkId: NetworkId = when(Locale.forLanguageTag(getTestLocale() ?: "de")) {
+        Locale.FRANCE -> NetworkId.SEARCHCH
         else -> NetworkId.DB
     }
 
     val departureStation = when(networkId) {
-        NetworkId.PARIS -> "Gare De Lyon"
-        NetworkId.TLEM -> "Waterloo Station"
-        NetworkId.BR -> "Republica"
+        NetworkId.SEARCHCH -> "Genève"
         else -> "Berlin Hbf"
     }
 
     protected fun getFrom(i: Int): WrapLocation = when(networkId) {
-        NetworkId.PARIS -> when(i) {
-            0 -> WrapLocation(STATION, "stop_area:OIF:SA:8739305", 48857298, 2293270, "Paris", "Champ De Mars Tour Eiffel", null)
-            1 -> WrapLocation(STATION, "stop_area:OIF:SA:8739100", 48842481, 2321783, "Paris", "Gare Montparnasse", null)
-            2 -> WrapLocation(STATION, "stop_area:OIF:SA:8727100", 48880372, 2356597, null, "Gare Du Nord", null)
-            else -> throw RuntimeException()
-        }
-        NetworkId.TLEM -> when(i) {
-            0 -> WrapLocation(STATION, "1000119", 51503449, -152036, "London", "Hyde Park Corner", null)
-            1 -> getLocation("Blackfriars Pier")
-            2 -> getLocation("Moorgate")
-            else -> throw RuntimeException()
-        }
-        NetworkId.BR -> when(i) {
-            0 -> WrapLocation(STATION, "stop_point:OSA:SP:2600672", -23555071, -46662131, "São Paulo", "Paulista", null)
-            1 -> getLocation("Pinheiros")
-            2 -> getLocation("Vila Madalena")
+        NetworkId.SEARCHCH -> when(i) {
+            0 -> getLocation("Zürich HB")
+            1 -> getLocation("Lausanne, gare")
+            2 -> getLocation("Basel SBB")
             else -> throw RuntimeException()
         }
         else -> when(i) {
@@ -93,22 +77,10 @@ abstract class ScreengrabTest {
     }
 
     protected fun getTo(i: Int): WrapLocation = when(networkId) {
-        NetworkId.PARIS -> when(i) {
-            0 -> WrapLocation(STATION, "stop_area:OIF:SA:8711300", 48876241, 2358326, "Paris", "Gare De L'est", null)
-            1 -> WrapLocation(STATION, "stop_area:OIF:SA:8754730", 48860751, 2325874, "Paris", "Musée D'orsay", null)
-            2 -> WrapLocation(STATION, "stop_area:OIF:SA:59290", 48866800, 2334338, "Paris", "Pyramides", null)
-            else -> throw RuntimeException()
-        }
-        NetworkId.TLEM -> when(i) {
-            0 -> WrapLocation(STATION, "1000238", 51509829, -76797, "London", "Tower Hill", null)
-            1 -> getLocation("Westminster")
-            2 -> getLocation("Temple")
-            else -> throw RuntimeException()
-        }
-        NetworkId.BR -> when(i) {
-            0 -> WrapLocation(STATION, "stop_point:OSA:SP:18876", -23543118, -46589599, "São Paulo", "Belem", null)
-            1 -> getLocation("Trianon Masp")
-            2 -> getLocation("Anhangabaú")
+        NetworkId.SEARCHCH -> when(i) {
+            0 -> getLocation("Chur West")
+            1 -> getLocation("Bern Wankdorf")
+            2 -> getLocation("Luzern, Bahnhof")
             else -> throw RuntimeException()
         }
         else -> when(i) {

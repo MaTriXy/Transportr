@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -21,27 +21,38 @@ package de.grobox.transportr.trips.detail
 
 
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import de.grobox.transportr.trips.BaseViewHolder
+import de.grobox.transportr.utils.DateUtils.formatTime
 import de.grobox.transportr.utils.TransportrUtils.getLocationName
 import de.schildbach.pte.dto.Stop
 import kotlinx.android.synthetic.main.list_item_stop.view.*
+import java.util.Date
 
 
-internal class StopViewHolder(v: View, listener: LegClickListener) : BaseViewHolder(v, listener) {
+internal class StopViewHolder(v: View, private val listener : LegClickListener) : BaseViewHolder(v) {
 
     private val circle: ImageView = v.circle
     private val stopLocation: TextView = v.stopLocation
+    private val stopPlatform: TextView = v.stopPlatform
     private val stopButton: ImageButton = v.stopButton
 
     fun bind(stop: Stop, color: Int) {
         if (stop.arrivalTime != null) {
             setArrivalTimes(fromTime, fromDelay, stop)
+            fromTime.visibility = VISIBLE
         } else {
             fromDelay.visibility = GONE
+            if (stop.departureTime == null) {
+                // insert dummy time field for stops without times set, so that stop circles align
+                fromTime.text = formatTime(context, Date())
+                fromTime.visibility = INVISIBLE
+            } else {
+                fromTime.visibility = GONE
+            }
         }
 
         if (stop.departureTime != null) {
@@ -61,7 +72,7 @@ internal class StopViewHolder(v: View, listener: LegClickListener) : BaseViewHol
 
         stopLocation.text = getLocationName(stop.location)
         stopLocation.setOnClickListener { listener.onLocationClick(stop.location) }
-        stopLocation.addPlatform(stop.arrivalPosition)
+        stopPlatform.addPlatform(stop.arrivalPosition)
 
         // show popup on button click
         stopButton.setOnClickListener { LegPopupMenu(stopButton.context, stopButton, stop).show() }

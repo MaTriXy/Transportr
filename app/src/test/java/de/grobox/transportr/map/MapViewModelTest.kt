@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,7 +20,9 @@
 package de.grobox.transportr.map
 
 
-import android.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import de.grobox.transportr.TransportrApplication
 import de.grobox.transportr.data.locations.LocationRepository
 import de.grobox.transportr.data.searches.SearchesRepository
@@ -45,13 +47,15 @@ class MapViewModelTest {
     private val transportNetworkManager: TransportNetworkManager = Mockito.mock(TransportNetworkManager::class.java)
     private val locationRepository: LocationRepository = Mockito.mock(LocationRepository::class.java)
     private val searchesRepository: SearchesRepository = Mockito.mock(SearchesRepository::class.java)
-    private val gpsController: GpsController = Mockito.mock(GpsController::class.java)
+    private val positionController: PositionController = Mockito.mock(PositionController::class.java)
 
     private lateinit var viewModel: MapViewModel
 
     @Before
     fun setUp() {
-        viewModel = MapViewModel(application, transportNetworkManager, locationRepository, searchesRepository, gpsController)
+        val state = MutableLiveData<PositionController.PositionState>()
+        Mockito.`when`(positionController.positionState).thenReturn(state)
+        viewModel = MapViewModel(application, transportNetworkManager, locationRepository, searchesRepository, positionController)
     }
 
     @Test

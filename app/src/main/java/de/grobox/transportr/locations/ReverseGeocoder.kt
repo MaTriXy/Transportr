@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -21,10 +21,12 @@ package de.grobox.transportr.locations
 
 import android.content.Context
 import android.location.Geocoder
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import com.mapbox.mapboxsdk.geometry.LatLng
+import de.grobox.transportr.utils.hasLocation
 import de.schildbach.pte.dto.Location
 import de.schildbach.pte.dto.LocationType.ADDRESS
+import de.schildbach.pte.dto.Point
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -66,9 +68,8 @@ class ReverseGeocoder(private val context: Context, private val callback: Revers
                 if (address.featureName != null) name += " " + address.featureName
                 val place = address.locality
 
-                val latInt = (lat * 1E6).toInt()
-                val lonInt = (lon * 1E6).toInt()
-                val l = Location(ADDRESS, null, latInt, lonInt, place, name)
+                val point = Point.fromDouble(lat, lon)
+                val l = Location(ADDRESS, null, point, place, name)
 
                 callback.onLocationRetrieved(WrapLocation(l))
             } catch (e: IOException) {
@@ -102,7 +103,7 @@ class ReverseGeocoder(private val context: Context, private val callback: Revers
 
             @Throws(IOException::class)
             override fun onResponse(call: Call, response: Response) {
-                val body = response.body()
+                val body = response.body
                 if (!response.isSuccessful || body == null) {
                     callback.onLocationRetrieved(getWrapLocation(lat, lon))
                     return
@@ -114,19 +115,18 @@ class ReverseGeocoder(private val context: Context, private val callback: Revers
                 try {
                     val data = JSONObject(result)
                     val address = data.getJSONObject("address")
-                    var name: String? = address.optString("road", null)
-                    if (name != null) {
-                        val number = address.optString("house_number", null)
-                        if (number != null) name += " $number"
+                    var name = address.optString("road")
+                    if (name.isNotEmpty()) {
+                        val number = address.optString("house_number")
+                        if (number.isNotEmpty()) name += " $number"
                     } else {
                         name = data.getString("display_name").split(",")[0]
                     }
-                    var place: String? = address.optString("city", null)
-                    if (place == null) place = address.optString("state", null)
+                    var place = address.optString("city")
+                    if (place.isEmpty()) place = address.optString("state")
 
-                    val latInt = (lat * 1E6).toInt()
-                    val lonInt = (lon * 1E6).toInt()
-                    val l = Location(ADDRESS, null, latInt, lonInt, place, name)
+                    val point = Point.fromDouble(lat, lon)
+                    val l = Location(ADDRESS, null, point, place, name)
 
                     callback.onLocationRetrieved(WrapLocation(l))
                 } catch (e: JSONException) {

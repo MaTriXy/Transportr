@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,11 +19,12 @@
 
 package de.grobox.transportr.locations
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import de.grobox.transportr.R
 import de.grobox.transportr.ui.LineView
+import de.grobox.transportr.utils.TransportrUtils
 import de.schildbach.pte.dto.Line
 
 
@@ -51,7 +52,9 @@ internal class LineAdapter : RecyclerView.Adapter<LineViewHolder>() {
 }
 
 internal class LineViewHolder(private val lineView: LineView) : RecyclerView.ViewHolder(lineView) {
-
-    fun bind(line: Line) = lineView.setLine(line)
+    fun bind(line: Line) {
+        val lineColor = TransportrUtils.getLineColor(lineView.context, line)
+        lineView.setLine(line, lineColor)
+    }
 
 }

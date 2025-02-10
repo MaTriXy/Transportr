@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,8 +19,8 @@
 
 package de.grobox.transportr.trips.detail
 
-import android.arch.lifecycle.MutableLiveData
-import android.support.annotation.WorkerThread
+import androidx.lifecycle.MutableLiveData
+import androidx.annotation.WorkerThread
 import de.grobox.transportr.settings.SettingsManager
 import de.grobox.transportr.trips.TripQuery
 import de.grobox.transportr.utils.SingleLiveEvent
@@ -28,6 +28,7 @@ import de.schildbach.pte.NetworkProvider
 import de.schildbach.pte.dto.QueryTripsResult
 import de.schildbach.pte.dto.QueryTripsResult.Status.OK
 import de.schildbach.pte.dto.Trip
+import de.schildbach.pte.dto.TripOptions
 import java.util.*
 
 internal class TripReloader(
@@ -46,8 +47,9 @@ internal class TripReloader(
         Thread {
             try {
                 val queryTripsResult = networkProvider.queryTrips(
-                        query.from.location, query.via?.location, query.to.location, newDate, true, query.products,
-                        settingsManager.optimize, settingsManager.walkSpeed, null, null)
+                    query.from.location, query.via?.location, query.to.location, newDate, true,
+                    TripOptions(query.products, settingsManager.optimize, settingsManager.walkSpeed, null, null)
+                )
                 if (queryTripsResult.status == OK && queryTripsResult.trips.size > 0) {
                     onTripReloaded(queryTripsResult)
                 } else {

@@ -1,7 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<changelog>
+<changelog xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedResources">
 
-	<release version="2.0.0-rc3" versioncode="107">
+    <release
+        version="2.2.3"
+        versioncode="127">
+        <change>IMPORTANT! Remove all remaining Navitia-based networks (due to shutdown of API): all regions in France, Spain, Italy and nationwide Australia network</change>
+        <change>Various UI fixes and improvements</change>
+        <change>Fix app crash</change>
+    </release>
+
+    <release
+        version="2.2.2"
+        versioncode="126">
+        <change>IMPORTANT! Remove all remaining Navitia-based networks (due to shutdown of API): all regions in France, Spain, Italy and nationwide Australia network</change>
+        <change>Various UI fixes and improvements</change>
+    </release>
+
+    <release
+        version="2.2.1"
+        versioncode="125">
+        <change>Fix app crash at startup when no network-backed location provider was available (thanks Altonss!)</change>
+        <change>Make sure all parts of the app follow theme settings consistently</change>
+    </release>
+
+    <release
+        version="2.2.0"
+        versioncode="124">
+        <change>Switch map library to MapLibre - finally bringing Transportr back to F-Droid!</change>
+        <change>Remember preferred means of transport for future searches (thanks Prat!)</change>
+        <change>Fix minor issues on About page and with the time picker (thanks Altonss!)</change>
+        <change>Fix and re-add formerly broken regions: SBB (thanks Tobias!), VVO, AVV (Augsburg), GVH, VRS</change>
+        <change>Remove regions where information is no longer available: VOR, STV, VVV, SNCB, 9292, TFI</change>
+        <change>Remove regions that are no longer served by Navitia: Finland, Portugal, Hungary, Czech Republic, Ghana, California, Oregon, New York, Ontario, Quebec, British Colombia, Costa Rica, Nicaragua, Florianópolis (Brazil), Brazil, New Zealand</change>
+    </release>
+
+    <release
+        version="2.1.5"
+        versioncode="123">
+        <change>Support themed adaptive app icon.</change>
+        <change>Require at least Android 5 now.</change>
+        <change>Fix bug where calendar and map apps are not found.</change>
+        <change>Update PTE data library - remove VMS (Mittelsachsen, Chemnitz), VRS (Cologne, Bonn), and PKP (Poland, railways in Poland).</change>
+    </release>
+
+    <release
+        version="2.1.4"
+        versioncode="122">
+        <change>Update PTE data library, fixes issues with Berlin BVG, removes SBB</change>
+    </release>
+
+    <release
+        version="2.1.3"
+        versioncode="121">
+        <change>Update PTE data library, fixes issues in Berlin</change>
+    </release>
+
+    <release
+        version="2.1.2"
+        versioncode="120">
+        <change>Prevent crash on first startup</change>
+    </release>
+
+    <release
+        version="2.1.1"
+        versioncode="119">
+        <change>Fix and (re-)add several regions: VMS, VTT, saarVV, VBN, nah.sh, AVV (Aachen), Luxembourg, BART, CMTA</change>
+        <change>Fix issues related to location sharing</change>
+        <change>Fix rare app crash and UI glitches in directions form</change>
+        <change>Enable encrypted backups</change>
+    </release>
+
+    <release version="2.1.0" versioncode="118">
+        <change>Rearranged directions form to see all of the options at first glance</change>
+        <change>New option to adapt app theme to Android settings</change>
+        <change>Give attribution to OpenStreetMap as map source</change>
+    </release>
+
+    <release version="2.0.8" versioncode="117">
+        <change>Fix bug where the app would crash after updating</change>
+    </release>
+
+    <release version="2.0.7" versioncode="116">
+        <change>Added data source for Czechia (Thanks Ondra!)</change>
+        <change>Display standard fares for trip results (Thanks Mikolai!)</change>
+        <change>Better error handling in case of failing trip queries (Thanks Mikolai!)</change>
+        <change>New translation: Danish (Thanks Daniel!)</change>
+    </release>
+
+    <release version="2.0.6" versioncode="115">
+        <change>Indicate when connections are cancelled or impossible</change>
+        <change>Fix bug where search results would sometimes not appear</change>
+        <change>New translation: Ukrainian (Thanks Paul!)</change>
+    </release>
+
+    <release version="2.0.5" versioncode="114">
+        <change>Show exact trip polylines on map for more networks</change>
+        <change>Fix VGS network (Thanks Mikolai!)</change>
+        <change>Fix crash on opening settings (Thanks Mikolai!)</change>
+        <change>New translation: Swedish (Thanks Jonatan!)</change>
+    </release>
+
+    <release version="2.0.4" versioncode="113">
+        <change>Support trip launcher shortcuts on more devices</change>
+        <change>Remove VAGFR transport network, use NVBW instead</change>
+        <change>Fix start location field in directions search (Thanks ajbruin!)</change>
+        <change>Re-enable data sources that don't use https on Android 9 (Thanks hoejmann!)</change>
+    </release>
+
+    <release version="2.0.3" versioncode="112">
+        <change>Add launcher shortcut for directions search</change>
+        <change>Show swap location button in directions search (Thanks ByteHamster!)</change>
+        <change>Don't show search results over lockscreen anymore</change>
+        <change>Add Persian translation (Thanks Reza!)</change>
+        <change>Add Chinese (Taiwan) translation (Thanks Gerrit!)</change>
+        <change>Fix home and work location input in dark theme</change>
+        <change>Disable Android's auto-fill feature for location views</change>
+    </release>
+
+    <release version="2.0.2" versioncode="111">
+        <change>Added data source for Hungary (Thanks Balázs!)</change>
+        <change>Added data source for Municipal Transports of Poland (Thanks Michel!)</change>
+        <change>Fix data source for Finland (Thanks Adrian!)</change>
+        <change>New translation: Greek (Thanks Vangelis!)</change>
+        <change>Improve location auto-completion list (Thanks Sylvia!)</change>
+        <change>Fix crash when adding trip to calendar without calendar installed</change>
+        <change>Fix crash when sharing an intermediate stop without arrival time</change>
+        <change>Fix crash related to setting home or work location</change>
+    </release>
+
+    <release version="2.0.1" versioncode="109">
+        <change>Fix KVV network</change>
+        <change>Remove IVB network, use VVT instead</change>
+        <change>Fix crash due to invalid GPS location</change>
+        <change>Fix crash on Android 4 for time setting and product dialog</change>
+    </release>
+
+	<release version="2.0.0" versioncode="108">
 		<change>New Design and complete code rewrite</change>
 		<change>Shiny new map given a more prominent place</change>
 		<change>Current location is used by default</change>

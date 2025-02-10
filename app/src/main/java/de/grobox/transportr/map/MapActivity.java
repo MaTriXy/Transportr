@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,25 +19,24 @@
 
 package de.grobox.transportr.map;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.os.StrictMode.ThreadPolicy;
 import android.os.StrictMode.VmPolicy;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetBehavior.BottomSheetCallback;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import de.grobox.transportr.BuildConfig;
 import de.grobox.transportr.R;
 import de.grobox.transportr.data.locations.FavoriteLocation.FavLocationType;
@@ -45,17 +44,16 @@ import de.grobox.transportr.locations.LocationFragment;
 import de.grobox.transportr.locations.LocationView;
 import de.grobox.transportr.locations.LocationView.LocationViewListener;
 import de.grobox.transportr.locations.WrapLocation;
-import de.grobox.transportr.networks.PickTransportNetworkActivity;
 import de.grobox.transportr.networks.TransportNetwork;
 import de.grobox.transportr.ui.TransportrChangeLog;
 import de.grobox.transportr.utils.OnboardingBuilder;
 
 import static android.content.Intent.ACTION_VIEW;
-import static android.support.design.widget.BottomSheetBehavior.PEEK_HEIGHT_AUTO;
-import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
-import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
-import static android.support.design.widget.BottomSheetBehavior.STATE_HIDDEN;
-import static de.grobox.transportr.networks.PickTransportNetworkActivity.FORCE_NETWORK_SELECTION;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN;
+import static de.grobox.transportr.locations.WrapLocation.WrapType.GPS;
 import static de.grobox.transportr.trips.search.DirectionsActivity.ACTION_SEARCH;
 import static de.grobox.transportr.utils.Constants.WRAP_LOCATION;
 import static de.grobox.transportr.utils.IntentUtils.findDirections;
@@ -68,7 +66,6 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 	@Inject ViewModelProvider.Factory viewModelFactory;
 
 	private MapViewModel viewModel;
-	private GpsController gpsController;
 	private LocationView search;
 	private BottomSheetBehavior bottomSheetBehavior;
 
@@ -80,7 +77,6 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 		super.onCreate(savedInstanceState);
 		if (BuildConfig.DEBUG) enableStrictMode();
 		getComponent().inject(this);
-		ensureTransportNetworkSelected();
 		setContentView(R.layout.activity_map);
 		setupDrawer(savedInstanceState);
 
@@ -108,8 +104,7 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 		});
 
 		// get view model and observe data
-		viewModel = ViewModelProviders.of(this, viewModelFactory).get(MapViewModel.class);
-		gpsController = viewModel.getGpsController();
+		viewModel = new ViewModelProvider(this, viewModelFactory).get(MapViewModel.class);
 		viewModel.getTransportNetwork().observe(this, this::onTransportNetworkChanged);
 		viewModel.getHome().observe(this, homeLocation -> search.setHomeLocation(homeLocation));
 		viewModel.getWork().observe(this, workLocation -> search.setWorkLocation(workLocation));
@@ -124,7 +119,7 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 
 		FloatingActionButton directionsFab = findViewById(R.id.directionsFab);
 		directionsFab.setOnClickListener(view -> {
-			WrapLocation from = gpsController.getWrapLocation();
+			WrapLocation from = new WrapLocation(GPS);
 			WrapLocation to = null;
 			if (locationFragment != null && locationFragmentVisible()) {
 				to = locationFragment.getLocation();
@@ -190,14 +185,14 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 		bottomSheetBehavior.setState(STATE_COLLAPSED);
 
 		// show on-boarding dialog
-		if (settingsManager.showLocationFragmentOnboarding()) {
+		if (getSettingsManager().showLocationFragmentOnboarding()) {
 			new OnboardingBuilder(this)
 					.setTarget(R.id.bottomSheet)
 					.setPrimaryText(R.string.onboarding_location_title)
 					.setSecondaryText(R.string.onboarding_location_message)
 					.setPromptStateChangeListener((prompt, state) -> {
 						if (state == STATE_DISMISSED || state == STATE_FOCAL_PRESSED) {
-							settingsManager.locationFragmentOnboardingShown();
+							getSettingsManager().locationFragmentOnboardingShown();
 							viewModel.selectedLocationClicked(loc.getLatLng());
 						}
 					})
@@ -223,16 +218,6 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 		return locationFragment != null && locationFragment.isVisible() && bottomSheetBehavior.getState() != STATE_HIDDEN;
 	}
 
-	private void ensureTransportNetworkSelected() {
-		TransportNetwork network = getManager().getTransportNetwork().getValue();
-		if (network == null) {
-			Intent intent = new Intent(this, PickTransportNetworkActivity.class);
-			intent.putExtra(FORCE_NETWORK_SELECTION, true);
-			startActivity(intent);
-			finish();
-		}
-	}
-
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
@@ -248,7 +233,7 @@ public class MapActivity extends DrawerActivity implements LocationViewListener 
 	}
 
 	private void checkAndShowChangelog() {
-		TransportrChangeLog cl = new TransportrChangeLog(this, settingsManager);
+		TransportrChangeLog cl = new TransportrChangeLog(this, getSettingsManager());
 		if (cl.isFirstRun() && !cl.isFirstRunEver()) {
 			cl.getLogDialog().show();
 		}

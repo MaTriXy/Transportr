@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -33,6 +33,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import de.grobox.transportr.R
+import de.grobox.transportr.utils.hasLocation
 import de.schildbach.pte.dto.Location
 
 internal abstract class MapDrawer(protected val context: Context) {
@@ -52,8 +53,9 @@ internal abstract class MapDrawer(protected val context: Context) {
     protected fun zoomToBounds(map: MapboxMap, builder: LatLngBounds.Builder, animate: Boolean) {
         try {
             val latLngBounds = builder.build()
-            val padding = context.resources.getDimensionPixelSize(R.dimen.mapPadding)
-            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, padding)
+            val padding = (map.cameraPosition.padding?.let { BaseMapFragment.MapPadding(it) } ?: BaseMapFragment.MapPadding()) +
+                    context.resources.getDimensionPixelSize(R.dimen.mapPadding)
+            val cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, padding.left, padding.top, padding.right, padding.bottom)
             if (animate) {
                 map.easeCamera(cameraUpdate, 750)
             } else {

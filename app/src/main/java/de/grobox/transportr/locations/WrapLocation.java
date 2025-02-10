@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,20 +19,20 @@
 
 package de.grobox.transportr.locations;
 
-import android.arch.persistence.room.Ignore;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
-
 import com.google.common.base.Strings;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import java.io.Serializable;
 import java.util.Set;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.room.Ignore;
 import de.grobox.transportr.R;
 import de.grobox.transportr.utils.TransportrUtils;
 import de.schildbach.pte.dto.Location;
 import de.schildbach.pte.dto.LocationType;
+import de.schildbach.pte.dto.Point;
 import de.schildbach.pte.dto.Product;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -66,7 +66,7 @@ public class WrapLocation implements Serializable {
 	}
 
 	public WrapLocation(Location l) {
-		this(l.type, l.id, l.lat, l.lon, l.place, l.name, l.products);
+		this(l.type, l.id, l.hasCoord() ? l.getLatAs1E6() : 0, l.hasCoord() ? l.getLonAs1E6() : 0, l.place, l.name, l.products);
 	}
 
 	public WrapLocation(WrapType wrapType) {
@@ -80,7 +80,7 @@ public class WrapLocation implements Serializable {
 		this.type = COORD;
 		this.lat = (int) (latLng.getLatitude() * 1E6);
 		this.lon = (int) (latLng.getLongitude() * 1E6);
-		checkArgument(lat != 0 && lon != 0, "Null Island is not a valid location");
+		checkArgument(lat != 0 || lon != 0, "Null Island is not a valid location");
 	}
 
 	public WrapType getWrapType() {
@@ -88,10 +88,11 @@ public class WrapLocation implements Serializable {
 	}
 
 	public Location getLocation() {
+		Point point = Point.from1E6(lat, lon);
 		if (type == LocationType.ANY && id != null) {
-			return new Location(type, null, lat, lon, place, name, products);
+			return new Location(type, null, point, place, name, products);
 		}
-		return new Location(type, id, lat, lon, place, name, products);
+		return new Location(type, id, point, place, name, products);
 	}
 
 	@Nullable
@@ -157,7 +158,7 @@ public class WrapLocation implements Serializable {
 
 	String getFullName() {
 		if (name != null) {
-			return place == null ? name : name + ", " + place;
+			return place == null || place.isEmpty() ? name : name + ", " + place;
 		} else {
 			return getName();
 		}

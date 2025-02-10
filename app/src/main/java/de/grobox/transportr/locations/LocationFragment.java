@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,18 +19,17 @@
 
 package de.grobox.transportr.locations;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.WorkerThread;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
+import androidx.loader.app.LoaderManager.LoaderCallbacks;
+import androidx.core.content.ContextCompat;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,10 +62,10 @@ import de.schildbach.pte.dto.LineDestination;
 import de.schildbach.pte.dto.QueryDeparturesResult;
 import de.schildbach.pte.dto.StationDepartures;
 
-import static android.support.v7.widget.LinearLayoutManager.HORIZONTAL;
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static androidx.recyclerview.widget.RecyclerView.HORIZONTAL;
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static de.grobox.transportr.departures.DeparturesActivity.MAX_DEPARTURES;
 import static de.grobox.transportr.departures.DeparturesLoader.getBundle;
@@ -118,8 +117,8 @@ public class LocationFragment extends TransportrFragment
 		getComponent().inject(this);
 
 		if (getActivity() == null) throw new IllegalStateException();
-		viewModel = ViewModelProviders.of(getActivity(), viewModelFactory).get(MapViewModel.class);
-		viewModel.nearbyStationsFound().observe(this, found -> onNearbyStationsLoaded());
+		viewModel = new ViewModelProvider(requireActivity(), viewModelFactory).get(MapViewModel.class);
+		viewModel.nearbyStationsFound().observe(getViewLifecycleOwner(), found -> onNearbyStationsLoaded());
 
 		// Location
 		locationIcon = v.findViewById(R.id.locationIcon);
@@ -195,7 +194,7 @@ public class LocationFragment extends TransportrFragment
 		if (!isNullOrEmpty(location.getLocation().place)) {
 			locationInfoStr.append(location.getLocation().place);
 		}
-		if (location.getLocation().hasLocation()) {
+		if (location.getLocation().hasCoord()) {
 			if (locationInfoStr.length() > 0) locationInfoStr.append(", ");
 			locationInfoStr.append(TransportrUtils.getCoordName(location.getLocation()));
 		}

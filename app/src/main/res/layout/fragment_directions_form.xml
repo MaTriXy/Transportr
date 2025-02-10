@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
@@ -7,9 +7,10 @@
 	android:layout_height="match_parent"
 	android:animateLayoutChanges="true"
 	android:paddingBottom="8dp"
+	tools:context=".trips.search.DirectionsActivity"
 	tools:showIn="@layout/activity_directions">
 
-	<android.support.v7.widget.Toolbar
+	<androidx.appcompat.widget.Toolbar
 		android:id="@+id/toolbar"
 		style="@style/ToolbarStyle"
 		android:layout_width="0dp"
@@ -18,75 +19,50 @@
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<RelativeLayout
+		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/buttonSize">
 
-			<ImageView
+			<androidx.appcompat.widget.AppCompatImageButton
 				android:id="@+id/favIcon"
 				android:layout_width="@dimen/buttonSize"
 				android:layout_height="@dimen/buttonSize"
-				android:layout_toLeftOf="@+id/timeIcon"
-				android:layout_toStartOf="@+id/timeIcon"
 				android:background="?selectableItemBackgroundBorderless"
-				android:clickable="true"
 				android:contentDescription="@string/action_fav_trip"
-				android:focusable="true"
-				android:scaleType="center"
 				android:tint="@color/md_white_1000"
 				android:visibility="gone"
+				app:layout_constraintEnd_toStartOf="@+id/swapIcon"
+				app:layout_constraintTop_toTopOf="@+id/viaIcon"
 				app:srcCompat="@drawable/ic_action_star_empty"
 				tools:visibility="visible"/>
 
-			<ImageView
-				android:id="@+id/timeIcon"
+			<androidx.appcompat.widget.AppCompatImageButton
+				android:id="@+id/swapIcon"
 				android:layout_width="@dimen/buttonSize"
 				android:layout_height="@dimen/buttonSize"
-				android:layout_toLeftOf="@+id/time"
-				android:layout_toStartOf="@+id/time"
 				android:background="?selectableItemBackgroundBorderless"
-				android:clickable="true"
-				android:focusable="true"
-				android:scaleType="center"
-				app:srcCompat="@drawable/ic_time"
-				tools:ignore="ContentDescription"/>
+				android:contentDescription="@string/action_swap_locations"
+				android:src="@drawable/ic_menu_swap_location"
+				android:tint="@color/md_white_1000"
+				app:layout_constraintEnd_toStartOf="@+id/viaIcon"
+				app:layout_constraintTop_toTopOf="@+id/viaIcon"/>
 
-			<TextView
-				android:id="@+id/date"
-				android:layout_width="wrap_content"
-				android:layout_height="24dp"
-				android:layout_alignParentEnd="true"
-				android:layout_alignParentRight="true"
-				android:layout_alignParentTop="true"
+			<androidx.appcompat.widget.AppCompatImageButton
+				android:id="@+id/viaIcon"
+				android:layout_width="@dimen/buttonSize"
+				android:layout_height="@dimen/buttonSize"
 				android:background="?selectableItemBackgroundBorderless"
-				android:clickable="true"
-				android:focusable="true"
-				android:gravity="center"
-				android:visibility="gone"
-				tools:text="2042-12-23"
-				tools:visibility="visible"/>
+				android:contentDescription="@string/action_navigation_expand"
+				android:src="@drawable/ic_action_navigation_unfold_more_white"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:visibility="gone" />
 
-			<TextView
-				android:id="@+id/time"
-				android:layout_width="wrap_content"
-				android:layout_height="24dp"
-				android:layout_alignLeft="@+id/date"
-				android:layout_alignParentEnd="true"
-				android:layout_alignParentRight="true"
-				android:layout_alignStart="@+id/date"
-				android:layout_below="@+id/date"
-				android:layout_centerInParent="true"
-				android:background="?selectableItemBackgroundBorderless"
-				android:clickable="true"
-				android:focusable="true"
-				android:gravity="center"
-				android:text="@string/now"/>
+		</androidx.constraintlayout.widget.ConstraintLayout>
 
-		</RelativeLayout>
+	</androidx.appcompat.widget.Toolbar>
 
-	</android.support.v7.widget.Toolbar>
-
-	<android.support.v7.widget.CardView
+	<androidx.cardview.widget.CardView
 		android:id="@+id/fromCard"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
@@ -104,9 +80,9 @@
 			android:layout_height="match_parent"
 			app:hint="@string/from"/>
 
-	</android.support.v7.widget.CardView>
+	</androidx.cardview.widget.CardView>
 
-	<android.support.v7.widget.CardView
+	<androidx.cardview.widget.CardView
 		android:id="@+id/viaCard"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
@@ -123,9 +99,9 @@
 			android:layout_height="match_parent"
 			app:hint="@string/via"/>
 
-	</android.support.v7.widget.CardView>
+	</androidx.cardview.widget.CardView>
 
-	<android.support.v7.widget.CardView
+	<androidx.cardview.widget.CardView
 		android:id="@+id/toCard"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
@@ -140,6 +116,106 @@
 			android:layout_height="match_parent"
 			app:hint="@string/to"/>
 
-	</android.support.v7.widget.CardView>
+	</androidx.cardview.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+	<View
+		android:id="@+id/timeBackground"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:background="?selectableItemBackgroundBorderless"
+		android:clickable="true"
+		android:focusable="true"
+		app:layout_constraintTop_toTopOf="@+id/timeIcon"
+		app:layout_constraintBottom_toBottomOf="@+id/timeIcon"
+		app:layout_constraintStart_toStartOf="@+id/timeIcon"
+		app:layout_constraintEnd_toStartOf="@id/timeBarrier"/>
+
+
+	<androidx.appcompat.widget.AppCompatImageButton
+		android:id="@+id/timeIcon"
+		android:layout_width="@dimen/buttonSize"
+		android:layout_height="@dimen/buttonSize"
+		android:layout_marginTop="8dp"
+		android:background="?selectableItemBackgroundBorderless"
+		android:clickable="false"
+		android:focusable="false"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toCard"
+		app:srcCompat="@drawable/ic_time"/>
+
+	<TextView
+		android:id="@+id/departure"
+		android:layout_width="wrap_content"
+		android:layout_height="24dp"
+		android:paddingEnd="4dp"
+		android:paddingRight="4dp"
+		android:gravity="center"
+		android:textColor="@color/md_grey_300"
+		app:layout_constraintStart_toEndOf="@+id/timeIcon"
+		app:layout_constraintTop_toTopOf="@+id/timeIcon"
+		app:layout_constraintBottom_toBottomOf="@+id/timeIcon"
+		tools:text="@string/trip_dep"/>
+
+	<TextView
+		android:id="@+id/date"
+		android:layout_width="wrap_content"
+		android:layout_height="24dp"
+		android:gravity="center"
+		android:textColor="@color/md_grey_300"
+		android:visibility="gone"
+		app:layout_constraintStart_toEndOf="@+id/departure"
+		app:layout_constraintEnd_toStartOf="@+id/timeBarrier"
+		app:layout_constraintBottom_toTopOf="@+id/time"
+		app:layout_constraintTop_toTopOf="@+id/timeIcon"
+		tools:text="2042-12-23"
+		tools:visibility="gone"/>
+
+	<TextView
+		android:id="@+id/time"
+		android:layout_width="wrap_content"
+		android:layout_height="24dp"
+		android:gravity="center"
+		android:textColor="@color/md_grey_300"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/timeBarrier"
+		app:layout_constraintStart_toEndOf="@+id/departure"
+		app:layout_constraintTop_toBottomOf="@+id/date"
+		tools:text="@string/now_small"/>
+
+	<androidx.constraintlayout.widget.Barrier
+		android:id="@+id/timeBarrier"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		app:barrierDirection="end"
+		app:constraint_referenced_ids="time,date"/>
+
+	<androidx.appcompat.widget.AppCompatImageButton
+		android:id="@+id/productsIcon"
+		android:layout_width="@dimen/buttonSize"
+		android:layout_height="@dimen/buttonSize"
+		android:layout_marginLeft="16dp"
+		android:layout_marginStart="16dp"
+		android:background="?selectableItemBackgroundBorderless"
+		android:contentDescription="@string/action_choose_products"
+		android:src="@drawable/product_bus"
+		android:tint="@color/md_white_1000"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/timeIcon"/>
+
+	<ImageView
+		android:id="@+id/productsMarked"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_action_dot"
+		android:layout_marginLeft="16dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginBottom="16dp"
+		app:tint="@color/md_grey_300"
+		app:layout_constraintStart_toStartOf="@+id/productsIcon"
+		app:layout_constraintEnd_toEndOf="@+id/productsIcon"
+		app:layout_constraintTop_toTopOf="@+id/productsIcon"
+		app:layout_constraintBottom_toBottomOf="@+id/productsIcon"
+		android:visibility="visible"
+		tools:ignore="ContentDescription"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

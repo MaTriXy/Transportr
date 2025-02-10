@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -22,15 +22,16 @@ package de.grobox.transportr.departures;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager.LoaderCallbacks;
+import androidx.loader.content.Loader;
+import androidx.appcompat.app.ActionBar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,12 +48,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import javax.inject.Inject;
 
 import de.grobox.transportr.R;
 import de.grobox.transportr.TransportrActivity;
 import de.grobox.transportr.locations.WrapLocation;
-import de.grobox.transportr.networks.TransportNetworkManager;
 import de.grobox.transportr.ui.LceAnimator;
 import de.grobox.transportr.ui.TimeDateFragment;
 import de.grobox.transportr.ui.TimeDateFragment.TimeDateListener;
@@ -85,8 +84,6 @@ public class DeparturesActivity extends TransportrActivity
 	private RecyclerView list;
 	private DepartureAdapter adapter;
 
-	@Inject TransportNetworkManager manager;
-
 	private WrapLocation location;
 	private SearchState searchState = SearchState.INITIAL;
 	private Calendar calendar;
@@ -111,8 +108,6 @@ public class DeparturesActivity extends TransportrActivity
 			throw new IllegalArgumentException("No Location");
 
 		setContentView(R.layout.activity_departures);
-
-		getComponent().inject(this);
 
 		// Toolbar
 		Toolbar toolbar = findViewById(R.id.toolbar);
@@ -200,7 +195,7 @@ public class DeparturesActivity extends TransportrActivity
 				return true;
 			case R.id.action_time:
 				if (calendar == null) calendar = Calendar.getInstance();
-				TimeDateFragment fragment = TimeDateFragment.newInstance(calendar);
+				TimeDateFragment fragment = TimeDateFragment.newInstance(calendar, null);
 				fragment.setTimeDateListener(this);
 				fragment.show(getSupportFragmentManager(), TimeDateFragment.TAG);
 				return true;
@@ -220,7 +215,11 @@ public class DeparturesActivity extends TransportrActivity
 		getSupportLoaderManager().restartLoader(LOADER_DEPARTURES, args, this).forceLoad();
 	}
 
-	private void loadMoreDepartures(boolean later) {
+	@Override
+	public void onDepartureOrArrivalSet(boolean departure) {
+	}
+
+	private synchronized void loadMoreDepartures(boolean later) {
 		Date date = new Date();
 		int maxDepartures = MAX_DEPARTURES;
 		int count = adapter.getItemCount();
@@ -234,18 +233,21 @@ public class DeparturesActivity extends TransportrActivity
 			} else {
 				itemPos = count - 1;
 			}
+			// FIXME for some reason this can crash
+			Log.i(DeparturesActivity.class.getSimpleName(), "Count: " + count + " Get Item: " + itemPos);
 			date = adapter.getItem(itemPos).getTime();
 		}
 		// search from beginning + safety margin
 		else {
 			Date earliest = adapter.getEarliestDate();
 			Date latest;
-
+			int itemPos;
 			if (count >= MAX_DEPARTURES) {
-				latest = adapter.getItem(MAX_DEPARTURES - 1).getTime();
+				itemPos = MAX_DEPARTURES - 1;
 			} else {
-				latest = adapter.getItem(count - 1).getTime();
+				itemPos = count - 1;
 			}
+			latest = adapter.getItem(itemPos).getTime();
 			long span = latest.getTime() - earliest.getTime();
 			date.setTime(earliest.getTime() - span);
 
@@ -265,7 +267,7 @@ public class DeparturesActivity extends TransportrActivity
 
 	@Override
 	public void onLoadFinished(Loader<QueryDeparturesResult> loader, @Nullable QueryDeparturesResult departures) {
-		if (departures != null && departures.status == OK) {
+		if (departures != null && departures.status == OK && departures.stationDepartures.size() > 0) {
 			for (StationDepartures s : departures.stationDepartures) {
 				adapter.addAll(s.departures);
 			}

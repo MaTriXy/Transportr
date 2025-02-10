@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,30 +20,35 @@
 package de.grobox.transportr.trips.detail
 
 import android.app.Application
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.geometry.LatLngBounds
 import de.grobox.transportr.R
 import de.grobox.transportr.TransportrApplication
 import de.grobox.transportr.locations.WrapLocation
-import de.grobox.transportr.map.GpsController
+import de.grobox.transportr.map.GpsMapViewModel
+import de.grobox.transportr.map.GpsMapViewModelImpl
+import de.grobox.transportr.map.PositionController
 import de.grobox.transportr.networks.TransportNetworkManager
 import de.grobox.transportr.networks.TransportNetworkViewModel
 import de.grobox.transportr.settings.SettingsManager
 import de.grobox.transportr.trips.TripQuery
 import de.grobox.transportr.trips.detail.TripDetailViewModel.SheetState.MIDDLE
 import de.grobox.transportr.utils.SingleLiveEvent
+import de.grobox.transportr.utils.hasLocation
 import de.schildbach.pte.dto.Location
 import de.schildbach.pte.dto.Trip
 import de.schildbach.pte.dto.Trip.Leg
 import javax.inject.Inject
 
-class TripDetailViewModel @Inject internal constructor(
-        application: TransportrApplication,
-        transportNetworkManager: TransportNetworkManager,
-        val gpsController: GpsController,
-        private val settingsManager: SettingsManager) : TransportNetworkViewModel(application, transportNetworkManager), LegClickListener {
+internal class TripDetailViewModel
+@Inject internal constructor(
+    application: TransportrApplication,
+    transportNetworkManager: TransportNetworkManager,
+    override val positionController: PositionController,
+    private val settingsManager: SettingsManager
+) : TransportNetworkViewModel(application, transportNetworkManager), LegClickListener, GpsMapViewModel by GpsMapViewModelImpl(positionController)  {
 
     enum class SheetState {
         BOTTOM, MIDDLE, EXPANDED
@@ -77,7 +82,7 @@ class TripDetailViewModel @Inject internal constructor(
     }
 
     override fun onLegClick(leg: Leg) {
-        if (leg.path == null || leg.path.size == 0) return
+        if (leg.path == null || leg.path.size < 2) return
 
         val latLngs = leg.path.map { LatLng(it.latAsDouble, it.lonAsDouble) }
         zoomLeg.value = LatLngBounds.Builder().includes(latLngs).build()
@@ -111,5 +116,4 @@ class TripDetailViewModel @Inject internal constructor(
         TripReloader(network.networkProvider, settingsManager, query, trip, errorString, tripReloadError)
                 .reload()
     }
-
 }

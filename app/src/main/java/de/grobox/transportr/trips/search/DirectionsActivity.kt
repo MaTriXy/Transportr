@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,15 +19,14 @@
 
 package de.grobox.transportr.trips.search
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.AppBarLayout.OnOffsetChangedListener
+import android.os.CountDownTimer
 import android.view.MenuItem
-import android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import de.grobox.transportr.R
 import de.grobox.transportr.TransportrActivity
 import de.grobox.transportr.data.locations.FavoriteLocation.FavLocationType
@@ -58,19 +57,21 @@ class DirectionsActivity : TransportrActivity(), OnOffsetChangedListener {
     private val isShowingTrips: Boolean
         get() = fragmentIsVisible(TripsFragment.TAG)
 
+    private val timeUpdater: CountDownTimer = object : CountDownTimer(Long.MAX_VALUE, 1000 * 30) {
+        override fun onTick(millisUntilFinished: Long) {
+            viewModel.timeUpdate.trigger()
+        }
+        override fun onFinish() {}
+    }
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         component.inject(this)
         setContentView(R.layout.activity_directions)
 
         // get view model and observe data
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DirectionsViewModel::class.java)
-        viewModel.showTrips.observe(this, Observer { _ -> showTrips() })
-
-        if (viewModel.showWhenLocked()) {
-            @Suppress("DEPRECATION")
-            window.addFlags(FLAG_SHOW_WHEN_LOCKED)
-        }
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DirectionsViewModel::class.java)
+        viewModel.showTrips.observe(this, Observer { showTrips() })
 
         appBarLayout.addOnOffsetChangedListener(this)
 
@@ -78,6 +79,16 @@ class DirectionsActivity : TransportrActivity(), OnOffsetChangedListener {
             showFavorites()
             processIntent(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        timeUpdater.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timeUpdater.cancel()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -90,7 +101,7 @@ class DirectionsActivity : TransportrActivity(), OnOffsetChangedListener {
 
     override fun onOffsetChanged(appBarLayout: AppBarLayout, verticalOffset: Int) {
         if (verticalOffset == 0) {
-            viewModel.topSwipeEnabled.setValue(true)
+            viewModel.topSwipeEnabled.value = true
         } else {
             val enabled = viewModel.topSwipeEnabled.value
             if (enabled != null && enabled) {

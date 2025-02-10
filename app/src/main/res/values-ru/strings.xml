@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - транспорт с открытым кодом</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Бесплатный ассистент общественного транспорта без рекламы и без отслеживания</string>
-  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc"><![CDATA[
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
 Transportr это некоммерческое приложение, разработанное людьми со всего мира.
 Они хотят сделать использование общественного транспорта максимально доступным для всех.
 
@@ -48,7 +48,6 @@ Transportr сохраняет часто используемые местопо
   <string name="action_fav_trip">Добавить маршрут в избранное</string>
   <string name="action_unfav_trip">Удалить маршрут из избранного</string>
   <string name="action_switch_locations">Поменять местами Откуда и Куда</string>
-  <string name="action_time_type">Время</string>
   <string name="trip_dep">Отбытие</string>
   <string name="trip_arr">Прибытие</string>
   <string name="action_refresh">Обновить</string>
@@ -59,10 +58,11 @@ Transportr сохраняет часто используемые местопо
   <string name="action_trip_delete">Удалить поездку</string>
   <string name="action_show_on_external_map">Показать на внешней карте</string>
   <string name="action_copy">Копировать</string>
+  <string name="directions">Направление</string>
+  <string name="directions_search">Поиск направлений</string>
   <string name="drawer_departures">Отправление</string>
   <string name="tab_about">О приложении</string>
   <string name="tab_libraries">Библиотека</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten Grote\nFree Software License: GPLv3+</string>
   <string name="about_description">Transportr является помощником общественного транспорта, разработанный людьми по всему миру, чтобы сделать использование общественного транспорта как можно проще там, где вы находитесь.</string>
   <string name="about_warning_title">Предупреждение</string>
   <string name="about_warning_text">Нет никакой гарантии правильности (предоставленных) данных. Пожалуйста, используйте это приложение только на свой страх и риск.</string>
@@ -82,11 +82,11 @@ Transportr сохраняет часто используемые местопо
   <string name="network">Сеть</string>
   <string name="pick_network_activity">Выбрать область</string>
   <string name="pick_network_first_run">Добро пожаловать в Transportr!\n\nПожалуйста, выберите транспортную сеть в Вашем городе для продолжения. Вы можете изменить это в любое время.</string>
-  <string name="stations_searching_position">Поиск текущего местоположения...</string>
+  <string name="stations_searching_position">Поиск текущего местоположения…</string>
   <string name="drawer_nearby_stations">Остановки рядом</string>
   <string name="find_nearby_stations">Найти остановки рядом</string>
   <string name="find_departures">Найти отправную точку</string>
-  <string name="share_trip_via">Поделиться маршрутом через...</string>
+  <string name="share_trip_via">Поделиться маршрутом через…</string>
   <string name="more">Больше</string>
   <!--Shows a short(!) representation of how long you need to walk, e.g. "for 5 min"-->
   <string name="for_x_min">в течение %d мин</string>
@@ -117,7 +117,6 @@ Transportr сохраняет часто используемые местопо
   <string name="pref_walk_speed_slow">Медленно</string>
   <string name="pref_walk_speed_normal">Нормально</string>
   <string name="pref_walk_speed_fast">Быстро</string>
-  <string name="pref_show_when_locked_title">Показывать маршрут и результаты поиска на заблокированном экране</string>
   <string name="pref_show_when_locked_summary">Показывать на заблокированном экране</string>
   <string name="error">Ошибка</string>
   <string name="error_no_internet">Требуется подключение к интернету. Пожалуйста, убедитесь в Вашем интернет-соединении.</string>
@@ -126,6 +125,7 @@ Transportr сохраняет часто используемые местопо
   <string name="error_geo_intent">Не удалось открыть внешнее расположение</string>
   <string name="error_find_nearby_stations">Не удалось найти остановки рядом</string>
   <string name="error_departures">Не может найти любую отправную точку</string>
+  <string name="error_no_calendar">Календарь не установлен :(</string>
   <string name="trip_error_ambiguous">Не удалось найти адрес. Попробуйте поискать другой адрес.</string>
   <string name="trip_error_too_close">\'Откуда\' и \'куда\' расположены слишком близко друг к другу.</string>
   <string name="trip_error_unknown_from">Не удалось найти расположение \'откуда\'. Пожалуйста, попробуйте еще раз.</string>
@@ -135,7 +135,6 @@ Transportr сохраняет часто используемые местопо
   <string name="trip_error_no_trips">Нет интернет-соединения :(</string>
   <string name="trip_error_invalid_date">Дата поиска в настоящее время не поддерживается поставщиком данных. Пожалуйста, попробуйте в другой раз.</string>
   <string name="trip_error_service_down">Поставщик данных в настоящее время не работает :(\Повторите попытку позже.</string>
-  <string name="trip_error_pte">Если вы хотите сообщить об этой ошибке, пожалуйста, сообщите об этом непосредственно в public-transport-enabler и приложите скриншот.</string>
   <string name="trip_issue">Возникла проблема с соединением.</string>
   <string name="try_again">Попробуйте снова</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
@@ -147,7 +146,7 @@ Transportr сохраняет часто используемые местопо
     <item quantity="other">%d остановок</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(Платформа %s)</string>
+  <string name="platform">Платформа %s</string>
   <string name="system_default">Система по умолчанию</string>
   <string name="trip_share_date">Дата: %s</string>
   <string name="times_include_delays">(Внимание: могут быть включены сообщения о задержках)</string>
@@ -171,8 +170,6 @@ Transportr сохраняет часто используемые местопо
   <string name="warning_gps_off">Местоположение отключено. Пожалуйста, включите его в настройках.</string>
   <string name="onboarding_location_title">Потянуть</string>
   <string name="onboarding_location_message">Другие функции скрываются ниже</string>
-  <string name="onboarding_directions_title">Дополнительные параметры поиска</string>
-  <string name="onboarding_directions_message">Щелкните этот значок, чтобы открыть дополнительные параметры поиска.</string>
   <string name="select_products">Выбор транспортного средства</string>
   <string name="product_high_speed_train">Скоростной поезд</string>
   <string name="product_regional_train">Региональный поезд</string>
@@ -184,9 +181,9 @@ Transportr сохраняет часто используемые местопо
   <string name="product_cablecar">Канатная дорога</string>
   <string name="product_on_demand">По запросу</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Список изменений</string>
-  <string name="changelog_title">Что нового</string>
-  <string name="changelog_show_full">Больше...</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Список изменений</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Что нового</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Больше…</string>
   <string name="np_continent_europe">Европа</string>
   <string name="np_continent_africa">Африка</string>
   <string name="np_continent_north_america">Северная Америка</string>
@@ -207,14 +204,12 @@ Transportr сохраняет часто используемые местопо
   <string name="np_desc_wien">Вена</string>
   <string name="np_region_belgium">Бельгия</string>
   <string name="np_desc_sncb">Общественный транспорт в Бельгии</string>
-  <string name="np_region_br">Бразилия</string>
   <string name="np_name_br">Бразилия</string>
   <string name="np_desc_br">Сан-Паулу, Рио-де-Жанейро, Белу-Оризонти и Порту-Алегри</string>
   <string name="np_name_br_floripa">Флорианополис</string>
   <string name="np_desc_br_floripa">Много автобусных маршрутов, no Executivos</string>
   <string name="np_region_canada">Канада</string>
   <string name="np_name_ontario">Онтарио</string>
-  <string name="np_desc_ontario">Онтарио, Оттава, Торонто, Миссиссага, Регион Ватерлоо</string>
   <string name="np_name_quebec">Квебек</string>
   <string name="np_desc_quebec">Две Горы, Лаваль, Успенская, Оттава, Юго-Запад, Quebec, Вверх-Сен-Лоран, Lanaudière, Полуострова, Laurentides, Montreal, Мельницы, Валле-дю-Ришелье, Коптево-Ришелье-кариньян-Carignan, Руссильон, Сорель-Варен, Richelain, Шербрук, Сент-Жюли</string>
   <string name="np_name_britishcolumbia">Британская Колумбия</string>
@@ -226,7 +221,6 @@ Transportr сохраняет часто используемые местопо
   <string name="np_desc_rt">Только поезда дальнего следования</string>
   <string name="np_desc_rt_networks">Railteam alliance</string>
   <string name="np_region_finland">Финляндия</string>
-  <string name="np_desc_hsl">Хельсинки</string>
   <string name="np_region_france">Франция</string>
   <string name="np_name_francenortheast">Франция Северо-Восток</string>
   <string name="np_desc_francenortheast">Страсбург, Нанси, Лилль, Нанси</string>
@@ -260,12 +254,10 @@ Transportr сохраняет часто используемые местопо
   <string name="np_desc_nvbw">Баден-Вюртемберг, Констанц, Базель, Базель-Штадт, Ройтлинген, Роттвайль, Тюбинген, Зигмаринген</string>
   <string name="np_desc_nvv">Hesse, Франкфурт-на-Майне, Кассель</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Росток</string>
-  <string name="np_desc_vagfr">Alsace, Bas-Rhin, Страсбург, Фрайбург в Брейсгау</string>
   <string name="np_desc_vbb">Бранденбург, Берлин</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Нижняя Саксония, Бремен, Bremerhaven, Ольденбург (Oldenburg), Оснабрюк</string>
   <string name="np_desc_vgn">Nuremberg, Фюрт, Эрланген, Байройт, Бамберг, Город Швабах</string>
   <string name="np_desc_vgs">Саар, Саарбрюккен</string>
-  <string name="np_desc_vms">Средняя Саксония, Хемниц</string>
   <string name="np_desc_vmv">Мекленбург-Передняя Померания, Шверин</string>
   <string name="np_desc_vrn">Баден-Вюртемберг, Rhineland-Palatinate, Мангейм, Майнц, Трир</string>
   <string name="np_desc_vrr">Северный Рейн-Вестфалия, Кельн, Бонн, Эссен, Дортмунд, Дюссельдорф, Мюнстер, Падерборн, Хекстер</string>
@@ -289,14 +281,13 @@ Transportr сохраняет часто используемые местопо
   <string name="np_region_netherlands">Нидерланды</string>
   <string name="np_desc_ns">Нидерланды, Амстердам</string>
   <string name="np_desc_negentwee">Весь общественный транспорт в Нидерландах</string>
-  <string name="np_region_norway">Норвегия</string>
-  <string name="np_desc_nri">Норвегия, Осло, Берген</string>
   <string name="np_name_nz">Новая Зеландия</string>
   <string name="np_desc_nz">Новая Зеландия, Веллингтон, Окленд</string>
   <string name="np_region_poland">Польша</string>
-  <string name="np_desc_pl">Польша, железные дороги в Польше</string>
   <string name="np_name_spain">Испания</string>
   <string name="np_desc_spain">Мадрид, Барселона, Страна Басков, Валенсия, Аликанте, Майорка, Менорка, Тенерифе, Ла-Пальма, Наварра</string>
+  <string name="np_name_hungary">Венгрия</string>
+  <string name="np_desc_hungary">Будапешт, Мишкольц</string>
   <string name="np_region_sweden">Швеция</string>
   <string name="np_desc_se">Швеция, Стокгольм</string>
   <string name="np_region_switzerland">Швейцария</string>
@@ -318,7 +309,6 @@ Transportr сохраняет часто используемые местопо
   <string name="np_name_costa_rica">Коста-Рика</string>
   <string name="np_name_ghana">Гана</string>
   <string name="np_desc_ghana">Акра</string>
-  <string name="np_region_central_america">Центральная Америка</string>
   <string name="np_name_nicaragua">Никарагуа</string>
   <string name="np_desc_nicaragua">Городские, сельские и общенациональные автобусы, предоставляемые в партнерстве с MapaNica.net и OpenStreetMap</string>
   <string name="maintainer">Maintainer</string>
@@ -341,4 +331,6 @@ Transportr сохраняет часто используемые местопо
   <string name="czech">Чешский</string>
   <string name="hungarian">Венгерский</string>
   <string name="japanese">Японский</string>
+  <string name="russian">Русский</string>
+  <string name="greek">Греческий</string>
 </resources>

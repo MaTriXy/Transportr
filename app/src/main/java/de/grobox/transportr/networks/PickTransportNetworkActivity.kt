@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -21,12 +21,13 @@ package de.grobox.transportr.networks
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.os.PersistableBundle
 import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mikepenz.fastadapter.IItem
 import com.mikepenz.fastadapter.ISelectionListener
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter
@@ -34,12 +35,8 @@ import com.mikepenz.fastadapter.expandable.ExpandableExtension
 import de.grobox.transportr.R
 import de.grobox.transportr.TransportrActivity
 import de.grobox.transportr.map.MapActivity
-import javax.inject.Inject
 
 class PickTransportNetworkActivity : TransportrActivity(), ISelectionListener<IItem<*, *>> {
-
-    @Inject
-    internal lateinit var manager: TransportNetworkManager
 
     private lateinit var adapter: FastItemAdapter<IItem<*, *>>
     private lateinit var expandableExtension: ExpandableExtension<IItem<*, *>>
@@ -55,7 +52,6 @@ class PickTransportNetworkActivity : TransportrActivity(), ISelectionListener<II
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pick_transport_network)
-        component.inject(this)
         setUpCustomToolbar(false)
 
         if (intent.getBooleanExtra(FORCE_NETWORK_SELECTION, false)) {
@@ -88,13 +84,13 @@ class PickTransportNetworkActivity : TransportrActivity(), ISelectionListener<II
         selectItem()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
         val newState = adapter.saveInstanceState(outState)
-        super.onSaveInstanceState(newState)
+        super.onSaveInstanceState(newState, outPersistentState)
     }
 
-    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
-        return if (menuItem.itemId == android.R.id.home) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == android.R.id.home) {
             onBackPressed()
             true
         } else {

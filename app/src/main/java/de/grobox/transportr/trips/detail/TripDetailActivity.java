@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,19 +19,19 @@
 
 package de.grobox.transportr.trips.detail;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import de.grobox.transportr.R;
 import de.grobox.transportr.TransportrActivity;
 import de.grobox.transportr.locations.WrapLocation;
@@ -40,9 +40,9 @@ import de.grobox.transportr.ui.ThreeStateBottomSheetBehavior;
 import de.grobox.transportr.utils.OnboardingBuilder;
 import de.schildbach.pte.dto.Trip;
 
-import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
-import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
 import static de.grobox.transportr.trips.detail.TripDetailViewModel.SheetState.BOTTOM;
 import static de.grobox.transportr.trips.detail.TripDetailViewModel.SheetState.EXPANDED;
 import static de.grobox.transportr.trips.detail.TripDetailViewModel.SheetState.MIDDLE;
@@ -67,7 +67,7 @@ public class TripDetailActivity extends TransportrActivity {
 
 		getComponent().inject(this);
 
-		TripDetailViewModel viewModel = ViewModelProviders.of(this, viewModelFactory).get(TripDetailViewModel.class);
+		TripDetailViewModel viewModel = new ViewModelProvider(this, viewModelFactory).get(TripDetailViewModel.class);
 		Intent intent = getIntent();
 		Trip trip = (Trip) intent.getSerializableExtra(TRIP);
 		WrapLocation from = (WrapLocation) intent.getSerializableExtra(FROM);
@@ -79,7 +79,6 @@ public class TripDetailActivity extends TransportrActivity {
 		viewModel.setTo(to);
 
 		if (viewModel.showWhenLocked()) {
-			//noinspection deprecation
 			getWindow().addFlags(FLAG_SHOW_WHEN_LOCKED);
 		}
 
@@ -112,7 +111,7 @@ public class TripDetailActivity extends TransportrActivity {
 			viewModel.getSheetState().setValue(MIDDLE);
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.topContainer, new TripMapFragment(), TripMapFragment.TAG)
-					.add(R.id.bottomContainer, new TripDetailFragment(), TripDetailFragment.TAG)
+					.add(R.id.bottomContainer, new TripDetailFragment(), TripDetailFragment.Companion.getTAG())
 					.commit();
 
 			showOnboarding();
@@ -120,14 +119,14 @@ public class TripDetailActivity extends TransportrActivity {
 	}
 
 	private void showOnboarding() {
-		if (settingsManager.showTripDetailFragmentOnboarding()) {
+		if (getSettingsManager().showTripDetailFragmentOnboarding()) {
 			new OnboardingBuilder(this)
 					.setTarget(R.id.bottomContainer)
 					.setPrimaryText(R.string.onboarding_location_title)
 					.setSecondaryText(R.string.onboarding_location_message)
 					.setPromptStateChangeListener((prompt, state) -> {
 						if (state == STATE_DISMISSED || state == STATE_FOCAL_PRESSED) {
-							settingsManager.tripDetailOnboardingShown();
+							getSettingsManager().tripDetailOnboardingShown();
 							bottomSheetBehavior.setState(STATE_EXPANDED);
 						}
 					})

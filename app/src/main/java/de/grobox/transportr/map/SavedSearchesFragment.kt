@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 
 package de.grobox.transportr.map
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import de.grobox.transportr.favorites.locations.HomePickerDialogFragment
 import de.grobox.transportr.favorites.locations.WorkPickerDialogFragment
 import de.grobox.transportr.favorites.trips.FavoriteTripsFragment
@@ -37,7 +37,7 @@ internal class SavedSearchesFragment : FavoriteTripsFragment<MapViewModel>() {
 
     override fun getViewModel(): MapViewModel {
         component.inject(this)
-        return ViewModelProviders.of(activity!!, viewModelFactory).get(viewModelClass)
+        return ViewModelProvider(activity!!, viewModelFactory).get(viewModelClass)
     }
 
     override fun getHomePickerDialogFragment(): HomePickerDialogFragment {
@@ -49,19 +49,19 @@ internal class SavedSearchesFragment : FavoriteTripsFragment<MapViewModel>() {
     }
 
     override fun onSpecialLocationClicked(location: WrapLocation) {
-        val from = viewModel.gpsController.getWrapLocation() ?: WrapLocation(GPS)
+        val from = WrapLocation(GPS)
         findDirections(context, from, null, location, true, true)
     }
 
     class HomePickerFragment : HomePickerDialogFragment() {
-        override fun getViewModel(): LocationsViewModel {
-            return ViewModelProviders.of(activity!!, viewModelFactory).get(viewModelClass)
+        override fun viewModel(): LocationsViewModel {
+            return ViewModelProvider(activity!!, viewModelFactory).get(viewModelClass)
         }
     }
 
     class WorkPickerFragment : WorkPickerDialogFragment() {
-        override fun getViewModel(): LocationsViewModel {
-            return ViewModelProviders.of(activity!!, viewModelFactory).get(viewModelClass)
+        override fun viewModel(): LocationsViewModel {
+            return ViewModelProvider(activity!!, viewModelFactory).get(viewModelClass)
         }
     }
 

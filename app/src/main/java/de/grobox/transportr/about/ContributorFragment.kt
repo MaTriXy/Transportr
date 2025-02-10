@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,12 +20,12 @@
 package de.grobox.transportr.about
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.grobox.transportr.R
 import de.grobox.transportr.TransportrFragment
 import de.grobox.transportr.about.ContributorAdapter.ContributorViewHolder
@@ -73,7 +73,7 @@ private class ContributorGroupAdapter(val groups: List<ContributorGroup>) : Recy
 
     override fun getItemCount(): Int = groups.size
 
-    private class ContributorGroupViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ContributorGroupViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         val languageName: TextView = v.findViewById(R.id.languageName)
         val list: RecyclerView = v.findViewById(R.id.list)
@@ -102,7 +102,7 @@ private class ContributorAdapter(val contributors: List<Contributor>) : Recycler
     override fun getItemCount(): Int = contributors.size
 
 
-    private class ContributorViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class ContributorViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         val name: TextView = v.findViewById(R.id.name)
 

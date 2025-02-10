@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,8 +20,8 @@
 package de.grobox.transportr.networks
 
 import android.content.Context
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.google.common.base.Preconditions.checkArgument
 import de.grobox.transportr.R
 import de.schildbach.pte.NetworkId
@@ -67,7 +67,7 @@ data class TransportNetwork internal constructor(
             context.getString(description) + " (" + context.getString(agencies) + ")"
         } else if (description != 0) {
             context.getString(description)
-        } else if (agencies == 0) {
+        } else if (agencies != 0) {
             context.getString(agencies)
         } else {
             throw IllegalArgumentException()

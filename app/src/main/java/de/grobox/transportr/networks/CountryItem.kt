@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,9 +20,9 @@
 package de.grobox.transportr.networks
 
 import android.content.Context
-import android.support.annotation.IdRes
-import android.support.annotation.LayoutRes
-import android.support.v4.view.ViewCompat
+import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
+import androidx.core.view.ViewCompat
 import android.view.View
 import com.mikepenz.fastadapter.expandable.items.AbstractExpandableItem
 import com.mikepenz.fastadapter.listeners.OnClickListener

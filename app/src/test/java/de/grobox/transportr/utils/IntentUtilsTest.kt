@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -25,7 +25,7 @@ import org.junit.Assert
 import org.junit.Test
 
 
-class MapViewModelTest {
+class IntentUtilsTest {
 
     @Test
     fun getWrapLocation() {
@@ -34,6 +34,7 @@ class MapViewModelTest {
         Assert.assertEquals(get(3.14159265, -3.14159265), IntentUtils.getWrapLocation("geo:3.14159265,-3.14159265?z=20"))
         Assert.assertEquals(get(-48.123, 126.0), IntentUtils.getWrapLocation("geo:-48.123,126(label)"))
         Assert.assertEquals(get(90.0, -126.0), IntentUtils.getWrapLocation("geo:90,-126?q=my+street+address"))
+        Assert.assertEquals(get(-48.123, 126.0), IntentUtils.getWrapLocation("geo:0,0?q=-48.123,126(label)"))
 
         Assert.assertNull(IntentUtils.getWrapLocation("geo:90"))
         Assert.assertNull(IntentUtils.getWrapLocation("geo:90,"))

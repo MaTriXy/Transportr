@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -22,15 +22,25 @@ package de.grobox.transportr.utils
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.graphics.Color
 import android.net.ConnectivityManager
-import android.support.annotation.DrawableRes
-import android.util.DisplayMetrics
+import android.util.DisplayMetrics.DENSITY_DEFAULT
+import android.util.TypedValue
+import androidx.annotation.AttrRes
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import de.grobox.transportr.R
+import de.grobox.transportr.trips.detail.LegViewHolder
+import de.schildbach.pte.dto.Line
 import de.schildbach.pte.dto.Location
 import de.schildbach.pte.dto.LocationType
 import de.schildbach.pte.dto.Product
 import de.schildbach.pte.dto.Product.*
 import java.text.DecimalFormat
+import kotlin.math.roundToInt
 
 
 object TransportrUtils {
@@ -52,9 +62,9 @@ object TransportrUtils {
 
     @JvmStatic
     fun copyToClipboard(context: Context, text: String) {
-        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipboard = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("label", text)
-        clipboard.primaryClip = clip
+        clipboard.setPrimaryClip(clip)
     }
 
     @JvmStatic
@@ -89,14 +99,60 @@ object TransportrUtils {
     @JvmStatic
     fun dpToPx(context: Context, dp: Int): Int {
         val displayMetrics = context.resources.displayMetrics
-        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
+        return (dp * (displayMetrics.xdpi / DENSITY_DEFAULT)).roundToInt()
     }
 
     @JvmStatic
     fun hasInternet(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val cm = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting
     }
 
+    // see https://stackoverflow.com/questions/33050999/programmatically-set-text-color-to-primary-android-textview
+    fun Context.getColorFromAttr(@AttrRes attrColor: Int, typedValue: TypedValue = TypedValue(), resolveRefs: Boolean = true): Int {
+        theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+        return ContextCompat.getColor(this, typedValue.run { if (resourceId != 0) resourceId else data })
+    }
+
+    fun getLineColor(context: Context, line: Line): Int {
+        val themeBackgroundColor = context.getColorFromAttr(R.attr.material_drawer_background)
+        val colorsToCheck = listOfNotNull(
+            line.style?.backgroundColor,
+            line.style?.backgroundColor2,
+            line.style?.foregroundColor,
+            line.style?.borderColor
+        )
+
+        for (color in colorsToCheck) {
+            if (color != 0) {
+                return if (isContrastSufficient(color, themeBackgroundColor)) {
+                    color
+                } else {
+                    invertColor(color)
+                }
+            }
+        }
+
+        return LegViewHolder.DEFAULT_LINE_COLOR
+    }
+
+    private fun isContrastSufficient(color1: Int, color2: Int): Boolean {
+        val contrastRatio = ColorUtils.calculateContrast(color1, color2)
+        return contrastRatio >= Constants.MIN_CONTRAST_RATIO
+    }
+
+    private fun invertColor(color: Int): Int {
+        val r = 255 - Color.red(color)
+        val g = 255 - Color.green(color)
+        val b = 255 - Color.blue(color)
+        return Color.rgb(r, g, b)
+    }
+
+    fun getTextColorBasedOnBackground(backgroundColor: Int): Int {
+        val luminance = ColorUtils.calculateLuminance(backgroundColor)
+        return if (luminance > 0.5) Color.BLACK else Color.WHITE
+    }
 }
+
+fun Location.hasLocation() = hasCoord() && (latAs1E6 != 0 || lonAs1E6 != 0)

@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="google_play_title" tools:keep="@string/google_play_title">Transportr</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Malfermkoda asistilo por publika transporto sen reklamoj kaj spurado</string>
-  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc"><![CDATA[
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
 Transportr estas ne-profit-cela aplikaĵo evoluigata de homoj de la tuta mondo libertempe. Ili volas igi uzadon de publika transporto kiel eble plej facilan por ĉiu. 
 
 Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto kaj liveras unuigitan fasadon por ilin. Oni ne povas verigi korektecon de datumoj do <i>estas nenia garantio</i> pri liverataj informoj.  Uzu nur sub via risko.
@@ -29,7 +29,6 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="action_fav_trip">Marki kurson kiel ŝatatan</string>
   <string name="action_unfav_trip">Malmarki kurson kiel ŝatatan</string>
   <string name="action_switch_locations">Anstataŭigi komencpunkton per celo</string>
-  <string name="action_time_type">Tempo estas</string>
   <string name="trip_dep">Forveturo</string>
   <string name="trip_arr">Alveturo</string>
   <string name="action_refresh">Aktualigi</string>
@@ -40,15 +39,17 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="action_trip_delete">Forigi kurson</string>
   <string name="action_show_on_external_map">Montri sur ekstera mapo</string>
   <string name="action_copy">Kopii</string>
+  <string name="directions">Direktoj</string>
+  <string name="directions_search">Serĉi direktojn</string>
   <string name="drawer_departures">Forveturoj</string>
   <string name="tab_about">Pri</string>
   <string name="tab_libraries">Bibliotekoj</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten GROTE\nProgramo laŭ la libera permesilo: GPLv3+</string>
   <string name="about_description">Transportr estas publik-transporta helpilo programita de homoj ĉirkaŭ la mondo por igi uzadon de publika transporto kiel eble facile, kie ajn vi estas.</string>
   <string name="about_warning_title">Averto</string>
   <string name="about_warning_text">Estas neniu garantio pri korekteco de (ekstere-provizataj) datumoj. Bonvolu uzi tiun ĉi aplikaĵon nur sub via risko.</string>
   <string name="about_contributions">Tiu ĉi aplikaĵo estas Libera Programaro, do vi povas libere kaj senpage uzi, analizi, diskonigi kaj plibonigi ĝin. Kontribuaĵoj estas konsilindaj kaj laŭdindaj. Se vi volus kontribui, bonvolu viziti la retejon por pli da informoj.</string>
   <string name="about_visit_website">Viziti retpaĝon</string>
+  <string name="map_attribution_improve">Plibonigi tiun ĉi mapon</string>
   <string name="open_navigation_drawer">Malfermi navigan tir-menuon</string>
   <string name="from">El</string>
   <string name="to">Al</string>
@@ -68,6 +69,7 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="find_nearby_stations">Serĉi proksimajn staciojn</string>
   <string name="find_departures">Serĉi forveturojn</string>
   <string name="share_trip_via">Kunhavigi kurson per…</string>
+  <string name="show_location_in">Montri lokon per…</string>
   <string name="more">Pli</string>
   <!--Shows a short(!) representation of how long you need to walk, e.g. "for 5 min"-->
   <string name="for_x_min">tra %d min</string>
@@ -79,6 +81,7 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="tomorrow">Morgaŭ</string>
   <string name="in_x_minutes">post %dmin</string>
   <string name="x_minutes_ago">antaŭ %dmin</string>
+  <string name="total_time">Tuta tempo: %s</string>
   <string name="time_picker_previous_day">Antaŭa tago</string>
   <string name="time_picker_next_day">Sekva tago</string>
   <string name="ok">Bone</string>
@@ -88,6 +91,8 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="pref_theme_title">Etoso</string>
   <string name="pref_theme_light">Hela</string>
   <string name="pref_theme_dark">Malhela</string>
+  <string name="pref_theme_auto_battery">Laŭ bateri‑savilo</string>
+  <string name="pref_theme_auto_system">Sistema</string>
   <string name="pref_language_title">Lingvo</string>
   <string name="pref_directions_routing">Direktoj kaj difinado de kurso</string>
   <string name="pref_optimize">Plibonigi por</string>
@@ -98,7 +103,7 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="pref_walk_speed_slow">Malrapide</string>
   <string name="pref_walk_speed_normal">Norme</string>
   <string name="pref_walk_speed_fast">Rapide</string>
-  <string name="pref_show_when_locked_title">Montri kursojn kaj serĉ-rezultojn eĉ kiam la ekrano estas ŝlosita</string>
+  <string name="pref_show_when_locked_title">Montri kurson eĉ kiam la ekrano estas ŝlosita</string>
   <string name="pref_show_when_locked_summary">Montri sur ŝlosita ekrano</string>
   <string name="error">Eraro</string>
   <string name="error_no_internet">Interret-konekto bezonata. Bonvolu certigi, ke havas aliron al la interreto.</string>
@@ -107,6 +112,8 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="error_geo_intent">Ne povas malfermi eksteran lokon</string>
   <string name="error_find_nearby_stations">Ne povas trovi proksimajn staciojn</string>
   <string name="error_departures">Ne povas trovi iujn ajn forveturojn</string>
+  <string name="error_no_calendar">Kalendaro ne instalita :(</string>
+  <string name="error_no_map">Neniu map-aplikaĵo instalita :(</string>
   <string name="trip_error_ambiguous">Ne povas trovi lokon. Bonvolu provi serĉi kun alia loko.</string>
   <string name="trip_error_too_close">Lokoj “el” kaj “al” estas tro proksimaj.</string>
   <string name="trip_error_unknown_from">Ne povas trovi la lokon “el”. Bonvolu provi kun la alia.</string>
@@ -116,8 +123,9 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="trip_error_no_trips">Ne povas trovi komunikiloj :(</string>
   <string name="trip_error_invalid_date">La serĉita dato ne estas nuntempe subtenata de la datum-provizanto. Bonvolu provi alian daton.</string>
   <string name="trip_error_service_down">La datum-provizanto nuntempe malfunkcias :(\nBonvolu provi denove poste.</string>
-  <string name="trip_error_pte">Se vi volas raporti tiun ĉi eraron, bonvolu raporti ĝin al senpere al public-transport-enabler kaj kunigu ekranokopion.</string>
+  <string name="trip_error_pte">Se vi volas raporti tiun ĉi eraron, bonvolu raporti ĝin senpere al %1$s.</string>
   <string name="trip_issue">Povas okazi problemo kun tiu ĉi komunikilo.</string>
+  <string name="trip_not_travelable">Neebla aŭ nuligita</string>
   <string name="try_again">Reprovi</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
@@ -126,7 +134,7 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
     <item quantity="other">%d haltejoj</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(kajo %s)</string>
+  <string name="platform">kajo %s</string>
   <string name="system_default">Sistema implicita</string>
   <string name="trip_share_date">Dato: %s</string>
   <string name="times_include_delays">(Rimarko: tempoj povas enhavi raportitajn malfruojn)</string>
@@ -150,8 +158,6 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="warning_gps_off">Determinado de pozicio malŝaltita. Bonvolu aktivigi ĝin en agordoj.</string>
   <string name="onboarding_location_title">Ŝovumu supren</string>
   <string name="onboarding_location_message">Pliaj ebloj sube</string>
-  <string name="onboarding_directions_title">Pliaj serĉaj agordoj</string>
-  <string name="onboarding_directions_message">Frapetu tiun ĉi piktogramon por vidigi spertajn agordojn de serĉo.</string>
   <string name="select_products">Elekti specojn de transportiloj</string>
   <string name="product_high_speed_train">Vagonaro rapidega</string>
   <string name="product_regional_train">Vagonaro regiona</string>
@@ -163,9 +169,9 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="product_cablecar">Kablovojo</string>
   <string name="product_on_demand">Laŭpeta veturilo</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Ŝanĝoprotokolo</string>
-  <string name="changelog_title">Kio estas nova</string>
-  <string name="changelog_show_full">Pli…</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Ŝanĝoprotokolo</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Kio estas nova</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Pli…</string>
   <string name="np_continent_europe">Eŭropo</string>
   <string name="np_continent_africa">Afriko</string>
   <string name="np_continent_north_america">Nordameriko</string>
@@ -176,6 +182,10 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_region_australia">Aŭstralio</string>
   <string name="np_desc_australia">Melburno, Sidnejo, Brisbano, Perto, Adelajdo, Hobarto, Launceston, Burnie</string>
   <string name="np_desc_sydney">Aŭstralio, Novsudkimrio, Sidnejo</string>
+  <string name="np_region_pt">Portugalujo</string>
+  <string name="np_name_pt">Portugalujo</string>
+  <string name="np_desc_pt">Lisbono</string>
+  <string name="np_desc_pt_networks">Aŭtobuso, vagonaro, funikularo, pramo, metroo</string>
   <string name="np_region_austria">Aŭstrujo</string>
   <string name="np_desc_ivb">Innsbruck</string>
   <string name="np_desc_linz">Supra Aŭstrujo, Linz</string>
@@ -186,14 +196,13 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_desc_wien">Vieno</string>
   <string name="np_region_belgium">Belgujo</string>
   <string name="np_desc_sncb">Publika transporto en Belgujo</string>
-  <string name="np_region_br">Brazilo</string>
   <string name="np_name_br">Brazilo</string>
   <string name="np_desc_br">San-Paŭlo, Rio-de-Ĵanejro, Bel-Horizonto kaj Porto-Alegro</string>
   <string name="np_name_br_floripa">Florianópolis</string>
-  <string name="np_desc_br_floripa">Diversaj aŭtobusaj kursoj, sen ‘Executivos’</string>
+  <string name="np_desc_br_floripa">Diversaj aŭtobusaj kursoj, sen “Executivos”</string>
   <string name="np_region_canada">Kanado</string>
   <string name="np_name_ontario">Ontario</string>
-  <string name="np_desc_ontario">Ontario, Otavo, Toronto, Mississauga, Regiono Waterloo</string>
+  <string name="np_desc_ontario">Ontario, Otavo, Toronto, Mississauga, Hamiltono, regiono de Waterloo</string>
   <string name="np_name_quebec">Kebekio</string>
   <string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Kebekio, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montrealo, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
   <string name="np_name_britishcolumbia">Brita Kolumbio</string>
@@ -204,8 +213,8 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_name_rt">Eŭropo</string>
   <string name="np_desc_rt">Nur long-distancaj vagonaroj</string>
   <string name="np_desc_rt_networks">Societo Railteam</string>
-  <string name="np_region_finland">Suomujo</string>
-  <string name="np_desc_hsl">Helsinko</string>
+  <string name="np_region_finland">Finnlando</string>
+  <string name="np_desc_fi">Helsinko, Turku, Tampere, Jyväskylä, Oulu</string>
   <string name="np_region_france">Francujo</string>
   <string name="np_name_francenortheast">Francujo nord-orienta</string>
   <string name="np_desc_francenortheast">Strasburgo, Metz, Lillo, Nancio</string>
@@ -218,11 +227,13 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_name_paris">Parizo</string>
   <string name="np_desc_paris">Francujo, Francilio (Île-de-France), Parizo</string>
   <string name="np_region_gb">Britujo</string>
-  <string name="np_desc_mersey">Liverpool City Region</string>
+  <string name="np_desc_mersey">Regiono de Liverpool City</string>
   <string name="np_desc_tlem">Granda Londono, Birmingham, Derbyshire, Leicestershire, Rutland, Northamptonshire, Nottinghamshire, Lincolnshire, Berkshire, Buckinghamshire, East Sussex, Hampshire, Isle of Wight, Kent, Oxfordshire, Surrey, West Sussex, Essex, Hertfordshire, Bedfordshire, Cambridgeshire, Norfolk, Suffolk, Somerset, Gloucestershire, Wiltshire, Dorset, Devon, Cornwall, West Devon, Stowford, Eastleigh, Swindon, Gloucester, Plymouth, Torbay, Bournemouth, Poole</string>
   <string name="np_desc_tlwm" tools:keep="@string/np_desc_tlwm">Birmingham</string>
   <string name="np_region_germany">Germanujo</string>
   <string name="np_desc_avv">Aŭgsburgo</string>
+  <string name="np_name_avvaachen">AVV</string>
+  <string name="np_desc_avvaachen">Aachen</string>
   <string name="np_desc_bayern">Bavarujo, Würzburg, Regensburg</string>
   <string name="np_desc_bsvag">Brunsvigo, Wolfsburg</string>
   <string name="np_desc_bvg">Berlino</string>
@@ -239,12 +250,13 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_desc_nvbw">Baden-Württemberg, Konstanco, Bazelo, Bazelo Urba, Reutlingen, Rottweil, Tübingen, Sigmaringen</string>
   <string name="np_desc_nvv">Hesujo, Frankfurto ĉe Majno, Kaselo</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Alzaco, Bas-Rhin, Strasburgo, Freiburg im Breisgau</string>
+  <string name="np_name_sh">NAH.SH</string>
+  <string name="np_desc_sh">Ŝlesvigo-Holstinio, Kiel, Flensburg, Lubeko</string>
   <string name="np_desc_vbb">Brandenburgio, Berlino</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Malsupra Saksujo, Bremeno, Bremerhaven, Oldenburgo (Oldenburgujo), Osnabruko</string>
   <string name="np_desc_vgn">Nurenbergo, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
+  <string name="np_name_vgs">saarVV</string>
   <string name="np_desc_vgs">Sarlando, Saarbrücken</string>
-  <string name="np_desc_vms">Mittelsachsen, Chemnitz</string>
   <string name="np_desc_vmv">Meklenburg-Antaŭpomerio, Schwerin</string>
   <string name="np_desc_vrn">Baden-Virtembergo, Rejnland-Palatinato, Manhejmo, Majenco, Treviro</string>
   <string name="np_desc_vrr">Nordrejn-Vestfalujo, Kolonjo, Bonn, Essen, Dortmund, Duseldorfo, Münster, Paderborn, Höxter</string>
@@ -268,14 +280,15 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_region_netherlands">Nederlando</string>
   <string name="np_desc_ns">Nederlando, Amsterdamo</string>
   <string name="np_desc_negentwee">Publika transporto en Nederlando</string>
-  <string name="np_region_norway">Norvegujo</string>
-  <string name="np_desc_nri">Norvegujo, Oslo, Bergen</string>
   <string name="np_name_nz">Nov-Zelando</string>
   <string name="np_desc_nz">Nov-Zelando, Velingtono, Auckland</string>
   <string name="np_region_poland">Polujo</string>
-  <string name="np_desc_pl">Polujo, fervojo en Polujo</string>
   <string name="np_name_spain">Hispanujo</string>
   <string name="np_desc_spain">Madrido, Barcelono, Eŭskujo, Valencio, Alakanto, Majorko, Minorko, Tenerifo, La Palma, Navaro</string>
+  <string name="np_name_hungary">Hungarujo</string>
+  <string name="np_desc_hungary">Budapeŝto, Miskolc</string>
+  <string name="np_name_czechia">Ĉeĥujo</string>
+  <string name="np_desc_czechia">Prago kaj aliaj</string>
   <string name="np_region_sweden">Svedujo</string>
   <string name="np_desc_se">Svedujo, Stokholmo</string>
   <string name="np_region_switzerland">Svisujo</string>
@@ -289,15 +302,17 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="np_desc_dub">Unuiĝintaj Arabaj Emirlandoj, Dubajo</string>
   <string name="np_region_usa">Usono</string>
   <string name="np_desc_rtachicago">Ĉikago</string>
+  <string name="np_desc_bart">San-Francisko</string>
+  <string name="np_name_cmta">Capital Metro</string>
+  <string name="np_desc_cmta">Aŭstino</string>
   <string name="np_name_usny">Nov-Jorkio kaj Nov-Ĵerzejo Ŝtatoj</string>
   <string name="np_name_california">Kalifornio</string>
   <string name="np_desc_california">Publika transporto en Kalifornio (Usono)</string>
   <string name="np_name_oregon">Oregono</string>
-  <string name="np_desc_oregon">Global Transport en Oregono Ŝtato (Usono)</string>
+  <string name="np_desc_oregon">Global Transport en subŝtato Oregono (Usono)</string>
   <string name="np_name_costa_rica">Kostariko</string>
   <string name="np_name_ghana">Ganao</string>
   <string name="np_desc_ghana">Akrao</string>
-  <string name="np_region_central_america">Centr-Ameriko</string>
   <string name="np_name_nicaragua">Nikaragvo</string>
   <string name="np_desc_nicaragua">Veturtabeloj de urbaj, vilaĝaj kaj tutlandaj aŭtobusoj liverataj de kontribuintoj de MapaNica.net kaj OpenStreetMap</string>
   <string name="maintainer">Prizorganto</string>
@@ -320,4 +335,11 @@ Tiu ĉi aplikaĵo uzas datumojn de diversaj lokaj firmaoj de publika transporto 
   <string name="czech">Ĉeĥa</string>
   <string name="hungarian">Hungara</string>
   <string name="japanese">Japana</string>
+  <string name="russian">Rusa</string>
+  <string name="greek">Greka</string>
+  <string name="farsi">Persa</string>
+  <string name="taiwanese">Ĉina (Tajvana)</string>
+  <string name="swedish">Sveda</string>
+  <string name="ukrainian">Ukrajna</string>
+  <string name="danish">Dana</string>
 </resources>

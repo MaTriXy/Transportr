@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,12 +20,17 @@
 package de.grobox.transportr.utils
 
 
+import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.net.Uri
+import android.os.Build
 import android.util.Log
+import android.widget.Toast
 import com.mapbox.mapboxsdk.geometry.LatLng
+import de.grobox.transportr.R
 import de.grobox.transportr.departures.DeparturesActivity
 import de.grobox.transportr.locations.WrapLocation
 import de.grobox.transportr.map.MapActivity
@@ -37,11 +42,19 @@ import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 import java.util.regex.Pattern
 
+
 object IntentUtils {
 
     @JvmStatic
     @JvmOverloads
-    fun findDirections(context: Context, from: WrapLocation?, via: WrapLocation?, to: WrapLocation?, search: Boolean = true, clearTop: Boolean = false) {
+    fun findDirections(
+        context: Context,
+        from: WrapLocation?,
+        via: WrapLocation?,
+        to: WrapLocation?,
+        search: Boolean = true,
+        clearTop: Boolean = false
+    ) {
         val intent = Intent(context, DirectionsActivity::class.java)
         if (clearTop) intent.flags = FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         if (search) intent.action = ACTION_SEARCH
@@ -86,22 +99,29 @@ object IntentUtils {
         val geo = Uri.parse(uri1 + uri2)
 
         // show station on external map
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        intent.data = geo
-        if (intent.resolveActivity(context.packageManager) != null) {
-            Log.d(context.javaClass.simpleName, "Starting geo intent: " + geo.toString())
-            context.startActivity(intent)
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            data = geo
+        }
+        val intentChooser = Intent.createChooser(intent,  context.getString(R.string.show_location_in))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            // exclude Transportr from list on Android >= 7
+            intentChooser.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayOf(ComponentName(context, MapActivity::class.java)))
+        try {
+            Log.d(context.javaClass.simpleName, "Starting geo intent: $geo")
+            context.startActivity(intentChooser)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(context, context.getString(R.string.error_no_map), Toast.LENGTH_LONG).show()
         }
     }
 
     @JvmStatic
     fun getWrapLocation(geoUri: String): WrapLocation? {
-        val pattern = Pattern.compile("^geo:(-?\\d{1,3}(\\.\\d{1,8})?),(-?\\d{1,3}(\\.\\d{1,8})?).*")
+        val pattern = Pattern.compile("^geo:(0,0\\?q=)?(-?\\d{1,3}(\\.\\d{1,8})?),(-?\\d{1,3}(\\.\\d{1,8})?).*")
         val matcher = pattern.matcher(geoUri)
         if (matcher.matches()) {
-            val lat: Double = matcher.group(1).toDouble()
-            val lon: Double = matcher.group(3).toDouble()
+            val lat: Double = matcher.group(2)!!.toDouble()
+            val lon: Double = matcher.group(4)!!.toDouble()
             return if (lat == 0.0 && lon == 0.0) null else WrapLocation(LatLng(lat, lon))
         }
         return null

@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="google_play_title" tools:keep="@string/google_play_title">Transportr</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Otwartoźródłowy asystent transportu publicznego bez reklam i śledzenia</string>
-  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc"><![CDATA[
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
 Transportr jest aplikacją non-profit tworzoną hobbistycznie przez ludzi z całego świata. Celem jest jak najbardziej ułatwić wszystkim korzystanie z transportu publicznego.
 
 Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarcza dla nich wspólny interfejs. Nie jest możliwe sprawdzenie poprawności tych danych, więc <i>nie jest udzielana żadna gwarancja</i> na wyświetlane informacje i używasz jej na swoje własne ryzyko.
@@ -29,7 +29,6 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="action_fav_trip">Oznacz trasę jako ulubioną</string>
   <string name="action_unfav_trip">Wycofaj oznaczenie trasy jako ulubionej</string>
   <string name="action_switch_locations">Odwróć trasę</string>
-  <string name="action_time_type">Czas wynosi</string>
   <string name="trip_dep">Odjazd</string>
   <string name="trip_arr">Przyjazd</string>
   <string name="action_refresh">Odśwież</string>
@@ -40,15 +39,17 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="action_trip_delete">Usuń trasę</string>
   <string name="action_show_on_external_map">Pokaż na zewnętrznej mapie</string>
   <string name="action_copy">Kopiuj</string>
+  <string name="directions">Kierunki</string>
+  <string name="directions_search">Znajdź trasę</string>
   <string name="drawer_departures">Odjazdy</string>
   <string name="tab_about">O</string>
   <string name="tab_libraries">Biblioteki</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten Grote\nProgram na wolnej licencji: GPLv3+</string>
   <string name="about_description">Transportr jest towarzyszem transportu publicznego stworzonego przez ludzi z całego świata, aby korzystanie z komunikacji zbiorowej było jak najłatwiejsze, gdziekolwiek jesteś.</string>
   <string name="about_warning_title">Ostrzeżenie</string>
   <string name="about_warning_text">Nie można zagwarantować poprawności (dostarczanych przez zewnętrzne podmioty) danych. Używasz tej aplikacji tylko na własne ryzyko.</string>
   <string name="about_contributions">Ten program jest Wolnym Oprogramowaniem, więc możesz z niego dowolnie korzystać, analizować go, dzielić się nim i go ulepszać. Ulepszenia są zawsze mile widziane. Jeżeli chciałbyś coś poprawić, prosimy odwiedzić stronę programu po więcej informacji.</string>
   <string name="about_visit_website">Odwiedź stronę</string>
+  <string name="map_attribution_improve">Ulepsz tę mapę</string>
   <string name="open_navigation_drawer">Otwórz menu nawigacji</string>
   <string name="from">Z</string>
   <string name="to">Do</string>
@@ -79,6 +80,7 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="tomorrow">Jutro</string>
   <string name="in_x_minutes">za %dmin</string>
   <string name="x_minutes_ago">%dmin temu</string>
+  <string name="total_time">Całkowity czas: %s</string>
   <string name="time_picker_previous_day">Poprzedni dzień</string>
   <string name="time_picker_next_day">Następny dzień</string>
   <string name="ok">OK</string>
@@ -88,6 +90,8 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="pref_theme_title">Motyw</string>
   <string name="pref_theme_light">Jasny</string>
   <string name="pref_theme_dark">Ciemny</string>
+  <string name="pref_theme_auto_battery">Ustawiona przez oszczędzanie baterii</string>
+  <string name="pref_theme_auto_system">Systemowa</string>
   <string name="pref_language_title">Język</string>
   <string name="pref_directions_routing">Trasy i wyznaczanie drogi</string>
   <string name="pref_optimize">Optymalizuj dla</string>
@@ -98,7 +102,7 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="pref_walk_speed_slow">Powoli</string>
   <string name="pref_walk_speed_normal">Normalnie</string>
   <string name="pref_walk_speed_fast">Szybko</string>
-  <string name="pref_show_when_locked_title">Wyświetl trasy i wyniki wyszukiwania nawet gdy ekran jest zablokowany</string>
+  <string name="pref_show_when_locked_title">Wyświetl trasę nawet gdy ekran jest zablokowany</string>
   <string name="pref_show_when_locked_summary">Wyświetl na ekranie blokady</string>
   <string name="error">Błąd</string>
   <string name="error_no_internet">Wymagane połączenie z internetem. Upewnij się, że Twoje połączenie internetowe działa.</string>
@@ -107,6 +111,7 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="error_geo_intent">Nie można otworzyć zewnętrznej lokalizacji.</string>
   <string name="error_find_nearby_stations">Nie można znaleźć pobliskich stacji.</string>
   <string name="error_departures">Nie można znaleźć żadnych odjazdów</string>
+  <string name="error_no_calendar">Brak zainstalowanego kalendarza :(</string>
   <string name="trip_error_ambiguous">Nie można znaleźć lokalizacji. Spróbuj wyszukać innej lokalizacji.</string>
   <string name="trip_error_too_close">Lokalizacje „z” i „do” są zbyt blisko siebie.</string>
   <string name="trip_error_unknown_from">Nie można odnaleźć lokalizacji „z”. Spróbuj inną.</string>
@@ -116,8 +121,9 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="trip_error_no_trips">Nie znaleziono połączeń :(</string>
   <string name="trip_error_invalid_date">Wyszukiwana data nie jest obecnie wspierana przez dostawcę danych. Spróbuj z inną datą.</string>
   <string name="trip_error_service_down">Dostawca danych ma awarię :(\nSpróbuj ponownie później.</string>
-  <string name="trip_error_pte">Jeżeli chcesz zaraportować ten problem, prosimy zgłosić go do bezpośrednio do public-transport-enabler i dołączyć zrzut ekranu.</string>
+  <string name="trip_error_pte">Jeżeli chciałbyś zaraportować ten problem, prosimy zgłosić go bezpośrednio do %1$s.</string>
   <string name="trip_issue">Może być problem z tym połączeniem.</string>
+  <string name="trip_not_travelable">Niemożliwa lub anulowana</string>
   <string name="try_again">Spróbuj ponownie</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
@@ -128,7 +134,7 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
     <item quantity="other">%d przystanków</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(peron %s)</string>
+  <string name="platform">peron %s</string>
   <string name="system_default">Domyślny systemowy</string>
   <string name="trip_share_date">Data: %s</string>
   <string name="times_include_delays">(Uwaga: czasy mogą uwzględniać zaraportowane opóźnienia)</string>
@@ -152,8 +158,6 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="warning_gps_off">Odnajdywanie lokalizacji wyłączone. Prosimy włączyć je w ustawieniach.</string>
   <string name="onboarding_location_title">Przesuń w górę</string>
   <string name="onboarding_location_message">Więcej funkcji poniżej</string>
-  <string name="onboarding_directions_title">Zaawansowane szukanie</string>
-  <string name="onboarding_directions_message">Stuknij w ikonę, aby wyświetlić zaawansowane opcje szukania.</string>
   <string name="select_products">Wybierz środki transportu</string>
   <string name="product_high_speed_train">Szybka kolej</string>
   <string name="product_regional_train">Koleje regionalne</string>
@@ -165,9 +169,9 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="product_cablecar">Kolej linowa</string>
   <string name="product_on_demand">Na żądanie</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Lista zmian</string>
-  <string name="changelog_title">Co nowego</string>
-  <string name="changelog_show_full">Więcej…</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Lista zmian</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Co nowego</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Więcej…</string>
   <string name="np_continent_europe">Europa</string>
   <string name="np_continent_africa">Afryka</string>
   <string name="np_continent_north_america">Ameryka Północna</string>
@@ -178,6 +182,10 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_region_australia">Australia</string>
   <string name="np_desc_australia">Melbourne, Sydney, Brisbane, Perth, Adelaide, Hobart, Launceston, Burnie</string>
   <string name="np_desc_sydney">Australia, Nowa Południowa Walia, Sydney</string>
+  <string name="np_region_pt">Portugalia</string>
+  <string name="np_name_pt">Portugalia</string>
+  <string name="np_desc_pt">Lizbona</string>
+  <string name="np_desc_pt_networks">Autobus, pociąg, kolej linowo-szynowa, prom, metro</string>
   <string name="np_region_austria">Austria</string>
   <string name="np_desc_ivb">Innsbruck</string>
   <string name="np_desc_linz">Górna Austria, Linz</string>
@@ -188,14 +196,13 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_desc_wien">Wiedeń</string>
   <string name="np_region_belgium">Belgia</string>
   <string name="np_desc_sncb">Transport publiczny w Belgii</string>
-  <string name="np_region_br">Brazylia</string>
   <string name="np_name_br">Brazylia</string>
   <string name="np_desc_br">São Paulo, Rio de Janeiro, Belo Horizonte i Porto Alegre</string>
   <string name="np_name_br_floripa">Florianópolis</string>
   <string name="np_desc_br_floripa">Wiele linii autobusowych, bez „Executivos”</string>
   <string name="np_region_canada">Kanada</string>
   <string name="np_name_ontario">Ontario</string>
-  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Region Waterloo</string>
+  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Hamilton, region Waterloo</string>
   <string name="np_name_quebec">Quebec</string>
   <string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Quebec, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montreal, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
   <string name="np_name_britishcolumbia">Kolumbia Brytyjska</string>
@@ -207,7 +214,7 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_desc_rt">Tylko pociągi długodystansowe</string>
   <string name="np_desc_rt_networks">Sieć Railteam</string>
   <string name="np_region_finland">Finlandia</string>
-  <string name="np_desc_hsl">Helsinki</string>
+  <string name="np_desc_fi">Helsinki, Turku, Tampere, Jyväskylä, Oulu</string>
   <string name="np_region_france">Francja</string>
   <string name="np_name_francenortheast">Francja północno-wschodnia</string>
   <string name="np_desc_francenortheast">Strasbourg, Metz, Lille, Nancy</string>
@@ -241,12 +248,10 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_desc_nvbw">Badenia-Wirtembergia, Konstancja, Bazylea, Bazylea-Miasto, Reutlingen, Rottweil, Tybinga, Sigmaringen</string>
   <string name="np_desc_nvv">Hesja, Frankfurt nad Menem, Kassel</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Alzacja, Dolny Ren, Strasburg, Fryburg Bryzgowijski</string>
   <string name="np_desc_vbb">Brandenburgia, Berlin</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Dolna Saksonia, Brema, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
   <string name="np_desc_vgn">Norymberga, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
   <string name="np_desc_vgs">Saara, Saarbrücken</string>
-  <string name="np_desc_vms">Mittelsachsen, Chemnitz</string>
   <string name="np_desc_vmv">Meklemburgia-Pomorze Przednie, Schwerin</string>
   <string name="np_desc_vrn">Badenia-Wirtembergia, Nadrenia-Palatynat, Mannheim, Moguncja, Trewir</string>
   <string name="np_desc_vrr">Nadrenia Północna-Westfalia, Kolonia, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -270,14 +275,15 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_region_netherlands">Holandia</string>
   <string name="np_desc_ns">Holandia, Amsterdam</string>
   <string name="np_desc_negentwee">Transport publiczny w Holandii</string>
-  <string name="np_region_norway">Norwegia</string>
-  <string name="np_desc_nri">Norwegia, Oslo, Bergen</string>
   <string name="np_name_nz">Nowa Zelandia</string>
   <string name="np_desc_nz">Nowa Zelandia, Wellington, Auckland</string>
   <string name="np_region_poland">Polska</string>
-  <string name="np_desc_pl">Polska, koleje w Polsce</string>
   <string name="np_name_spain">Hiszpania</string>
   <string name="np_desc_spain">Madryt, Barcelona, Kraj Basków, Walencja, Alicante, Majorka, Minorka, Teneryfa, La Palma, Nawarra</string>
+  <string name="np_name_hungary">Węgry</string>
+  <string name="np_desc_hungary">Budapeszt, Miszkolc</string>
+  <string name="np_name_czechia">Czechy</string>
+  <string name="np_desc_czechia">Praga i inne</string>
   <string name="np_region_sweden">Szwecja</string>
   <string name="np_desc_se">Szwecja, Sztokholm</string>
   <string name="np_region_switzerland">Szwajcaria</string>
@@ -299,7 +305,6 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="np_name_costa_rica">Kostaryka</string>
   <string name="np_name_ghana">Ghana</string>
   <string name="np_desc_ghana">Akra</string>
-  <string name="np_region_central_america">Ameryka Środkowa</string>
   <string name="np_name_nicaragua">Nikaragua</string>
   <string name="np_desc_nicaragua">Rozkłady jazdy miejskich, wiejskich i krajowych autobusów dostarczane przez twórców MapaNica.net i OpenStreetMap</string>
   <string name="maintainer">Opiekun</string>
@@ -322,4 +327,11 @@ Ta aplikacja korzysta z wielu dostawców danych transportu publicznego i dostarc
   <string name="czech">Czeski</string>
   <string name="hungarian">Węgierski</string>
   <string name="japanese">Japoński</string>
+  <string name="russian">Rosyjski</string>
+  <string name="greek">Grecki</string>
+  <string name="farsi">Perski</string>
+  <string name="taiwanese">Chiński (Tajwan)</string>
+  <string name="swedish">Szwedzki</string>
+  <string name="ukrainian">Ukraiński</string>
+  <string name="danish">Duński</string>
 </resources>

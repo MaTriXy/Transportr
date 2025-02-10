@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - Freier öffentlicher Nahverkehr</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Freier Assistent für den öffentlichen Nahverkehr ohne Werbung und Tracking</string>
-  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc"><![CDATA[
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
 Transportr ist eine nicht-kommerzielle App, die von Menschen auf der ganzen Welt in ihrer Freizeit entwickelt wurde.
 Sie wollen die Nutzung der öffentlichen Verkehrsmittel für alle so einfach wie möglich machen.
 
@@ -48,7 +48,6 @@ und weiß immer, wo man aussteigen muss.
   <string name="action_fav_trip">Verbindung als Favorit markieren</string>
   <string name="action_unfav_trip">Markierung der Verbindung als Favorit aufheben</string>
   <string name="action_switch_locations">Von und Nach vertauschen</string>
-  <string name="action_time_type">Zeit ist</string>
   <string name="trip_dep">Abfahrt</string>
   <string name="trip_arr">Ankunft</string>
   <string name="action_refresh">Aktualisieren</string>
@@ -59,16 +58,19 @@ und weiß immer, wo man aussteigen muss.
   <string name="action_trip_delete">Verbindung löschen</string>
   <string name="action_show_on_external_map">Auf externer Karte anzeigen</string>
   <string name="action_copy">Kopieren</string>
+  <string name="directions">Verbindungen</string>
+  <string name="directions_search">Verbindungen suchen</string>
   <string name="drawer_departures">Abfahrten</string>
   <string name="tab_about">Über</string>
   <string name="tab_libraries">Bibliotheken</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten Grote\nFree Software License: GPLv3+</string>
+  <string name="about_copyright">© 2013 – 2023 Torsten Grote\nFree Software License: GPLv3+</string>
   <string name="about_description">Transportr ist ein Begleiter im öffentlichen Verkehr, der von Menschen auf der ganzen Welt entwickelt wurde, um die Benutzung öffentlicher Verkehrsmittel so einfach wie möglich zu machen, egal wo Sie sich gerade befinden.</string>
   <string name="about_warning_title">Warnung</string>
   <string name="about_warning_text">Es wird keine Gewähr für die Richtigkeit der (extern zur Verfügung gestellten) Daten übernommen. Bitte benutzen Sie diese App nur auf eigene Gefahr.</string>
   <string name="about_contributions">Diese App ist Freie Software, so dass Sie sie frei benutzen, studieren, teilen und verbessern können. Beiträge sind erwünscht und willkommen. Wenn Sie einen Beitrag leisten möchten, besuchen Sie bitte die Homepage für weitere Informationen.</string>
   <string name="about_visit_website">Zur Webseite</string>
-  <string name="open_navigation_drawer">Navigationsschuber öffnen</string>
+  <string name="map_attribution_improve">Diese Karte verbessern</string>
+  <string name="open_navigation_drawer">Navigationsbereich öffnen</string>
   <string name="from">Von</string>
   <string name="to">Nach</string>
   <string name="via">Über</string>
@@ -87,6 +89,7 @@ und weiß immer, wo man aussteigen muss.
   <string name="find_nearby_stations">Haltestellen in der Umgebung suchen</string>
   <string name="find_departures">Abfahrten suchen</string>
   <string name="share_trip_via">Verbindungen teilen mit…</string>
+  <string name="show_location_in">Standort anzeigen in…</string>
   <string name="more">Mehr</string>
   <!--Shows a short(!) representation of how long you need to walk, e.g. "for 5 min"-->
   <string name="for_x_min">für %d min</string>
@@ -98,6 +101,7 @@ und weiß immer, wo man aussteigen muss.
   <string name="tomorrow">Morgen</string>
   <string name="in_x_minutes">in %d min</string>
   <string name="x_minutes_ago">vor %d min</string>
+  <string name="total_time">Gesamtzeit: %s</string>
   <string name="time_picker_previous_day">Vorheriger Tag</string>
   <string name="time_picker_next_day">Nächster Tag</string>
   <string name="ok">OK</string>
@@ -107,17 +111,19 @@ und weiß immer, wo man aussteigen muss.
   <string name="pref_theme_title">Thema</string>
   <string name="pref_theme_light">Hell</string>
   <string name="pref_theme_dark">Dunkel</string>
+  <string name="pref_theme_auto_battery">Einstellung durch Batteriesparmodus</string>
+  <string name="pref_theme_auto_system">Systemstandard</string>
   <string name="pref_language_title">Sprache</string>
   <string name="pref_directions_routing">Verbindungen und Routenkriterien</string>
   <string name="pref_optimize">Optimiert für</string>
   <string name="pref_optimize_least_duration">Geringste Dauer</string>
-  <string name="pref_optimize_least_changes">Geringste Änderungen</string>
+  <string name="pref_optimize_least_changes">Wenigste Umstiege</string>
   <string name="pref_optimize_least_walking">Kürzester Fußweg</string>
   <string name="pref_walk_speed">Laufgeschwindigkeit</string>
   <string name="pref_walk_speed_slow">Langsam</string>
   <string name="pref_walk_speed_normal">Normal</string>
   <string name="pref_walk_speed_fast">Schnell</string>
-  <string name="pref_show_when_locked_title">Zeige Fahrt und Suchtreffer auch wenn der Bildschirm gesperrt ist</string>
+  <string name="pref_show_when_locked_title">Zeige Fahrt auch, wenn der Bildschirm gesperrt ist</string>
   <string name="pref_show_when_locked_summary">Über dem Sperrbildschirm anzeigen</string>
   <string name="error">Fehler</string>
   <string name="error_no_internet">Eine Internetverbindung wird benötigt. Bitte stelle sicher, dass dein Internetzugang funktioniert.</string>
@@ -126,6 +132,8 @@ und weiß immer, wo man aussteigen muss.
   <string name="error_geo_intent">Konnte externe Position nicht öffnen</string>
   <string name="error_find_nearby_stations">Konnte keine Haltestellen in der Nähe finden</string>
   <string name="error_departures">Konnte keine Abfahrten finden</string>
+  <string name="error_no_calendar">Kein Kalender installiert :(</string>
+  <string name="error_no_map">Keine externe Karte installiert :(</string>
   <string name="trip_error_ambiguous">Konnte den Ort nicht finden. Bitte versuche mit anderen Orten zu suchen.</string>
   <string name="trip_error_too_close">Die Orte \'von\' und \'nach\' sind zu nahe beieinander.</string>
   <string name="trip_error_unknown_from">Konnte den Ort \'von\' nicht finden. Bitte versuche es mit einem anderen.</string>
@@ -135,8 +143,9 @@ und weiß immer, wo man aussteigen muss.
   <string name="trip_error_no_trips">Keine Verbindungen gefunden :(</string>
   <string name="trip_error_invalid_date">Das Suchdatum wird momentan nicht von der Datenquelle unterstützt. Bitte versuche ein anderes Datum.</string>
   <string name="trip_error_service_down">Die Datenquelle ist momentan nicht erreichbar :(\nBitte versuche es später noch einmal.</string>
-  <string name="trip_error_pte">Wenn du diesen Fehler melden möchtest, kannst du ihn bitte direkt an den Public Transport Enabler melden und einen Screenshot hinzufügen.</string>
+  <string name="trip_error_pte">Wenn du diesen Fehler melden möchtest, kannst du ihn bitte direkt an %1$s melden.</string>
   <string name="trip_issue">Es könnte ein Problem mit dieser Verbindung geben.</string>
+  <string name="trip_not_travelable">Unmöglich oder abgebrochen</string>
   <string name="try_again">Noch einmal versuchen</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
@@ -145,7 +154,7 @@ und weiß immer, wo man aussteigen muss.
     <item quantity="other">%d Haltestellen</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(Gleis %s)</string>
+  <string name="platform">Gleis %s</string>
   <string name="system_default">Systemstandard</string>
   <string name="trip_share_date">Datum: %s</string>
   <string name="times_include_delays">(Achtung: Zeiten können gemeldete Verspätungen enthalten)</string>
@@ -169,8 +178,6 @@ und weiß immer, wo man aussteigen muss.
   <string name="warning_gps_off">Der Standort ist ausgeschaltet. Bitte schalte es in den Einstellungen ein.</string>
   <string name="onboarding_location_title">Hochziehen</string>
   <string name="onboarding_location_message">Weitere Funktionen verbergen sich weiter unten</string>
-  <string name="onboarding_directions_title">Weitere Suchoptionen</string>
-  <string name="onboarding_directions_message">Klicke auf dieses Symbol, um die erweiterten Sucheinstellungen anzuzeigen.</string>
   <string name="select_products">Wähle das Verkehrsmittel</string>
   <string name="product_high_speed_train">Hochgeschwindigkeitszug</string>
   <string name="product_regional_train">Regionalbahn</string>
@@ -182,9 +189,9 @@ und weiß immer, wo man aussteigen muss.
   <string name="product_cablecar">Seilbahn</string>
   <string name="product_on_demand">Auf Nachfrage</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Änderungsprotokoll</string>
-  <string name="changelog_title">Was gibt\'s Neues</string>
-  <string name="changelog_show_full">Mehr…</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Änderungsprotokoll</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Was gibt\'s Neues</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Mehr…</string>
   <string name="np_continent_europe">Europa</string>
   <string name="np_continent_africa">Afrika</string>
   <string name="np_continent_north_america">Nordamerika</string>
@@ -194,7 +201,11 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_continent_oceania">Ozeanien</string>
   <string name="np_region_australia">Australien</string>
   <string name="np_desc_australia">Melbourne, Sydney, Brisbane, Perth, Adelaide, Hobart, Launceston, Burnie</string>
-  <string name="np_desc_sydney">Australien, Neusüdwales, Sydney</string>
+  <string name="np_desc_sydney">Australien, New South Wales, Sydney</string>
+  <string name="np_region_pt">Portugal</string>
+  <string name="np_name_pt">Portugal</string>
+  <string name="np_desc_pt">Lissabon</string>
+  <string name="np_desc_pt_networks">Bus, Bahn, Standseilbahn, Fähre, Metro</string>
   <string name="np_region_austria">Österreich</string>
   <string name="np_desc_ivb">Innsbruck</string>
   <string name="np_desc_linz">Oberösterreich, Linz</string>
@@ -205,14 +216,13 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_desc_wien">Wien</string>
   <string name="np_region_belgium">Belgien</string>
   <string name="np_desc_sncb">Öffentliche Verkehrsmittel in Belgien</string>
-  <string name="np_region_br">Brasilien</string>
   <string name="np_name_br">Brasilien</string>
   <string name="np_desc_br">São Paulo, Rio de Janeiro, Belo Horizonte und Porto Alegre</string>
   <string name="np_name_br_floripa">Florianópolis</string>
   <string name="np_desc_br_floripa">Viele Buslinien, keine Executivos</string>
   <string name="np_region_canada">Kanada</string>
   <string name="np_name_ontario">Ontario</string>
-  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Waterloo Region</string>
+  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Hamilton, Waterloo Region</string>
   <string name="np_name_quebec">Québec</string>
   <string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Québec, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montreal, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
   <string name="np_name_britishcolumbia">British Columbia</string>
@@ -224,7 +234,7 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_desc_rt">Nur Fernzüge</string>
   <string name="np_desc_rt_networks">Railteam-Allianz</string>
   <string name="np_region_finland">Finnland</string>
-  <string name="np_desc_hsl">Helsinki</string>
+  <string name="np_desc_fi">Helsinki, Turku, Tampere, Jyväskylä, Oulu</string>
   <string name="np_region_france">Frankreich</string>
   <string name="np_name_francenortheast">Frankreich Nordost</string>
   <string name="np_desc_francenortheast">Straßburg, Metz, Lille, Nancy</string>
@@ -242,6 +252,8 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_desc_tlwm" tools:keep="@string/np_desc_tlwm">Birmingham</string>
   <string name="np_region_germany">Deutschland</string>
   <string name="np_desc_avv">Augsburg</string>
+  <string name="np_name_avvaachen">AVV</string>
+  <string name="np_desc_avvaachen">Aachen</string>
   <string name="np_desc_bayern">Bayern, Würzburg, Regensburg</string>
   <string name="np_desc_bsvag">Braunschweig, Wolfsburg</string>
   <string name="np_desc_bvg">Berlin</string>
@@ -258,12 +270,13 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_desc_nvbw">Baden-Württemberg, Konstanz, Basel, Basel-Stadt, Reutlingen, Rottweil, Tübingen, Sigmaringen</string>
   <string name="np_desc_nvv">Hessen, Frankfurt am Main, Kassel</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Elsass, Nieder-Rhein, Straßburg, Freiburg im Breisgau</string>
+  <string name="np_name_sh">NAH.SH</string>
+  <string name="np_desc_sh">Schleswig-Holstein, Kiel, Flensburg, Lübeck</string>
   <string name="np_desc_vbb">Brandenburg, Berlin</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Niedersachsen, Bremen, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
   <string name="np_desc_vgn">Nürnberg, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
+  <string name="np_name_vgs">saarVV</string>
   <string name="np_desc_vgs">Saarland, Saarbrücken</string>
-  <string name="np_desc_vms">Mittelsachsen, Chemnitz</string>
   <string name="np_desc_vmv">Mecklenburg-Vorpommern, Schwerin</string>
   <string name="np_desc_vrn">Baden-Württemberg, Rheinland-Pfalz, Mannheim, Mainz, Trier</string>
   <string name="np_desc_vrr">Nordrhein-Westfalen, Köln, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -287,14 +300,15 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_region_netherlands">Niederlande</string>
   <string name="np_desc_ns">Niederlande, Amsterdam</string>
   <string name="np_desc_negentwee">Sämtliche öffentliche Verkehrsmittel in Belgien</string>
-  <string name="np_region_norway">Norwegen</string>
-  <string name="np_desc_nri">Norwegen, Oslo, Bergen</string>
   <string name="np_name_nz">Neuseeland</string>
   <string name="np_desc_nz">Neuseeland, Wellington, Auckland</string>
   <string name="np_region_poland">Polen</string>
-  <string name="np_desc_pl">Polen, Eisenbahnen in Polen</string>
   <string name="np_name_spain">Spanien</string>
   <string name="np_desc_spain">Madrid, Barcelona, Baskenland, Valencia, Alicante, Mallorca, Menorca, Teneriffa, La Palma, Navarra</string>
+  <string name="np_name_hungary">Ungarn</string>
+  <string name="np_desc_hungary">Budapest, Mischkolz</string>
+  <string name="np_name_czechia">Tschechien</string>
+  <string name="np_desc_czechia">Prag und andere</string>
   <string name="np_region_sweden">Schweden</string>
   <string name="np_desc_se">Schweden, Stockholm</string>
   <string name="np_region_switzerland">Schweiz</string>
@@ -308,6 +322,9 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_desc_dub">Vereinigte Arabische Emirate, Dubai</string>
   <string name="np_region_usa">Vereinigte Staaten von Amerika</string>
   <string name="np_desc_rtachicago">Chicago</string>
+  <string name="np_desc_bart">San Francisco</string>
+  <string name="np_name_cmta">Capital Metro</string>
+  <string name="np_desc_cmta">Austin</string>
   <string name="np_name_usny">Die Bundesstaaten New York und New-Jersey</string>
   <string name="np_name_california">Kalifornien</string>
   <string name="np_desc_california">Öffentliche Verkehrsmittel in Kalifornien (USA)</string>
@@ -316,7 +333,6 @@ und weiß immer, wo man aussteigen muss.
   <string name="np_name_costa_rica">Costa Rica</string>
   <string name="np_name_ghana">Ghana</string>
   <string name="np_desc_ghana">Accra</string>
-  <string name="np_region_central_america">Zentralamerika</string>
   <string name="np_name_nicaragua">Nicaragua</string>
   <string name="np_desc_nicaragua">Städtische, ländliche und landesweite Busse, die von MapaNica.net und OpenStreetMap-Unterstützern bereitgestellt werden</string>
   <string name="maintainer">Koordinator</string>
@@ -339,4 +355,11 @@ und weiß immer, wo man aussteigen muss.
   <string name="czech">Tschechisch</string>
   <string name="hungarian">Ungarisch</string>
   <string name="japanese">Japanisch</string>
+  <string name="russian">Russisch</string>
+  <string name="greek">Griechisch</string>
+  <string name="farsi">Persisch</string>
+  <string name="taiwanese">Chinesisch (Taiwan)</string>
+  <string name="swedish">Schwedisch</string>
+  <string name="ukrainian">Ukrainisch</string>
+  <string name="danish">Dänisch</string>
 </resources>

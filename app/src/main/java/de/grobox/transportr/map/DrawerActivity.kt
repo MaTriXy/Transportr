@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -22,11 +22,11 @@ package de.grobox.transportr.map
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.ActivityOptionsCompat.makeScaleUpAnimation
-import android.support.v7.widget.RecyclerView.NO_POSITION
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat.makeScaleUpAnimation
+import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 import android.view.View
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -35,22 +35,17 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
-import com.mikepenz.materialdrawer.util.KeyboardUtil
+import com.mikepenz.materialize.util.KeyboardUtil
 import de.grobox.transportr.R
 import de.grobox.transportr.TransportrActivity
 import de.grobox.transportr.about.AboutActivity
 import de.grobox.transportr.about.ContributorsActivity
 import de.grobox.transportr.networks.PickTransportNetworkActivity
 import de.grobox.transportr.networks.TransportNetwork
-import de.grobox.transportr.networks.TransportNetworkManager
 import de.grobox.transportr.settings.SettingsActivity
 import de.grobox.transportr.ui.TransportrChangeLog
-import javax.inject.Inject
 
 internal abstract class DrawerActivity : TransportrActivity() {
-
-    @Inject
-    protected lateinit var manager: TransportNetworkManager
 
     private lateinit var drawer: Drawer
     private lateinit var accountHeader: AccountHeader
@@ -87,26 +82,26 @@ internal abstract class DrawerActivity : TransportrActivity() {
             .withActivity(this)
             .withAccountHeader(accountHeader)
             .addDrawerItems(
-                getDrawerItem(R.string.drawer_settings, R.drawable.ic_action_settings, {
+                getDrawerItem(R.string.drawer_settings, R.drawable.ic_action_settings) {
                     val intent = Intent(this, SettingsActivity::class.java)
                     startActivity(intent)
-                }),
+                },
                 DividerDrawerItem(),
-                getDrawerItem(R.string.drawer_changelog, R.drawable.ic_action_changelog, {
+                getDrawerItem(R.string.drawer_changelog, R.drawable.ic_action_changelog) {
                     TransportrChangeLog(this, settingsManager).fullLogDialog.show()
-                }),
-                getDrawerItem(R.string.drawer_contributors, R.drawable.ic_people, {
+                },
+                getDrawerItem(R.string.drawer_contributors, R.drawable.ic_people) {
                     val intent = Intent(this, ContributorsActivity::class.java)
                     startActivity(intent)
-                }),
-                getDrawerItem(R.string.drawer_report_issue, R.drawable.ic_bug_report, {
+                },
+                getDrawerItem(R.string.drawer_report_issue, R.drawable.ic_bug_report) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.bug_tracker)))
                     startActivity(intent)
-                }),
-                getDrawerItem(R.string.drawer_about, R.drawable.ic_action_about, {
+                },
+                getDrawerItem(R.string.drawer_about, R.drawable.ic_action_about) {
                     val intent = Intent(this, AboutActivity::class.java)
                     startActivity(intent)
-                })
+                }
             )
             .withOnDrawerListener(object : Drawer.OnDrawerListener {
                 override fun onDrawerOpened(drawerView: View) {

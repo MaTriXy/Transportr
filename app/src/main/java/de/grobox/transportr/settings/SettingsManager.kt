@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -21,12 +21,18 @@ package de.grobox.transportr.settings
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.os.Build
+import android.os.PowerManager
 import android.preference.PreferenceManager
-import android.support.annotation.StyleRes
+import androidx.appcompat.app.AppCompatDelegate.*
+import androidx.core.content.ContextCompat
 import de.grobox.transportr.R
 import de.schildbach.pte.NetworkId
 import de.schildbach.pte.NetworkProvider.Optimize
 import de.schildbach.pte.NetworkProvider.WalkSpeed
+import de.schildbach.pte.dto.Product
 import java.util.*
 import javax.inject.Inject
 
@@ -38,9 +44,9 @@ class SettingsManager @Inject constructor(private val context: Context) {
     val locale: Locale
         get() {
             val default = context.getString(R.string.pref_language_value_default)
-            val str = settings.getString(LANGUAGE, default)
+            val str = settings.getString(LANGUAGE, default) ?: default
             return when {
-                str == default -> Locale.getDefault()
+                str == default -> Resources.getSystem().configuration.locale
                 str.contains("_") -> {
                     val langArray = str.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
                     Locale(langArray[0], langArray[1])
@@ -50,24 +56,34 @@ class SettingsManager @Inject constructor(private val context: Context) {
         }
 
     val theme: Int
-        @StyleRes get() {
+        get() {
             val dark = context.getString(R.string.pref_theme_value_dark)
             val light = context.getString(R.string.pref_theme_value_light)
-            val theme = settings.getString(THEME, light)
-            return if (theme == dark) {
-                R.style.AppTheme
-            } else R.style.AppTheme_Light
+            val auto = context.getString(R.string.pref_theme_value_auto)
+            return when (settings.getString(THEME, auto)) {
+                dark -> MODE_NIGHT_YES
+                light -> MODE_NIGHT_NO
+                else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) MODE_NIGHT_FOLLOW_SYSTEM else MODE_NIGHT_AUTO_BATTERY
+            }
         }
 
     val isDarkTheme: Boolean
         get() {
-            return theme == R.style.AppTheme
+            return when(theme) {
+                MODE_NIGHT_YES -> true
+                MODE_NIGHT_NO -> false
+                else -> if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                    context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+                else
+                    ContextCompat.getSystemService(context, PowerManager::class.java)?.isPowerSaveMode ?: false
+            }
         }
 
     val walkSpeed: WalkSpeed
         get() {
             return try {
-                WalkSpeed.valueOf(settings.getString(WALK_SPEED, context.getString(R.string.pref_walk_speed_value_default)))
+                val default = context.getString(R.string.pref_walk_speed_value_default)
+                WalkSpeed.valueOf(settings.getString(WALK_SPEED, default) ?: default)
             } catch (e: IllegalArgumentException) {
                 e.printStackTrace()
                 WalkSpeed.NORMAL
@@ -77,7 +93,8 @@ class SettingsManager @Inject constructor(private val context: Context) {
     val optimize: Optimize
         get() {
             return try {
-                Optimize.valueOf(settings.getString(OPTIMIZE, context.getString(R.string.pref_optimize_value_default)))
+                val default = context.getString(R.string.pref_optimize_value_default)
+                Optimize.valueOf(settings.getString(OPTIMIZE, default) ?: default)
             } catch (e: IllegalArgumentException) {
                 e.printStackTrace()
                 Optimize.LEAST_DURATION
@@ -92,11 +109,6 @@ class SettingsManager @Inject constructor(private val context: Context) {
     fun showTripDetailFragmentOnboarding(): Boolean = settings.getBoolean(TRIP_DETAIL_ONBOARDING, true)
     fun tripDetailOnboardingShown() {
         settings.edit().putBoolean(TRIP_DETAIL_ONBOARDING, false).apply()
-    }
-
-    fun showDirectionsOnboarding(): Boolean = settings.getBoolean(DIRECTIONS_ONBOARDING, true)
-    fun directionsOnboardingShown() {
-        settings.edit().putBoolean(DIRECTIONS_ONBOARDING, false).apply()
     }
 
     fun getNetworkId(i: Int): NetworkId? {
@@ -132,6 +144,30 @@ class SettingsManager @Inject constructor(private val context: Context) {
         return settings.getBoolean(SHOW_WHEN_LOCKED, true)
     }
 
+    fun setPreferredProducts(selected: Set<Product>) {
+        val editor = settings.edit()
+        Product.ALL.toSet().forEach { product ->
+            editor.putBoolean(LAST_PRODUCT_PREFIX + product.name, product in selected)
+        }
+        editor.apply()
+    }
+
+    fun getPreferredProducts(): Set<Product> {
+        val firstTime = Product.ALL.none { settings.contains(LAST_PRODUCT_PREFIX + it.name) }
+        if (firstTime) {
+            setPreferredProducts(Product.ALL)
+            return Product.ALL
+        }
+
+        val products = mutableSetOf<Product>()
+        Product.ALL.toSet().forEach { product ->
+            if (settings.getBoolean(LAST_PRODUCT_PREFIX + product.name, false)) {
+                products.add(product)
+            }
+        }
+        return products
+    }
+
     companion object {
         private const val NETWORK_ID_1 = "NetworkId"
         private const val NETWORK_ID_2 = "NetworkId2"
@@ -144,7 +180,7 @@ class SettingsManager @Inject constructor(private val context: Context) {
         private const val OPTIMIZE = "pref_key_optimize"
         private const val LOCATION_ONBOARDING = "locationOnboarding"
         private const val TRIP_DETAIL_ONBOARDING = "tripDetailOnboarding"
-        private const val DIRECTIONS_ONBOARDING = "directionsOnboarding"
+        private const val LAST_PRODUCT_PREFIX = "pref_key_last_product_prefix_"
     }
 
 }

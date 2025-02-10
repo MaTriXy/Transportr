@@ -1,7 +1,45 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-  <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - Kode irekiko garraio publikoa</string>
+  <string name="google_play_title" tools:keep="@string/google_play_title">Transportr - Garraio publiko librea</string>
   <string name="google_play_short_desc" tools:keep="@string/google_play_short_desc">Garraio publikoarentzako aplikazio lagungarria, iragarki eta tracker gabe</string>
+  <string name="google_play_full_desc" tools:keep="@string/google_play_full_desc" tools:ignore="StringFormatInvalid"><![CDATA[
+Transportr irabazi asmorik gabeko aplikazioa bat da, mundu osoko pertsonek bere denbora librean garatua.
+
+Garraio publikoa erabiltzea denontzat ahal beste erraztu nahi dute
+
+Aplikazio honek hainbat garraio agentzien tokiko datuak darabiltza eta interfaze bateratu bat eskaintzen du.
+Ezin du datuen zuzentasuna egiaztatu
+hortaz <i>ez du bermerik eskaintzen</i> emandako informazioaren inguruan.
+Erabili zure erantzukizunaren pean.
+
+<b>🛣️ Bidaien planifikazioa</b>. Esan Transportr aplikazioari nora joan nahi duzun!
+Konexiorik egokiena aurkituko du zuretzat, autobusez noiz aldatu esaten dizu,
+eta iritsiera ordua kalkulatzen dizu ere.
+
+<b>⏱️ Zuzeneko irteerak</b>. Geltoki guztietako irteerak erakutsi ditzake.
+<i>Onartutako</i> zonaldeetan, atzerapenak denbora errealean erakutsiko ditu ere.
+
+<b>🗽 Software askatasuna</b>. Transportr aplikazioaren iturburu kodea  librea da % 100ean.
+Libreki erabili, ikertu, elkarbanatu eta hobetu dezakezu.
+<i>Zuk</i> hobetzen duzu aplikazio hau.
+Zure hiria zuk zeuk gehitu dezakezu ere, oraindik euskarririk ez badago.
+
+<b>🛰️ Zure kokalekua aurkitzen du.</b> Transportr aplikazioak GPS sateliteen bidezko orientazioa darabil
+zure uneko kokalekua zein den jakiteko, eta ez zaitezen inoiz galdu.
+Bidai berri bat hasteko inguruko geltokiak aurkitu ditzakezu
+eta bidaian zenbat aurreratu duzun ikusi dezakezu.
+
+<b>🌟 Zure gogoko tokiak gogoratzen ditu.</b> Behar duzun tokira azkarrago hel zaitezen,
+Transportr aplikazioak maiz erabilitako toki eta bidaiak gordetzen ditu.
+Honela ez dituzu behin eta berriro idatzi behar.
+
+<b>🚫 Iragarkitik ez, jarraipenik ez</b>. Aplikazio honek ez du iragarkirik bistaratzen
+edo jakinarazpen gogaikarririk.
+Ez du ezta Google Analytics edo antzeko tresnarik erabiltzen zu zelatatzeko.
+
+<b>🗺️ Mapa ederrak</b>. Geltokiak edo zure bidai osoa mapa batean erakusten dizu
+eta beti daki non zauden autobusetik non jaitsi jakin dezazun.
+]]></string>
   <string name="drawer_settings">Ezarpenak</string>
   <string name="drawer_changelog">Aldaketen zerrenda</string>
   <string name="drawer_about">Honi buruz</string>
@@ -10,7 +48,6 @@
   <string name="action_fav_trip">Markatu bidaia gogoko gisa</string>
   <string name="action_unfav_trip">Desmarkatu bidaia gogokoetatik</string>
   <string name="action_switch_locations">Alderantzikatu \'nondik\' eta \'nora\'</string>
-  <string name="action_time_type">Orduaren esanahia</string>
   <string name="trip_dep">Irteera</string>
   <string name="trip_arr">Iritsiera</string>
   <string name="action_refresh">Freskatu</string>
@@ -21,15 +58,17 @@
   <string name="action_trip_delete">Ezabatu bidaia</string>
   <string name="action_show_on_external_map">Erakutsi kanpoko mapan</string>
   <string name="action_copy">Kopiatu</string>
+  <string name="directions">Norabideak</string>
+  <string name="directions_search">Bilatu jarraibideak</string>
   <string name="drawer_departures">Irteerak</string>
   <string name="tab_about">Honi buruz</string>
   <string name="tab_libraries">Liburutegiak</string>
-  <string name="about_copyright">© 2013 – 2018 Torsten Grote\Software lizentzia librea: GPLv3+</string>
   <string name="about_description">Transportr garraio publikorako aplikazio lagungarri bat da, mundu osoko jendeak garatutakoa, garraio publikoa erabiltzea ahalik eta errazena izan dadin zauden tokian zaudela.</string>
   <string name="about_warning_title">Abisua</string>
   <string name="about_warning_text">Ezin da bermatu (kanpotik eskuratutako) informazioaren zehaztasuna. Erabili aplikazio hau zure ardurapean.</string>
   <string name="about_contributions">Aplikazio hau software librea da, libreki erabili dezakezu, ikertu, partekatu eta hobetu. Ekarpenak ongi etorriak dira eta eskertzen dira. Ekarpenik egin nahi ba duzu, bisitatu hasiera orria informazio gehiagorako.</string>
   <string name="about_visit_website">Bisitatu webgunea</string>
+  <string name="map_attribution_improve">Hobetu mapa hau</string>
   <string name="open_navigation_drawer">Ireki nabigazioaren tiradera</string>
   <string name="from">Nondik</string>
   <string name="to">Nora</string>
@@ -44,11 +83,12 @@
   <string name="network">Sarea</string>
   <string name="pick_network_activity">Hautatu ingurunea</string>
   <string name="pick_network_first_run">Ongi etorri Transportr-era!\n\nMesedez hautatu ezazu zure inguruko garraio sarea jarraitzeko. Edozein momentutan aldatu ahal izango duzu.</string>
-  <string name="stations_searching_position">Uneko kokapena bilatzen...</string>
+  <string name="stations_searching_position">Uneko kokapena bilatzen…</string>
   <string name="drawer_nearby_stations">Inguruko geltokiak</string>
   <string name="find_nearby_stations">Bilatu inguruko geltokiak</string>
   <string name="find_departures">Bilatu irteerak</string>
-  <string name="share_trip_via">Partekatu bidaia honekin...</string>
+  <string name="share_trip_via">Partekatu bidaia honekin…</string>
+  <string name="show_location_in">Erakutsi kokapena hemen…</string>
   <string name="more">Gehiago</string>
   <!--Shows a short(!) representation of how long you need to walk, e.g. "for 5 min"-->
   <string name="for_x_min">%d minutuz</string>
@@ -60,6 +100,7 @@
   <string name="tomorrow">Bihar</string>
   <string name="in_x_minutes">%dmin barru</string>
   <string name="x_minutes_ago">duela %dmin</string>
+  <string name="total_time">Denbora guztira: %s</string>
   <string name="time_picker_previous_day">Aurreko eguna</string>
   <string name="time_picker_next_day">Hurrengo eguna</string>
   <string name="ok">Ados</string>
@@ -69,6 +110,8 @@
   <string name="pref_theme_title">Gaia</string>
   <string name="pref_theme_light">Argia</string>
   <string name="pref_theme_dark">Iluna</string>
+  <string name="pref_theme_auto_battery">Ezarri bateria aurrezleaz</string>
+  <string name="pref_theme_auto_system">Sistemako lehenetsia</string>
   <string name="pref_language_title">Hizkuntza</string>
   <string name="pref_directions_routing">Jarraibideak eta bidaiaren kalkulua</string>
   <string name="pref_optimize">Optimizatu honetarako</string>
@@ -79,7 +122,7 @@
   <string name="pref_walk_speed_slow">Poliki</string>
   <string name="pref_walk_speed_normal">Arrunta</string>
   <string name="pref_walk_speed_fast">Bizkor</string>
-  <string name="pref_show_when_locked_title">Erakutsi bidaia eta bilaketaren emaitzak pantaila blokeatuta badago ere</string>
+  <string name="pref_show_when_locked_title">Erakutsi bidaia pantaila blokeatuta dagoenean ere</string>
   <string name="pref_show_when_locked_summary">Erakutsi blokeo-pantailaren gainean</string>
   <string name="error">Errorea</string>
   <string name="error_no_internet">Internet konexioa behar da. Egiaztatu zure internet konexioa badabilela.</string>
@@ -88,6 +131,8 @@
   <string name="error_geo_intent">Ezin izan da kanpo kokalekua ireki</string>
   <string name="error_find_nearby_stations">Ezin izan dira inguruko geltokiak aurkitu</string>
   <string name="error_departures">Ezin izan da irteerarik aurkitu</string>
+  <string name="error_no_calendar">Ez dago egutegirik instalatuta :(</string>
+  <string name="error_no_map">Ez dago kanpoko maparik instalatuta :(</string>
   <string name="trip_error_ambiguous">Ezin izan da kokalekua aurkitu. Saiatu kokaleku desberdinak bilatzen.</string>
   <string name="trip_error_too_close">\'nondik\' eta \'nora\' kokalekuak elkarrengandik hurbilegi daude.</string>
   <string name="trip_error_unknown_from">Ezin izan da \'nondik\' kokalekua aurkitu. Saiatu beste batekin.</string>
@@ -97,8 +142,9 @@
   <string name="trip_error_no_trips">Ezin izan da garraioen konexiorik aurkitu :(</string>
   <string name="trip_error_invalid_date">Datuen hornitzaileak ez du bilaketa data onartzen. Saiatu beste data batekin.</string>
   <string name="trip_error_service_down">Datuen hornitzailea ez dago eskuragarri:(\n Saiatu geroago.</string>
-  <string name="trip_error_pte">Errore honen berri eman nahi baduzu, egizu public-transport-enabler proiektuan zuzenean eta gehitu pantaila-argazki bat.</string>
+  <string name="trip_error_pte">Errore honen berri eman nahi baduzu, egizu %1$s proiektuan zuzenean.</string>
   <string name="trip_issue">Arazoren bat egon daiteke konexio honekin.</string>
+  <string name="trip_not_travelable">Ezinezkoa edo ezeztatua</string>
   <string name="try_again">Saiatu berriro</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
   <string name="meter">%d m</string>
@@ -107,7 +153,7 @@
     <item quantity="other">%d geldialdi</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(%s plataforma)</string>
+  <string name="platform">%s plataforma</string>
   <string name="system_default">Sistemaren lehenetsia</string>
   <string name="trip_share_date">Data: %s</string>
   <string name="times_include_delays">(Adi: Denborek atzerapen ezagunak barne-har ditzakete)</string>
@@ -115,7 +161,7 @@
   <string name="home">Etxea</string>
   <string name="home_dialog_title">Ezarri etxeko kokalekua</string>
   <string name="widget_name_quickhome">Eraman nazazu etxera</string>
-  <string name="work">Lana</string>
+  <string name="work">Lantokia</string>
   <string name="work_hint">Ezarri laneko kokalekua</string>
   <string name="widget_name_quickwork">Joan lanera</string>
   <string name="tap_to_set">Ukitu ezartzeko</string>
@@ -131,8 +177,6 @@
   <string name="warning_gps_off">Kokapena desgaituta dago. Gaitu ezarpenetan.</string>
   <string name="onboarding_location_title">Geldialdia</string>
   <string name="onboarding_location_message">Ezaugarri gehiago azpian ezkutatuta</string>
-  <string name="onboarding_directions_title">Bilaketa aukera gehiago</string>
-  <string name="onboarding_directions_message">Egin klik ikono honetan bilaketa aurreratuaren ezarpenak agerrarazteko.</string>
   <string name="select_products">Hautatu garriobideak</string>
   <string name="product_high_speed_train">Abiadura handiko trena</string>
   <string name="product_regional_train">Eskualdeko trena</string>
@@ -144,9 +188,9 @@
   <string name="product_cablecar">Teleferikoa</string>
   <string name="product_on_demand">Eskariaren arabera</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Aldaketen zerrenda</string>
-  <string name="changelog_title">Zer da berria</string>
-  <string name="changelog_show_full">Gehiago...</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Aldaketen zerrenda</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Zer da berria</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Gehiago…</string>
   <string name="np_continent_europe">Europa</string>
   <string name="np_continent_africa">Afrika</string>
   <string name="np_continent_north_america">Ipar Amerika</string>
@@ -157,6 +201,10 @@
   <string name="np_region_australia">Australia</string>
   <string name="np_desc_australia">Melbourne, Sydney, Brisbane, Perth, Adelaide, Hobart, Launceston, Burnie</string>
   <string name="np_desc_sydney">Sydney, Hegoaldeko Gales Berria, Australia</string>
+  <string name="np_region_pt">Portugal</string>
+  <string name="np_name_pt">Portugal</string>
+  <string name="np_desc_pt">Lisboa</string>
+  <string name="np_desc_pt_networks">Autobusa, Trena, Funikularra, Ferrya, Metroa</string>
   <string name="np_region_austria">Austria</string>
   <string name="np_desc_ivb">Innsbruck</string>
   <string name="np_desc_linz">Linz, Austria Garaia</string>
@@ -167,23 +215,25 @@
   <string name="np_desc_wien">Viena</string>
   <string name="np_region_belgium">Belgika</string>
   <string name="np_desc_sncb">Belgikako garraio publikoa</string>
-  <string name="np_region_br">Brasil</string>
   <string name="np_name_br">Brasil</string>
   <string name="np_desc_br">São Paulo, Rio de Janeiro, Belo Horizonte eta Porto Alegre</string>
   <string name="np_name_br_floripa">Florianópolis</string>
   <string name="np_desc_br_floripa">Autobus bide anitz, ez Executivos</string>
   <string name="np_region_canada">Kanada</string>
   <string name="np_name_ontario">Ontario</string>
-  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Waterloo eskualdea</string>
+  <string name="np_desc_ontario">Ontario, Ottawa, Toronto, Mississauga, Hamilton, Waterloo eskualdea</string>
   <string name="np_name_quebec">Quebec</string>
   <string name="np_desc_quebec">Deux-Montagnes, Laval, L\'Assomption, Outaouais, Sud-Ouest, Quebec, Haut-Saint-Laurent, Lanaudière, La Presqu\'Île, Laurentides, Montreal, Les Moulins, Vallée du Richelieu, Chambly-Richelieu-Carignan, Roussillon, Sorel-Varennes, Le Richelain, Sherbrooke, Sainte-Julie</string>
+  <string name="np_name_britishcolumbia">Columbia Britainiarra</string>
+  <string name="np_desc_britishcolumbia">Columbia Britainiarreko garraio publikoa</string>
+  <string name="np_desc_britishcolumbia_networks">Translink (Metro Vancouver) eta BC Transit (Columbia Britainiarra)</string>
   <string name="np_region_denmark">Danimarka</string>
   <string name="np_desc_dsb">Danimarka, Kopenhage</string>
   <string name="np_name_rt">Europa</string>
   <string name="np_desc_rt">Distantzia handiko trenak soilik</string>
   <string name="np_desc_rt_networks">Railteam aliantza</string>
   <string name="np_region_finland">Finlandia</string>
-  <string name="np_desc_hsl">Helsinki</string>
+  <string name="np_desc_fi">Helsinki, Turku, Tampere, Jyväskylä, Oulu</string>
   <string name="np_region_france">Frantzia</string>
   <string name="np_name_francenortheast">Frantzia ipar ekialdea</string>
   <string name="np_desc_francenortheast">Estrasburgo, Metz, Lille, Nancy</string>
@@ -201,6 +251,7 @@
   <string name="np_desc_tlwm" tools:keep="@string/np_desc_tlwm">Birmingham</string>
   <string name="np_region_germany">Alemania</string>
   <string name="np_desc_avv">Augsburg</string>
+  <string name="np_desc_avvaachen">Akisgran</string>
   <string name="np_desc_bayern">Bavaria, Würzburg, Ratisbona</string>
   <string name="np_desc_bsvag">Brunswick, Wolfsburg</string>
   <string name="np_desc_bvg">Berlin</string>
@@ -217,12 +268,10 @@
   <string name="np_desc_nvbw">Baden-Württemberg, Konstanz, Basel, Basel-Stadt, Reutlingen, Rottweil, Tübingen, Sigmaringen</string>
   <string name="np_desc_nvv">Hesse, Frankfurt am Main, Kassel</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Alsazia, Bas-Rhin, Strasbourg, Freiburg im Breisgau</string>
   <string name="np_desc_vbb">Brandenburgo, Berlin</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Saxonia behera Bremen, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
   <string name="np_desc_vgn">Nuremberg, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
   <string name="np_desc_vgs">Sarre, Saarbrücken</string>
-  <string name="np_desc_vms">Mittelsachsen, Chemnitz</string>
   <string name="np_desc_vmv">Mecklenburg-Vorpommern, Schwerin</string>
   <string name="np_desc_vrn">Baden-Württemberg, Renania-Palatinatua, Mannheim, Mainz, Trier</string>
   <string name="np_desc_vrr">Ipar Rhine-Westphalia, Kolonia, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -246,14 +295,15 @@
   <string name="np_region_netherlands">Herbehereak</string>
   <string name="np_desc_ns">Herbehereak, Amsterdam</string>
   <string name="np_desc_negentwee">Herbehereetako garraio publiko guztia </string>
-  <string name="np_region_norway">Norvegia</string>
-  <string name="np_desc_nri">Norvegia, Oslo, Bergen</string>
   <string name="np_name_nz">Zeelanda Berria</string>
   <string name="np_desc_nz">Zeelanda Berria, Wellington, Auckland</string>
   <string name="np_region_poland">Polonia</string>
-  <string name="np_desc_pl">Polonia, Poloniako trenbideak</string>
   <string name="np_name_spain">Espainia</string>
   <string name="np_desc_spain">Madril, Bartzelona, Euskadi, Nafarroa, Valentzia, Alacant, Mallorca, Menorca, Tenerife, La Palma</string>
+  <string name="np_name_hungary">Hungaria</string>
+  <string name="np_desc_hungary">Budapest, Miskolc</string>
+  <string name="np_name_czechia">Txekia</string>
+  <string name="np_desc_czechia">Praga eta beste batzuk</string>
   <string name="np_region_sweden">Suedia</string>
   <string name="np_desc_se">Suedia, Stockholm</string>
   <string name="np_region_switzerland">Suitza</string>
@@ -267,6 +317,8 @@
   <string name="np_desc_dub">Arabiar Emirerri Batuak, Dubai</string>
   <string name="np_region_usa">Ameriketako Estatu Batuak</string>
   <string name="np_desc_rtachicago">Chicago</string>
+  <string name="np_desc_bart">San Frantzisko</string>
+  <string name="np_desc_cmta">Austin</string>
   <string name="np_name_usny">New York eta New-Jersey estatuak</string>
   <string name="np_name_california">Kalifornia</string>
   <string name="np_desc_california">Kaliforniako (EEBB) garraio publikoa</string>
@@ -275,7 +327,6 @@
   <string name="np_name_costa_rica">Costa Rica</string>
   <string name="np_name_ghana">Ghana</string>
   <string name="np_desc_ghana">Accra</string>
-  <string name="np_region_central_america">Ertamerika</string>
   <string name="np_name_nicaragua">Nikaragua</string>
   <string name="np_desc_nicaragua">Hiri, herri eta herrialdeko autobusak MapaNica.net eta OpenStreetMap laguntzaileei esker</string>
   <string name="maintainer">Mantentzailea</string>
@@ -298,4 +349,11 @@
   <string name="czech">Txekiera</string>
   <string name="hungarian">Hungariera</string>
   <string name="japanese">Japoniera</string>
+  <string name="russian">Errusiera</string>
+  <string name="greek">Greziera</string>
+  <string name="farsi">Persiera</string>
+  <string name="taiwanese">Txinera (Taiwan)</string>
+  <string name="swedish">Suediera</string>
+  <string name="ukrainian">Ukrainiarra</string>
+  <string name="danish">Danimarka</string>
 </resources>

@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,12 +20,7 @@
 package de.grobox.transportr.favorites.trips;
 
 import android.animation.ObjectAnimator;
-import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +31,11 @@ import java.util.List;
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import de.grobox.transportr.R;
 import de.grobox.transportr.TransportrFragment;
 import de.grobox.transportr.data.locations.HomeLocation;
@@ -45,7 +45,7 @@ import de.grobox.transportr.favorites.locations.WorkPickerDialogFragment;
 import de.grobox.transportr.locations.WrapLocation;
 import de.grobox.transportr.ui.LceAnimator;
 
-import static android.support.v7.util.SortedList.INVALID_POSITION;
+import static androidx.recyclerview.widget.SortedList.INVALID_POSITION;
 import static de.grobox.transportr.favorites.trips.FavoriteTripType.HOME;
 import static de.grobox.transportr.favorites.trips.FavoriteTripType.TRIP;
 import static de.grobox.transportr.favorites.trips.FavoriteTripType.WORK;
@@ -75,9 +75,9 @@ public abstract class FavoriteTripsFragment<VM extends SavedSearchesViewModel> e
 		list.setLayoutManager(new LinearLayoutManager(getContext()));
 
 		viewModel = getViewModel();
-		viewModel.getHome().observe(this, this::onHomeLocationChanged);
-		viewModel.getWork().observe(this, this::onWorkLocationChanged);
-		viewModel.getFavoriteTrips().observe(this, this::onFavoriteTripsChanged);
+		viewModel.getHome().observe(getViewLifecycleOwner(), this::onHomeLocationChanged);
+		viewModel.getWork().observe(getViewLifecycleOwner(), this::onWorkLocationChanged);
+		viewModel.getFavoriteTrips().observe(getViewLifecycleOwner(), this::onFavoriteTripsChanged);
 
 		return v;
 	}

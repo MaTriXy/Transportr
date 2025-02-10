@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -22,23 +22,23 @@ package de.grobox.transportr.ui
 import android.content.Context
 import android.graphics.PorterDuff.Mode.SRC_IN
 import android.graphics.drawable.GradientDrawable
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
-import android.support.v4.content.ContextCompat.getColor
-import android.support.v4.content.ContextCompat.getDrawable
-import android.support.v7.widget.AppCompatTextView
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.ContextCompat.getDrawable
+import androidx.appcompat.widget.AppCompatTextView
 import android.util.AttributeSet
 import de.grobox.transportr.R
 import de.grobox.transportr.utils.TransportrUtils.dpToPx
 import de.grobox.transportr.utils.TransportrUtils.getDrawableForProduct
+import de.grobox.transportr.utils.TransportrUtils.getTextColorBasedOnBackground
 import de.schildbach.pte.dto.Line
 
 class LineView(context: Context, attr: AttributeSet?) : AppCompatTextView(context, attr) {
 
-    fun setLine(line: Line) {
+    fun setLine(line: Line, backgroundColor: Int) {
         // get colors
-        val foregroundColor = line.style?.foregroundColor
-        val backgroundColor = line.style?.backgroundColor
+        val foregroundColor = getTextColorBasedOnBackground(backgroundColor)
 
         // set colored background
         val backgroundDrawable = getDrawable(context, R.drawable.line_box) as GradientDrawable
@@ -47,17 +47,21 @@ class LineView(context: Context, attr: AttributeSet?) : AppCompatTextView(contex
         @Suppress("DEPRECATION")
         setBackgroundDrawable(backgroundDrawable)
 
-        // correct padding that gets lost when setting background
-        setPadding(0, dpToPx(context, 2), dpToPx(context, 4), dpToPx(context, 2))
-
         // product icon
         if (line.product != null) {
+            // correct padding that gets lost when setting background
+            setPadding(0, dpToPx(context, 2), dpToPx(context, 4), dpToPx(context, 2))
+
             setDrawable(getDrawableForProduct(line.product), foregroundColor)
+        }
+        else{
+            // correct padding that gets lost when setting background
+            setPadding(dpToPx(context, 4), dpToPx(context, 2), dpToPx(context, 4), dpToPx(context, 2))
         }
 
         // set colored label
         text = line.label
-        if (foregroundColor != null) setTextColor(foregroundColor)
+        setTextColor(foregroundColor)
     }
 
     fun setWalk() {
@@ -67,7 +71,9 @@ class LineView(context: Context, attr: AttributeSet?) : AppCompatTextView(contex
 
     private fun setDrawable(@DrawableRes res: Int, @ColorInt color: Int?) {
         val drawable = getDrawable(context, res)!!
-        if (color != null) drawable.mutate().setColorFilter(color, SRC_IN)
+        color?.let {
+            drawable.mutate().setColorFilter(color, SRC_IN)
+        }
         setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
     }
 

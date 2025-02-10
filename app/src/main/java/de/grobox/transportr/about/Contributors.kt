@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 
 package de.grobox.transportr.about
 
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import de.grobox.transportr.R
 
 
@@ -69,6 +69,11 @@ internal val LANGUAGES = listOf(
         )
     ),
     ContributorGroup(
+        R.string.taiwanese, listOf(
+            Contributor("Gerrit Schultz")
+        )
+    ),
+    ContributorGroup(
         R.string.czech, listOf(
             Contributor("Miloš Koliáš")
         )
@@ -85,9 +90,13 @@ internal val LANGUAGES = listOf(
         )
     ),
     ContributorGroup(
+        R.string.farsi, listOf(
+            Contributor("Reza Ghasemi")
+        )
+    ),
+    ContributorGroup(
         R.string.french, listOf(
             Contributor("Cryptie"),
-            Contributor("Alain-Olivier"),
             Contributor("David Maulat"),
             Contributor("Paul Caranton")
         )
@@ -102,6 +111,11 @@ internal val LANGUAGES = listOf(
             Contributor("Fabian Neumann"),
             Contributor("Patrick Kanzler"),
             Contributor("Vinzenz Vietzke")
+        )
+    ),
+    ContributorGroup(
+        R.string.greek, listOf(
+            Contributor("Vangelis Skarmoutsos")
         )
     ),
     ContributorGroup(
@@ -163,6 +177,11 @@ internal val LANGUAGES = listOf(
         )
     ),
     ContributorGroup(
+        R.string.swedish, listOf(
+            Contributor("Jonatan Nyberg")
+        )
+    ),
+    ContributorGroup(
         R.string.tamil, listOf(
             Contributor("Prasanna Venkadesh")
         )
@@ -172,6 +191,16 @@ internal val LANGUAGES = listOf(
             Contributor("Emre Deniz"),
             Contributor("Erdoğan Şahin"),
             Contributor("Emre JILTA")
+        )
+    ),
+    ContributorGroup(
+        R.string.ukrainian, listOf(
+            Contributor("Paul S")
+        )
+    ),
+    ContributorGroup(
+        R.string.danish, listOf(
+            Contributor("Daniel L.")
         )
     )
 )

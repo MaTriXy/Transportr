@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -20,7 +20,7 @@
 package de.grobox.transportr.utils
 
 import android.app.Activity
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.util.TypedValue
 import de.grobox.transportr.R
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt

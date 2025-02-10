@@ -16,6 +16,7 @@ LANG_MAP = {
     'values-ca': 'ca',
     'values-cs': 'cs-CZ',
     'values-de': 'de-DE',
+    'values-el': 'el-GR',
     'values-es': 'es-ES',
     'values-eu': 'eu-ES',
     'values-fr': 'fr-FR',
@@ -25,6 +26,7 @@ LANG_MAP = {
     'values-nl': 'nl-NL',
     'values-pl': 'pl-PL',
     'values-pt-rBR': 'pt-BR',
+    'values-ru': 'ru-RU',
     'values-ta': 'ta-IN',
     'values-tr': 'tr-TR',
 }
@@ -52,7 +54,7 @@ def main():
         if short_desc is None or full_desc is None:
             print("Warning: Skipping %s because of incomplete translation" % entry)
             continue
-        if title:
+        if title is not None:
             save_file(title.text, LANG_MAP[entry], 'title.txt')
         else:
             directory_path = os.path.join(PATH, METADATA_PATH, LANG_MAP[entry])

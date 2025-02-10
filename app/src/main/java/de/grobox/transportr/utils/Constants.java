@@ -1,7 +1,7 @@
 /*
  *    Transportr
  *
- *    Copyright (c) 2013 - 2018 Torsten Grote
+ *    Copyright (c) 2013 - 2021 Torsten Grote
  *
  *    This program is Free Software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as
@@ -38,5 +38,8 @@ public interface Constants {
 	// Loaders
 	int LOADER_DEPARTURES = 1;
 	int LOADER_NEARBY_STATIONS = 2;
+
+	// Contrast value for line color
+	double MIN_CONTRAST_RATIO = 1.3;
 
 }

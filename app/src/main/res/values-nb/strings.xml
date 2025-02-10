@@ -7,7 +7,6 @@
   <string name="action_fav_trip">Merk tur som favoritt</string>
   <string name="action_unfav_trip">Avmerk tur som favoritt</string>
   <string name="action_switch_locations">Bytt fra og til</string>
-  <string name="action_time_type">Tiden er</string>
   <string name="trip_dep">Avgang</string>
   <string name="trip_arr">Ankomst</string>
   <string name="action_refresh">Gjenoppfrisk</string>
@@ -18,6 +17,7 @@
   <string name="action_trip_delete">Slett tur</string>
   <string name="action_show_on_external_map">Vis på eksternt kart</string>
   <string name="action_copy">Kopier</string>
+  <string name="directions">Veivisning</string>
   <string name="drawer_departures">Avganger</string>
   <string name="tab_about">Om</string>
   <string name="tab_libraries">Bibliotek</string>
@@ -71,7 +71,6 @@
   <string name="pref_walk_speed_slow">Tregt</string>
   <string name="pref_walk_speed_normal">Normalt</string>
   <string name="pref_walk_speed_fast">Raskt</string>
-  <string name="pref_show_when_locked_title">Vis tur og søkeresultater når skjermen er låst</string>
   <string name="pref_show_when_locked_summary">Vis over låseskjerm</string>
   <string name="error">Feil</string>
   <string name="error_no_internet">Internettilkobling kreves. Forsikre deg om at internettilgangen virker.</string>
@@ -89,7 +88,6 @@
   <string name="trip_error_no_trips">Ingen tilkoblinger ble funnet :(</string>
   <string name="trip_error_invalid_date">Søkedatoen er ikke støttet av datatilbyderen. Prøv en annen dato.</string>
   <string name="trip_error_service_down">Datatilbyderen er for tiden nede :(\n Prøv igjen senere.</string>
-  <string name="trip_error_pte">Hvis du ønsker å innrapportere denne feilen, send din rapport til public-transport-enabler direkte og legg ved en skjermavbildning.</string>
   <string name="trip_issue">Det kan være et problem med denne tilkoblingen.</string>
   <string name="try_again">Prøv igjen</string>
   <!--This string shows the number of meters one has to walk. Please keep the translation short.-->
@@ -99,7 +97,7 @@
     <item quantity="other">%d stopp</item>
   </plurals>
   <!--This is the platform or position where a train will depart or arrive. Please keep it short as it will be shown after the station name.-->
-  <string name="platform">(Plattform %s)</string>
+  <string name="platform">Plattform %s</string>
   <string name="system_default">Systemforvalg</string>
   <string name="trip_share_date">Dato: %s</string>
   <string name="times_include_delays">(Merk: Tidsforespeilinger kan inkludere rapporterte forsinkelser)</string>
@@ -131,9 +129,9 @@
   <string name="product_cablecar">Gondolbane</string>
   <string name="product_on_demand">Ved behov</string>
   <!--ckChangeLog-->
-  <string name="changelog_full_title">Endringslogg</string>
-  <string name="changelog_title">Nyheter</string>
-  <string name="changelog_show_full">Mer…</string>
+  <string name="changelog_full_title" tools:ignore="UnusedResources">Endringslogg</string>
+  <string name="changelog_title" tools:ignore="UnusedResources">Nyheter</string>
+  <string name="changelog_show_full" tools:ignore="UnusedResources">Mer…</string>
   <string name="np_continent_europe">Europa</string>
   <string name="np_continent_africa">Afrika</string>
   <string name="np_region_australia">Australia</string>
@@ -149,7 +147,6 @@
   <string name="np_desc_wien">Wien</string>
   <string name="np_region_belgium">Belgia</string>
   <string name="np_desc_sncb">Offentlig transport i Belgia</string>
-  <string name="np_region_br">Brasil</string>
   <string name="np_name_br">Brasil</string>
   <string name="np_desc_br">São Paulo, Rio de Janeiro, Belo Horizonte og Porto Alegre</string>
   <string name="np_name_br_floripa">Florianópolis</string>
@@ -164,7 +161,6 @@
   <string name="np_desc_rt">Bare langdistansetog</string>
   <string name="np_desc_rt_networks">Railteam-alliansen</string>
   <string name="np_region_finland">Finland</string>
-  <string name="np_desc_hsl">Helsingfors</string>
   <string name="np_region_france">Frankrike</string>
   <string name="np_name_francenortheast">Frankrike nord-øst</string>
   <string name="np_desc_francenortheast">Straßburg, Metz, Lille, Nancy</string>
@@ -197,12 +193,10 @@
   <string name="np_desc_nvbw">Baden-Württemberg, Konstanz, Basel, Basel-Stadt, Reutlingen, Rottweil, Tübingen, Sigmaringen</string>
   <string name="np_desc_nvv">Hessen, Frankfurt am Main, Kassel</string>
   <string name="np_desc_rsag" tools:keep="@string/np_desc_rsag">Rostock</string>
-  <string name="np_desc_vagfr">Elsass, Bas-Rhin, Straßburg, Freiburg im Breisgau</string>
   <string name="np_desc_vbb">Brandenburg, Berlin</string>
   <string name="np_desc_vbn" tools:keep="@string/np_desc_vbn">Niedersachsen, Bremen, Bremerhaven, Oldenburg (Oldenburg), Osnabrück</string>
   <string name="np_desc_vgn">Nürnberg, Fürth, Erlangen, Bayreuth, Bamberg, Schwabach</string>
   <string name="np_desc_vgs">Saarland, Saarbrücken</string>
-  <string name="np_desc_vms">Landkreis Mittelsachsen, Chemnitz</string>
   <string name="np_desc_vmv">Mecklenburg-Vorpommern, Schwerin</string>
   <string name="np_desc_vrn">Baden-Württemberg, Rheinland-Pfalz, Mannheim, Mainz, Trier</string>
   <string name="np_desc_vrr">Nordrhein-Westfalen, Köln, Bonn, Essen, Dortmund, Düsseldorf, Münster, Paderborn, Höxter</string>
@@ -226,12 +220,9 @@
   <string name="np_region_netherlands">Holland</string>
   <string name="np_desc_ns">Holland, Amsterdam</string>
   <string name="np_desc_negentwee">All offentlig transport i Holland</string>
-  <string name="np_region_norway">Norge</string>
-  <string name="np_desc_nri">Norge, Oslo, Bergen</string>
   <string name="np_name_nz">Ny-Zealand</string>
   <string name="np_desc_nz">Ny-Zealand, Wellington, Auckland</string>
   <string name="np_region_poland">Polen</string>
-  <string name="np_desc_pl">Polen, jernbane i Polen</string>
   <string name="np_name_spain">Spania</string>
   <string name="np_desc_spain">Madrid, Barcelona, Baskerland, Valencia, Alicante, Mallorca, Menorca, Tenerife, La Palma, Navarra</string>
   <string name="np_region_sweden">Sverige</string>
